@@ -1,46 +1,39 @@
+import Form from "../Form/Form";
 import HTMLElement from "../Utils/HTMLElement";
-import Item from "./Item";
 
 let instance = null;
 
 export default class Menu {
   
   constructor() {
-
+  
     if(instance) {
       return instance;
     }
-    
+  
     instance = this;
-    
-    this.items = [];
+
+    this.form = new Form();
 
     this.html = new HTMLElement({
       type: 'div',
       className: 'menu-wrapper'
     });
 
-    this.addItem();
-    this.addItem();
+    this.setupItems();
     
   }
 
-  addItem() {
+  setupItems() {
 
-    let item = new Item({
-      index: this.items.length + 1
-    });
-
-    this.items.push(item);
-
-    this.html.append(item.html);
-
+    console.log('From setup', this.form.questions);
+    
   }
 
-  updateItemTitle(index, title) {
+  updateItems() {
 
-    this.items[index].setTitle(title);
-
+    console.log('From update', this.form.questions);
+    
   }
 
 }

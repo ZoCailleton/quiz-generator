@@ -9,19 +9,10 @@ export default class Item {
 
     this.html = new HTMLElement({
       type: 'div',
-      value: `Question ${this.index}`,
+      value: `Question <span class="index">${this.index}</span> : <span class="value">${this.title}</span>`,
       className: 'item'
     });
 
-  }
-
-  setTitle(title) {
-
-    this.title = title;
-    this.html.value =  `Question ${this.index} : ${this.title}`;
-
-    console.log(this);
-    
   }
 
 }

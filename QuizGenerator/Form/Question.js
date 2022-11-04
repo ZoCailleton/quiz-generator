@@ -1,17 +1,23 @@
 import Menu from '../Menu/Menu';
+import Form from '../Form/Form';
 import Field from './Field';
 import Answers from './Answers';
 import HTMLElement from '../Utils/HTMLElement';
+import UniqueID from '../Utils/UniqueID';
 
 export default class Question {
 
-  constructor({title, index}) {
+  constructor({title, index, type}) {
 
     this.menu = new Menu();
+    this.form = new Form();
     
     this.title = title;
     this.index = index;
+    this.type = type;
+
     this.header;
+
     this.cover = '';
     
     this.answers = new Answers();
@@ -20,24 +26,54 @@ export default class Question {
       tag: 'div',
       className: 'question-wrapper'
     });
+    
+    this.addHeader();
+    this.addCover();
+    this.addTypeField();
+
+    this.html.append(this.answers);
+
+  }
+  
+  addHeader() {
 
     this.header = new HTMLElement({
       tag: 'header'
     });
 
-    this.addCoverField();
-    this.addTitleField();
-    
-    this.addControls();
-
     this.html.append(this.header);
-    this.html.append(this.answers);
+    
+    let titleField = new Field({
+      type: 'text',
+      title: `Question <span class="index">${this.index}</span>`,
+      placeholder: 'Question...'
+    });
 
-    return this.html;
+    titleField.addEventListener('keyup', e => {
+
+      let value = e.target.value;
+      this.title = e.target.value;
+
+    });
+
+    this.header.append(titleField);
+
+    let controls = new HTMLElement({
+      tag: 'button',
+      value: 'Supprimer'
+    });
+
+    this.header.append(controls);
+
+    controls.addEventListener('click', () => {
+
+      this.delete();
+      
+    });
 
   }
 
-  addCoverField() {
+  addCover() {
 
     let coverElt = new HTMLElement({
       tag: 'div',
@@ -65,38 +101,44 @@ export default class Question {
 
   }
 
-  addControls() {
+  addTypeField() {
 
-    let controls = new HTMLElement({
-      tag: 'button',
-      value: 'Supprimer'
+    let typeField = new HTMLElement({
+      tag: 'div',
+      className: 'question-type'
     });
 
-    controls.addEventListener('click', () => {
-      this.delete();
+    let name = new UniqueID().id;
+
+    let text = new Field({
+      title: 'Réponses texte',
+      type: 'radio',
+      name
     });
 
-    this.header.append(controls);
-
-  }
-
-  addTitleField() {
-    
-    let titleField = new Field({
-      type: 'text',
-      title: `Question ${this.index}`,
-      placeholder: 'Question...'
+    let image = new Field({
+      title: 'Réponses images',
+      type: 'radio',
+      name
     });
 
-    titleField.addEventListener('keyup', e => {
-      this.menu.updateItemTitle(this.index-1, e.target.value);
+    let video = new Field({
+      title: 'Réponses vidéos',
+      type: 'radio',
+      name
     });
 
-    this.header.append(titleField);
-    
+    typeField.append(text, image, video);
+
+    this.html.append(typeField);
+
   }
   
   delete() {
+    
+    this.form.deleteQuestionByIndex(this.index);
+
+    this.menu.updateItems();
 
     this.html.remove();
 

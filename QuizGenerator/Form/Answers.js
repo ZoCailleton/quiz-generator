@@ -1,6 +1,5 @@
 import HTMLElement from "../Utils/HTMLElement";
 import Answer from "./Answer";
-import Field from "./Field";
 
 export default class Answers {
 
@@ -18,8 +17,6 @@ export default class Answers {
       className: 'grid'
     });
 
-    this.addAnswer();
-    this.addAnswer();
     this.addAnswer();
     this.addAnswer();
 

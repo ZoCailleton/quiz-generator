@@ -6,8 +6,6 @@ export default class QuizGenerator {
   constructor(wrapper) {
 
     this.wrapper = wrapper;
-
-    this.questions = [];
     
     this.form = new Form();
     this.menu = new Menu();

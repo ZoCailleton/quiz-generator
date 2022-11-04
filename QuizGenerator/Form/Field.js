@@ -3,13 +3,14 @@ import UniqueId from '../Utils/UniqueID';
 
 export default class Field {
 
-  constructor({type, title, placeholder}) {
+  constructor({type, title, placeholder, name}) {
     
     this.type = type || 'text';
     this.title = title || 'Champ';
-    this.placeholder = placeholder || 'Nouveau champ';
+    this.placeholder = placeholder || 'Nouveau champ...';
+    this.name = name || new UniqueId().id;
     
-    this.name = new UniqueId().id;
+    this.id = new UniqueId().id;
     
     this.html = new HTMLElement({
       tag: 'fieldset'
@@ -18,27 +19,21 @@ export default class Field {
     this.label = new HTMLElement({
       tag: 'label',
       value: this.title,
-      htmlFor: this.name
+      htmlFor: this.id
     });
     
     this.input = new HTMLElement({
-      tag: 'input'
+      tag: 'input',
+      id: this.id,
+      type: this.type,
+      placeholder: this.placeholder,
+      name: name
     });
-    
-    this.create();
-    
-    return this.html;
-
-  }
-
-  create() {
-    
-    this.input.type = this.type;
-    this.input.id = this.name;
-    this.input.placeholder = this.placeholder;
 
     this.html.append(this.label);
     this.html.append(this.input);
+    
+    return this.html;
 
   }
 

@@ -1,14 +1,18 @@
 export default class HTMLElement {
 
-  constructor({tag, id, className, value, htmlFor, type, name}) {
+  constructor({tag, id, className, value, htmlFor, type, placeholder, name, checked}) {
 
     this.tag = tag || 'div';
+    this.id = id;
     this.className = className;
     this.value = value;
-    this.id = id;
+
+    // Inputs
     this.htmlFor = htmlFor;
     this.type = type;
+    this.placeholder = placeholder;
     this.name = name;
+    this.checked = checked;
 
     this.html = document.createElement(this.tag);
 
@@ -19,7 +23,7 @@ export default class HTMLElement {
       this.html.classList.add(this.className);
 
     if(this.value != undefined)
-      this.html.append(this.value);
+      this.html.innerHTML = this.value;
 
     if(this.htmlFor != undefined)
       this.html.setAttribute('for', this.htmlFor);
@@ -27,8 +31,14 @@ export default class HTMLElement {
     if(this.type != undefined)
       this.html.setAttribute('type', this.type);
 
+    if(this.placeholder != undefined)
+      this.html.placeholder = this.placeholder;
+
     if(this.name != undefined)
       this.html.setAttribute('name', this.name);
+
+    if(this.checked != undefined)
+      this.html.checked = this.checked;
 
     return this.html;
 

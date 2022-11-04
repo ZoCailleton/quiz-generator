@@ -33,7 +33,7 @@ export default class Controls {
   addQuestion() {
     
     this.form.addQuestion();
-    this.menu.addItem();
+    this.menu.updateItems();
 
   }
 

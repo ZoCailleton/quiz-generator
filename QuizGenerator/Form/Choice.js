@@ -1,4 +1,5 @@
 import HTMLElement from "../Utils/HTMLElement";
+import Input from "../Utils/Input";
 import UniqueID from "../Utils/UniqueID";
 
 export default class Choice {
@@ -33,11 +34,9 @@ export default class Choice {
       tag: 'input',
       id: this.id,
       name: this.name,
-      type: 'radio'
+      type: 'radio',
+      checked: this.state
     });
-
-    if(this.state)
-      radio.checked = true;
 
     this.html.append(radio);
 
