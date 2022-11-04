@@ -107,10 +107,6 @@ export default class Question {
 
   updateAnswersType(type) {
     
-    /**
-     * Todo : Find a way to call this function on the Question class level
-     */
-    
     if(type === 'Réponses texte')
       this.setupAnswersElt('text');
 
