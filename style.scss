@@ -40,6 +40,21 @@
   }
 }
 
+.choices {
+  .choice {
+    input {
+      display: none;
+      &:checked + label {
+        opacity: 1;
+      }
+    }
+    label {
+      opacity: .5;
+      cursor: pointer;
+    }
+  }
+}
+
 .question-wrapper {
   margin-bottom: 4em;
   .cover {
@@ -82,18 +97,6 @@
           margin-top: 1em;
           display: flex;
           gap: 10px;
-          .choice {
-            input {
-              display: none;
-              &:checked + label {
-                opacity: 1;
-              }
-            }
-            label {
-              opacity: .5;
-              cursor: pointer;
-            }
-          }
         }
       }
     }

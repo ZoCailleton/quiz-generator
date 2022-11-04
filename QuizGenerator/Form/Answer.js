@@ -17,8 +17,19 @@ export default class Answer {
 
     this.addField();
     this.addControls();
+
+    let choices = new Choices([
+      {
+        state: true,
+        text: 'Vrai'
+      },
+      {
+        state: false,
+        text: 'Faux'
+      }
+    ])
     
-    this.html.append(new Choices().html);
+    this.html.append(choices);
 
   }
 

@@ -3,9 +3,11 @@ import Answer from "./Answer";
 
 export default class Answers {
 
-  constructor() {
+  constructor({type}) {
 
     this.answers = [];
+
+    this.type = type || 'text';
 
     this.html = new HTMLElement({
       tag: 'div',
@@ -16,12 +18,8 @@ export default class Answers {
       tag: 'div',
       className: 'grid'
     });
-
-    this.addAnswer();
-    this.addAnswer();
-
-    this.html.append(this.answersElt);
     
+    this.addBaseAnswers();
     this.addControls();
 
     return this.html;
@@ -33,6 +31,15 @@ export default class Answers {
     let answer = new Answer({index: this.answers.length});
     this.answers.push(answer);
     this.answersElt.append(answer.html);
+
+  }
+
+  addBaseAnswers() {
+
+    this.addAnswer();
+    this.addAnswer();
+
+    this.html.append(this.answersElt);
 
   }
   

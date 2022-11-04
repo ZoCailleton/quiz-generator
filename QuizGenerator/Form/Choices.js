@@ -4,7 +4,18 @@ import UniqueID from "../Utils/UniqueID";
 
 export default class Choices {
 
-  constructor() {
+  constructor(choices) {
+    
+    this.choices = choices || [
+      {
+        state: true,
+        text: 'Vrai'
+      },
+      {
+        state: false,
+        text: 'Faux'
+      }
+    ]
 
     let name = new UniqueID().id;
 
@@ -12,9 +23,14 @@ export default class Choices {
       tag: 'div',
       className: 'choices'
     });
+
+    for(let choice of this.choices) {
     
-    this.html.append(new Choice({state: true, name}));
-    this.html.append(new Choice({state: false, name}));
+      this.html.append(new Choice({state: choice.state, text: choice.text, name}));
+
+    }
+
+    return this.html;
 
   }
 

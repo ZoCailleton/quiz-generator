@@ -3,7 +3,7 @@ import Form from '../Form/Form';
 import Field from './Field';
 import Answers from './Answers';
 import HTMLElement from '../Utils/HTMLElement';
-import UniqueID from '../Utils/UniqueID';
+import Choices from './Choices';
 
 export default class Question {
 
@@ -15,33 +15,34 @@ export default class Question {
     this.title = title;
     this.index = index;
     this.type = type;
-
-    this.header;
-
-    this.cover = '';
     
-    this.answers = new Answers();
+    this.explaination = null;
+    this.cover = null;
     
     this.html = new HTMLElement({
       tag: 'div',
       className: 'question-wrapper'
     });
-    
-    this.addHeader();
-    this.addCover();
-    this.addTypeField();
 
-    this.html.append(this.answers);
+    // HTML Objects
+    this.headerElt = null;
+    this.answersElt = null;
+    
+    this.setupHeaderElt();
+    this.setupCoverElt();
+    this.setupTypeFieldElt();
+    this.setupAnswersElt();
+    this.setupExplainationElt();
 
   }
   
-  addHeader() {
+  setupHeaderElt() {
 
-    this.header = new HTMLElement({
+    this.headerElt = new HTMLElement({
       tag: 'header'
     });
 
-    this.html.append(this.header);
+    this.html.append(this.headerElt);
     
     let titleField = new Field({
       type: 'text',
@@ -52,20 +53,21 @@ export default class Question {
     titleField.addEventListener('keyup', e => {
 
       let value = e.target.value;
-      this.title = e.target.value;
+      
+      this.title = value;
 
     });
 
-    this.header.append(titleField);
+    this.headerElt.append(titleField);
 
-    let controls = new HTMLElement({
+    let deleteButton = new HTMLElement({
       tag: 'button',
       value: 'Supprimer'
     });
 
-    this.header.append(controls);
+    this.headerElt.append(deleteButton);
 
-    controls.addEventListener('click', () => {
+    deleteButton.addEventListener('click', () => {
 
       this.delete();
       
@@ -73,7 +75,7 @@ export default class Question {
 
   }
 
-  addCover() {
+  setupCoverElt() {
 
     let coverElt = new HTMLElement({
       tag: 'div',
@@ -90,7 +92,9 @@ export default class Question {
     coverInput.addEventListener('change', e => {
       
       let value = e.target.value;
+      
       this.cover = value;
+
       coverElt.style.backgroundImage = `url(${this.cover})`;
 
     });
@@ -101,37 +105,48 @@ export default class Question {
 
   }
 
-  addTypeField() {
+  setupTypeFieldElt() {
 
-    let typeField = new HTMLElement({
+    let typeFieldElt = new Choices([
+      {state: true, text: 'Réponses texte'},
+      {state: false, text: 'Réponses image'},
+      {state: false, text: 'Réponses vidéo'}
+    ]);
+
+    this.html.append(typeFieldElt);
+
+  }
+
+  setupAnswersElt() {
+    
+    this.answersElt = new Answers({
+      type: 'text'
+    });
+
+    this.html.append(this.answersElt);
+    
+  }
+
+  setupExplainationElt() {
+
+    let explainationElt = new HTMLElement({
       tag: 'div',
-      className: 'question-type'
+      className: 'explaination-elt'
     });
 
-    let name = new UniqueID().id;
-
-    let text = new Field({
-      title: 'Réponses texte',
-      type: 'radio',
-      name
+    let textarea = new HTMLElement({
+      tag: 'textarea',
+      placeholder: 'Explication...'
     });
 
-    let image = new Field({
-      title: 'Réponses images',
-      type: 'radio',
-      name
+    textarea.addEventListener('keyup', e => {
+      console.log(e.target.value);
     });
 
-    let video = new Field({
-      title: 'Réponses vidéos',
-      type: 'radio',
-      name
-    });
+    explainationElt.append(textarea);
 
-    typeField.append(text, image, video);
-
-    this.html.append(typeField);
-
+    this.html.append(explainationElt);
+    
   }
   
   delete() {
