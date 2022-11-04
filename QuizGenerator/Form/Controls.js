@@ -10,12 +10,12 @@ export default class Controls {
     this.form = new Form();
     
     this.html = new HTMLElement({
-      type: 'div',
+      tag: 'div',
       className: 'controls'
     });
 
     this.add = new HTMLElement({
-      type: 'button',
+      tag: 'button',
       className: 'add-question',
       value: 'Ajouter une question'
     });

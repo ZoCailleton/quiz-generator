@@ -16,15 +16,20 @@ export default class Question {
     this.answers = new Answers();
     
     this.html = new HTMLElement({
-      type: 'div',
+      tag: 'div',
       className: 'question-wrapper'
     });
 
+    this.header = new HTMLElement({
+      tag: 'header'
+    });
+
     this.addCoverField();
-    this.addHeader();
     this.addTitleField();
+    
     this.addControls();
 
+    this.html.append(this.header);
     this.html.append(this.answers);
 
     return this.html;
@@ -33,30 +38,28 @@ export default class Question {
 
   addCoverField() {
 
-    let cover = new HTMLElement({
-      type: 'div',
+    let coverElt = new HTMLElement({
+      tag: 'div',
       className: 'cover',
       value: 'Cover'
     });
 
-    this.html.append(cover);
-
-  }
-
-  addHeader() {
-
-    this.header = new HTMLElement({
-      type: 'header'
+    let coverInput = new Field({
+      type: 'text',
+      title: `Image d'illustration`,
+      placeholder: `URL de l'image...`
     });
 
-    this.html.append(this.header);
-    
+    coverElt.append(coverInput);
+
+    this.html.append(coverElt);
+
   }
 
   addControls() {
 
     let controls = new HTMLElement({
-      type: 'button',
+      tag: 'button',
       value: 'Supprimer'
     });
 

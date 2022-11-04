@@ -12,18 +12,17 @@ export default class Field {
     this.name = new UniqueId().id;
     
     this.html = new HTMLElement({
-      type: 'fieldset'
+      tag: 'fieldset'
     });
 
     this.label = new HTMLElement({
-      type: 'label',
-      value: this.title
+      tag: 'label',
+      value: this.title,
+      htmlFor: this.name
     });
-
-    this.label.setAttribute('for', this.name);
     
     this.input = new HTMLElement({
-      type: 'input'
+      tag: 'input'
     });
     
     this.create();

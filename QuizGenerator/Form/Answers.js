@@ -1,4 +1,5 @@
 import HTMLElement from "../Utils/HTMLElement";
+import Answer from "./Answer";
 import Field from "./Field";
 
 export default class Answers {
@@ -8,12 +9,13 @@ export default class Answers {
     this.answers = [];
 
     this.html = new HTMLElement({
-      type: 'div',
+      tag: 'div',
       className: 'answers'
     });
 
     this.answersElt = new HTMLElement({
-      type: 'div'
+      tag: 'div',
+      className: 'grid'
     });
 
     this.addAnswer();
@@ -31,22 +33,16 @@ export default class Answers {
 
   addAnswer() {
 
-    let answer = new Field({
-      type: 'text',
-      title: `Réponse ${this.answers.length + 1}`,
-      placeholder: 'Réponse...'
-    });
-
+    let answer = new Answer({index: this.answers.length});
     this.answers.push(answer);
-
-    this.answersElt.append(answer);
+    this.answersElt.append(answer.html);
 
   }
   
   addControls() {
 
     let add = new HTMLElement({
-      type: 'button',
+      tag: 'button',
       value: 'Ajouter une réponse'
     });
 

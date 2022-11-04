@@ -1,19 +1,30 @@
 export default class HTMLElement {
 
-  constructor({type, className, value}) {
+  constructor({tag, id, className, value, htmlFor, type}) {
 
-    this.type = type || 'div';
+    this.tag = tag || 'div';
     this.className = className;
     this.value = value;
-    this.html = document.createElement(this.type);
+    this.id = id;
+    this.htmlFor = htmlFor;
+    this.type = type;
 
-    if(this.className != undefined) {
+    this.html = document.createElement(this.tag);
+
+    if(this.id != undefined)
+      this.html.id = this.id;
+
+    if(this.className != undefined)
       this.html.classList.add(this.className);
-    }
 
-    if(this.value != undefined) {
+    if(this.value != undefined)
       this.html.append(this.value);
-    }
+
+    if(this.htmlFor != undefined)
+      this.html.setAttribute('for', this.htmlFor);
+
+    if(this.type != undefined)
+      this.html.setAttribute('type', this.type);
 
     return this.html;
 
