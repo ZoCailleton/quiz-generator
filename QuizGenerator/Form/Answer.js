@@ -10,29 +10,40 @@ export default class Answer {
     this.state = state;
     this.index = index;
 
-    this.setup();
-    this.addField();
-    
-    this.html.append(new Choices().html);
-
-  }
-  
-  setup() {
-
     this.html = new HTMLElement({
       tag: 'div',
       className: 'answer-wrapper'
     });
+
+    this.addField();
+    this.addControls();
+    
+    this.html.append(new Choices().html);
 
   }
 
   addField() {
 
     this.html.append(new Field({
-      type: 'text',
+      tag: 'text',
       title: `Réponse ${this.index+1}`,
       placeholder: 'Réponse...'
     }));
+
+  }
+
+  addControls() {
+
+    let button = new HTMLElement({
+      tag: 'button',
+      value: 'Supprimer'
+    });
+
+    button.addEventListener('click', () => {
+      this.delete();
+    });
+
+    this.html.append(button);
 
   }
 
@@ -40,6 +51,12 @@ export default class Answer {
 
     this.title = title;
     
+  }
+  
+  delete() {
+
+    this.html.remove();
+
   }
 
 }

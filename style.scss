@@ -38,8 +38,12 @@
 .question-wrapper {
   margin-bottom: 4em;
   .cover {
-    background-color: #eee;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #333;
     padding: 1.5em;
+    color: #fff;
   }
   header {
     background-color: #222;
@@ -52,13 +56,27 @@
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      > div {
+      .answer-wrapper {
         padding: 2em;
         &:first-child,
         &:nth-child(4),
         &:nth-child(5),
         &:nth-child(8) {
           background-color: #eee;
+        }
+        .choices {
+          .choice {
+            input {
+              display: none;
+              &:checked + label {
+                opacity: 1;
+              }
+            }
+            label {
+              opacity: .5;
+              cursor: pointer;
+            }
+          }
         }
       }
     }

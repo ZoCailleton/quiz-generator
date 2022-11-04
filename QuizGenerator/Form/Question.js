@@ -12,6 +12,7 @@ export default class Question {
     this.title = title;
     this.index = index;
     this.header;
+    this.cover = '';
     
     this.answers = new Answers();
     
@@ -50,6 +51,14 @@ export default class Question {
       placeholder: `URL de l'image...`
     });
 
+    coverInput.addEventListener('change', e => {
+      
+      let value = e.target.value;
+      this.cover = value;
+      coverElt.style.backgroundImage = `url(${this.cover})`;
+
+    });
+
     coverElt.append(coverInput);
 
     this.html.append(coverElt);
@@ -61,6 +70,10 @@ export default class Question {
     let controls = new HTMLElement({
       tag: 'button',
       value: 'Supprimer'
+    });
+
+    controls.addEventListener('click', () => {
+      this.delete();
     });
 
     this.header.append(controls);

@@ -1,6 +1,6 @@
 export default class HTMLElement {
 
-  constructor({tag, id, className, value, htmlFor, type}) {
+  constructor({tag, id, className, value, htmlFor, type, name}) {
 
     this.tag = tag || 'div';
     this.className = className;
@@ -8,6 +8,7 @@ export default class HTMLElement {
     this.id = id;
     this.htmlFor = htmlFor;
     this.type = type;
+    this.name = name;
 
     this.html = document.createElement(this.tag);
 
@@ -25,6 +26,9 @@ export default class HTMLElement {
 
     if(this.type != undefined)
       this.html.setAttribute('type', this.type);
+
+    if(this.name != undefined)
+      this.html.setAttribute('name', this.name);
 
     return this.html;
 
