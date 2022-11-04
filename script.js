@@ -92,16 +92,6 @@ const generateCode = () => {
   
 }
 
-const createHTMLElement = (_type, _value, _class) => {
-
-  const elt = document.createElement(_type);
-  if(_value != null) elt.innerHTML = _value;
-  if(_class != null) elt.classList.add(_class);
-
-  return elt;
-
-}
-
 const generatedIds = [];
 
 const createInputElement = (_type, _placeholder, _name) => {

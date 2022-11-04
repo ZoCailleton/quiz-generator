@@ -1,4 +1,4 @@
-import QuizGenerator from './Quiz/QuizGenerator';
+import QuizGenerator from './QuizGenerator/QuizGenerator';
 
 import './style.scss';
 
