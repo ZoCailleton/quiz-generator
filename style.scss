@@ -72,13 +72,15 @@
     justify-content: space-between;
     color: #fff;
   }
-  .question-type {
+  .answers-type {
     background-color: #444;
     display: flex;
     justify-content: space-between;
     color: #fff;
-    fieldset {
-      padding: 2em;
+    .choice {
+      label {
+        padding: 2em;
+      }
     }
   }
   .answers {
@@ -99,6 +101,13 @@
           gap: 10px;
         }
       }
+    }
+  }
+  .explaination {
+    textarea {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
     }
   }
 }

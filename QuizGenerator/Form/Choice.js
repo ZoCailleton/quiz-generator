@@ -4,17 +4,27 @@ import UniqueID from "../Utils/UniqueID";
 
 export default class Choice {
 
-  constructor({state, text, name}) {
+  constructor({state, text, name, update}) {
 
-    this.id = new UniqueID().id;
+    this.state = state;
     this.text = text;
     this.name = name;
-    this.state = state;
+    this.update = update;
+
+    this.id = new UniqueID().id;
 
     this.html = new HTMLElement({
       tag: 'div',
       className: 'choice'
     });
+
+    if(this.update != undefined) {
+
+      this.html.addEventListener('click', () => {
+        this.update(this.text);
+      });
+
+    }
 
     this.addRadioElement();
     this.addLabelElement();

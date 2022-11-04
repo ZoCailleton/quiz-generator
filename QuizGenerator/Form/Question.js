@@ -30,8 +30,8 @@ export default class Question {
     
     this.setupHeaderElt();
     this.setupCoverElt();
-    this.setupTypeFieldElt();
-    this.setupAnswersElt();
+    this.setupAnswersTypeElt();
+    this.setupAnswersElt('text');
     this.setupExplainationElt();
 
   }
@@ -105,23 +105,36 @@ export default class Question {
 
   }
 
-  setupTypeFieldElt() {
+  updateAnswersType(type) {
+    
+    if(type === 'Réponses texte')
+      this.setupAnswersElt('text');
 
-    let typeFieldElt = new Choices([
-      {state: true, text: 'Réponses texte'},
-      {state: false, text: 'Réponses image'},
-      {state: false, text: 'Réponses vidéo'}
-    ]);
+    if(type === 'Réponses image')
+      this.setupAnswersElt('image');
 
-    this.html.append(typeFieldElt);
+    if(type === 'Réponses vidéo')
+      this.setupAnswersElt('video');
 
   }
 
-  setupAnswersElt() {
+  setupAnswersTypeElt() {
+
+    let answersTypeElt = new Choices({choices: [
+      {state: true, text: 'Réponses texte'},
+      {state: false, text: 'Réponses image'},
+      {state: false, text: 'Réponses vidéo'}
+    ], update: this.updateAnswersType});
+
+    answersTypeElt.classList.add('answers-type');
+
+    this.html.append(answersTypeElt);
+
+  }
+
+  setupAnswersElt(type) {
     
-    this.answersElt = new Answers({
-      type: 'text'
-    });
+    this.answersElt = new Answers({type});
 
     this.html.append(this.answersElt);
     
@@ -131,12 +144,12 @@ export default class Question {
 
     let explainationElt = new HTMLElement({
       tag: 'div',
-      className: 'explaination-elt'
+      className: 'explaination'
     });
 
     let textarea = new HTMLElement({
       tag: 'textarea',
-      placeholder: 'Explication...'
+      placeholder: 'Explications...'
     });
 
     textarea.addEventListener('keyup', e => {
