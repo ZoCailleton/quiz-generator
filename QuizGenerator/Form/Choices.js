@@ -8,7 +8,7 @@ export default class Choices {
     
     this.update = update || null;
     
-    this.choices = choices || [
+    this.elements = choices || [
       {
         state: true,
         text: 'Vrai'
@@ -26,7 +26,7 @@ export default class Choices {
       className: 'choices'
     });
 
-    for(let choice of this.choices) {
+    for(let choice of this.elements) {
 
       let choiceElt = new Choice({
         state: choice.state,

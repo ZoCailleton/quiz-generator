@@ -5,7 +5,7 @@ export default class Answers {
 
   constructor({type}) {
 
-    this.answers = [];
+    this.elements = [];
 
     this.type = type || 'text';
 
@@ -20,30 +20,30 @@ export default class Answers {
     });
     
     this.addBaseAnswers();
-    this.addControls();
+    this.setupControls();
 
     return this.html;
 
   }
 
-  addAnswer() {
+  add() {
 
-    let answer = new Answer({index: this.answers.length});
-    this.answers.push(answer);
+    let answer = new Answer({index: this.elements.length});
+    this.elements.push(answer);
     this.answersElt.append(answer.html);
 
   }
 
   addBaseAnswers() {
 
-    this.addAnswer();
-    this.addAnswer();
+    this.add();
+    this.add();
 
     this.html.append(this.answersElt);
 
   }
   
-  addControls() {
+  setupControls() {
 
     let add = new HTMLElement({
       tag: 'button',
@@ -51,7 +51,7 @@ export default class Answers {
     });
 
     add.addEventListener('click', () => {
-      this.addAnswer();
+      this.add();
     });
 
     this.html.append(add);
