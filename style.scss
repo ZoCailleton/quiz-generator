@@ -11,10 +11,27 @@ body {
   font-family: 'Fira Sans', sans-serif;
 }
 
+main {
+  > .inner {
+    width: 100%;
+    max-width: 2000px;
+    background-color: #eee;
+    margin: 0 auto;
+  }
+}
+
 input {
+  background-color: $main;
+  border-radius: 5px;
+}
+
+input,
+textarea,
+button {
   border: 0;
   display: inline-block;
   color: #fff;
+  font-family: 'Fira Sans';
 }
 
 button {
@@ -32,6 +49,18 @@ button {
   z-index: 2;
 }
 
+fieldset {
+  label {
+    font-size: .85em;
+  }
+  input {
+    width: 100%;
+    margin-top: 1em;
+    padding: 1em;
+    font-size: 1em;
+  }
+}
+
 #quiz-generator-wrapper {
   width: 100%;
   max-width: 600px;
@@ -44,7 +73,7 @@ button {
   .box {
     background-color: $dark;
     padding: 1.5em;
-    border-radius: 7px;
+    border-radius: 8px;
     color: #fff;
   }
 
@@ -63,7 +92,10 @@ button {
     padding: 100px 0;
     .add-question {
       width: 100%;
-      padding: 15px 0;
+      background-color: $main;
+      padding: 1.5em 0;
+      border-radius: 7px;
+      font-size: 1em;
       cursor: pointer;
     }
     .choices {
@@ -75,8 +107,15 @@ button {
           }
         }
         label {
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          gap: .65em;
           opacity: .5;
           cursor: pointer;
+          img {
+            height: 1.15em;
+          }
         }
       }
     }
@@ -84,25 +123,19 @@ button {
   .question-wrapper {
     background-color: $main;
     margin-bottom: 2em;
-    padding: 2em;
+    padding: $gap;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: $gap;
     overflow: hidden;
     &.close {
-      height: 100px;
+      height: 240px;
     }
     .cover {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      input {
-        width: 100%;
-        background-color: $main;
-        margin-top: 1em;
-        padding: 1em;
-      }
     }
     header {
       display: flex;
@@ -118,34 +151,12 @@ button {
         button {
           background-color: $dark;
           padding: 1em;
-          border: 0;
-          color: #fff;
-        }
-      }
-    }
-    .title-wrapper {
-      input {
-        width: 100%;
-        background-color: transparent;
-        margin-top: 1em;
-        padding: .5em 0;
-        border-bottom: 2px solid rgba(255, 255, 255, .5);
-        font-size: 1.25em;
-        transition: 100ms;
-        outline: none;
-        &:focus {
-          border-bottom: 2px solid rgba(255, 255, 255, 1);
         }
       }
     }
     .answers-type {
       display: flex;
       justify-content: space-between;
-      .choice {
-        label {
-          
-        }
-      }
     }
     .answers {
       .grid {
@@ -153,22 +164,49 @@ button {
         grid-template-columns: 1fr;
         grid-gap: $gap;
         .answer-wrapper {
-          padding: 25px;
-          input {
-            background-color: $main;
-            margin: 1em 0;
-            padding: .5em;
+          padding: 1.5em;
+          display: flex;
+          justify-content: space-between;
+          gap: 2em;
+          fieldset {
+            width: 100%;
+            label {
+              font-size: .85em;
+            }
+            input {
+              width: 100%;
+              margin-top: 1em;
+              padding: 1em;
+              font-size: 1em;
+            }
           }
           .choices {
             margin-top: 1em;
             display: flex;
+            flex-direction: column;
             gap: 10px;
+          }
+          .controls {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            img {
+              height: 1em;
+              cursor: pointer;
+              user-select: none;
+              &.remove {
+                height: .85em;
+              }
+              &:hover {
+                opacity: .5;
+              }
+            }
           }
         }
       }
       .add-response {
-        width: 50%;
-        padding: 10px 0;
+        width: 100%;
+        margin-top: $gap;
       }
     }
     .explaination {
@@ -179,10 +217,7 @@ button {
         min-height: 5em;
         background-color: $dark;
         padding: 1em;
-        border: 0px;
         font-size: 16px;
-        font-family: 'Fira Sans';
-        color: #fff;
       }
     }
   }

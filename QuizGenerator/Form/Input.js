@@ -1,4 +1,4 @@
-import HTMLElement from "./HTMLElement";
+import HTMLElement from "../Utils/HTMLElement";
 
 export default class Input extends HTMLElement {
 

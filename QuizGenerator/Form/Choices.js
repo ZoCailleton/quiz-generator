@@ -4,9 +4,7 @@ import UniqueID from "../Utils/UniqueID";
 
 export default class Choices {
 
-  constructor({choices, update}) {
-    
-    this.update = update || null;
+  constructor({choices}) {
     
     this.elements = choices || [
       {
@@ -32,7 +30,7 @@ export default class Choices {
         state: choice.state,
         text: choice.text,
         name,
-        update: this.update
+        icon: choice.icon
       });
     
       this.html.append(choiceElt);

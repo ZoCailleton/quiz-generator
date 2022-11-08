@@ -26,9 +26,10 @@ export default class Answers {
 
   }
 
-  add() {
+  add({placeholder, state=false}) {
 
-    let answer = new Answer({index: this.elements.length});
+    let answer = new Answer({index: this.elements.length, placeholder, state});
+    answer.html.dataset.type = 'image';
     this.elements.push(answer);
     this.answersElt.append(answer.html);
 
@@ -36,9 +37,12 @@ export default class Answers {
 
   addBaseAnswers() {
 
-    this.add();
-    this.add();
-    this.add();
+    this.add({
+      placeholder: 'Emmanuel Macron...',
+      state: true
+    });
+    this.add({placeholder: 'François Hollande...'});
+    this.add({placeholder: 'Nicolas Sarkozy...'});
 
     this.html.append(this.answersElt);
 
@@ -49,11 +53,12 @@ export default class Answers {
     let add = new HTMLElement({
       tag: 'button',
       value: 'Ajouter une réponse',
-      className: 'add-response'
+      className: 'add-response',
+      moreClasses: ['box']
     });
 
     add.addEventListener('click', () => {
-      this.add();
+      this.add({placeholder: 'Nouvelle réponse...'});
     });
 
     this.html.append(add);

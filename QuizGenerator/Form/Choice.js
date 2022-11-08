@@ -1,15 +1,16 @@
 import HTMLElement from "../Utils/HTMLElement";
-import Input from "../Utils/Input";
+import Input from "./Input";
 import UniqueID from "../Utils/UniqueID";
 
 export default class Choice {
 
-  constructor({state, text, name, update}) {
+  constructor({state, text, name, update, icon}) {
 
     this.state = state;
     this.text = text;
     this.name = name;
     this.update = update;
+    this.icon = icon;
 
     this.id = new UniqueID().id;
 
@@ -54,6 +55,16 @@ export default class Choice {
       htmlFor: this.id,
       value: this.text
     });
+
+    if(this.icon != undefined) {
+
+      let icon = new HTMLElement({
+        tag: 'img',
+        src: `./assets/icons/${this.icon}`
+      });
+      label.append(icon);
+
+    }
 
     this.html.append(label);
 

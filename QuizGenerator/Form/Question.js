@@ -43,7 +43,8 @@ export default class Question {
 
     let titleWrapper = new HTMLElement({
       tag: 'div',
-      className: 'title-wrapper'
+      className: 'title-wrapper',
+      moreClasses: ['box']
     });
     
     let titleField = new Field({
@@ -79,6 +80,12 @@ export default class Question {
       className: 'controls'
     });
 
+    let replaceButton = new HTMLElement({
+      tag: 'button',
+      className: 'replace',
+      value: 'Replace'
+    });
+
     let closeButton = new HTMLElement({
       tag: 'button',
       className: 'close',
@@ -99,6 +106,7 @@ export default class Question {
     });
 
     controls.append(closeButton);
+    controls.append(replaceButton);
     controls.append(deleteButton);
 
     this.headerElt.append(title);
@@ -138,26 +146,13 @@ export default class Question {
 
   }
 
-  updateAnswersType(type) {
-    
-    if(type === 'Réponses texte')
-      this.setupAnswersElt('text');
-
-    if(type === 'Réponses image')
-      this.setupAnswersElt('image');
-
-    if(type === 'Réponses vidéo')
-      this.setupAnswersElt('video');
-
-  }
-
   setupAnswersTypeElt() {
 
     let answersTypeElt = new Choices({choices: [
-      {state: true, text: 'Réponses texte'},
-      {state: false, text: 'Réponses image'},
-      {state: false, text: 'Réponses vidéo'}
-    ], update: this.updateAnswersType});
+      {state: true, text: 'Réponses texte', icon: 'text.png'},
+      {state: false, text: 'Réponses image', icon: 'photo.png'},
+      {state: false, text: 'Réponses vidéo', icon: 'film.png'}
+    ]});
 
     answersTypeElt.classList.add('answers-type', 'box');
 

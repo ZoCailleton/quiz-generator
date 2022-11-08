@@ -4,9 +4,10 @@ import HTMLElement from "../Utils/HTMLElement";
 
 export default class Answer {
 
-  constructor({answer, state, index}) {
+  constructor({answer, placeholder, state, index}) {
 
     this.answer = answer;
+    this.placeholder = placeholder || 'Réponse...';
     this.state = state;
     this.index = index;
 
@@ -16,8 +17,23 @@ export default class Answer {
       moreClasses: ['box']
     });
 
-    this.addField();
-    this.addControls();
+    this.setupField();
+    this.setupChoices();
+    this.setupControls();
+
+  }
+
+  setupField() {
+
+    this.html.append(new Field({
+      tag: 'text',
+      title: `Réponse ${this.index+1}`,
+      placeholder: this.placeholder
+    }));
+
+  }
+
+  setupChoices() {
 
     let choices = new Choices({choices: [
       {
@@ -34,28 +50,32 @@ export default class Answer {
 
   }
 
-  addField() {
+  setupControls() {
 
-    this.html.append(new Field({
-      tag: 'text',
-      title: `Réponse ${this.index+1}`,
-      placeholder: 'Réponse...'
-    }));
-
-  }
-
-  addControls() {
-
-    let button = new HTMLElement({
-      tag: 'button',
-      value: 'Supprimer'
+    let controls = new HTMLElement({
+      tag: 'div',
+      className: 'controls'
     });
 
-    button.addEventListener('click', () => {
+    let replaceElt = new HTMLElement({
+      tag: 'img',
+      className: 'replace',
+      src: './assets/icons/menu.png'
+    });
+
+    let deleteElt = new HTMLElement({
+      tag: 'img',
+      className: 'remove',
+      src: './assets/icons/close.png'
+    });
+
+    deleteElt.addEventListener('click', () => {
       this.delete();
     });
-
-    this.html.append(button);
+    
+    controls.append(replaceElt);
+    controls.append(deleteElt);
+    this.html.append(controls);
 
   }
 

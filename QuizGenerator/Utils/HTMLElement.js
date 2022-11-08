@@ -1,12 +1,13 @@
 export default class HTMLElement {
 
-  constructor({tag, id, className, moreClasses, value, htmlFor, type, placeholder, name, checked}) {
+  constructor({tag, id, className, moreClasses, value, src, htmlFor, type, placeholder, name, checked}) {
 
     this.tag = tag || 'div';
     this.id = id;
     this.className = className;
     this.moreClasses = moreClasses;
     this.value = value;
+    this.src = src;
 
     // Inputs
     this.htmlFor = htmlFor;
@@ -31,6 +32,9 @@ export default class HTMLElement {
 
     if(this.value != undefined)
       this.html.innerHTML = this.value;
+
+    if(this.src != undefined)
+      this.html.src = this.src;
 
     if(this.htmlFor != undefined)
       this.html.setAttribute('for', this.htmlFor);
