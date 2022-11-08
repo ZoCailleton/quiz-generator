@@ -22,6 +22,8 @@ export default class Answers {
 
     let answer = new Answer({index: 1, placeholder, state, type});
 
+    document.querySelector(`.grid.${type}`).append(answer.html);
+
   }
 
   setupAnswers(type, active) {
@@ -29,8 +31,12 @@ export default class Answers {
     let wrapper = new HTMLElement({
       tag: 'div',
       className: 'grid',
-      moreClasses: [type, active]
+      moreClasses: [type]
     });
+
+    if(active) {
+      wrapper.classList.add('active');
+    }
 
     wrapper.append(new Answer({index: 1, placeholder: 'Emmanuel Macron...', type, state: true}).html);
     wrapper.append(new Answer({index: 2, placeholder: 'François Hollande...', type}).html);

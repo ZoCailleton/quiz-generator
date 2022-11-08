@@ -13,7 +13,7 @@ export default class Answer {
     this.placeholder = placeholder || 'Réponse...';
     this.state = state;
     this.index = index;
-    this.type = type;
+    this.type = type || 'text';
 
     this.html = new HTMLElement({
       tag: 'div',
@@ -24,6 +24,7 @@ export default class Answer {
     if(this.type === 'text') this.setupField();
     if(this.type === 'photo') this.setupFieldPhoto();
     if(this.type === 'video') this.setupFieldVideo();
+
     this.setupChoices();
     this.setupControls();
 
@@ -42,23 +43,51 @@ export default class Answer {
 
   setupFieldPhoto() {
 
-    this.html.append(new Field({
+    let fields = new HTMLElement({
+      tag: 'div',
+      className: 'fields'
+    });
+
+    fields.append(new Field({
       tag: 'text',
       title: `Réponse <span class="index">${this.index}</span>`,
       placeholder: this.placeholder,
       icon: 'photo.png'
     }));
 
+    fields.append(new Field({
+      tag: 'text',
+      title: `URL de la photo`,
+      placeholder: 'https://images.pexels.com/photos/11757303/pexels-photo-11757303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      icon: 'link.png'
+    }));
+
+    this.html.append(fields);
+
   }
 
   setupFieldVideo() {
 
-    this.html.append(new Field({
+    let fields = new HTMLElement({
+      tag: 'div',
+      className: 'fields'
+    });
+
+    fields.append(new Field({
       tag: 'text',
       title: `Réponse <span class="index">${this.index}</span>`,
       placeholder: this.placeholder,
       icon: 'film.png'
     }));
+
+    fields.append(new Field({
+      tag: 'text',
+      title: `URL de la vidéo`,
+      placeholder: 'https://www.pexels.com/fr-fr/video/fleurs-verre-pierres-fumer-7815884/',
+      icon: 'link.png'
+    }));
+
+    this.html.append(fields);
 
   }
 
