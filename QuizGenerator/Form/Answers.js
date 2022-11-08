@@ -38,6 +38,7 @@ export default class Answers {
 
     this.add();
     this.add();
+    this.add();
 
     this.html.append(this.answersElt);
 
@@ -47,7 +48,8 @@ export default class Answers {
 
     let add = new HTMLElement({
       tag: 'button',
-      value: 'Ajouter une réponse'
+      value: 'Ajouter une réponse',
+      className: 'add-response'
     });
 
     add.addEventListener('click', () => {

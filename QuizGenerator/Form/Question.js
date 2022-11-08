@@ -19,6 +19,8 @@ export default class Question {
     this.explaination = null;
     this.cover = null;
     
+    this.open = true;
+    
     this.html = new HTMLElement({
       tag: 'div',
       className: 'question-wrapper'
@@ -28,64 +30,95 @@ export default class Question {
     this.headerElt = null;
     this.answersElt = null;
     
-    this.setupHeaderElt();
-    this.setupCoverElt();
+    this.setupHeader();
+    this.setupTitle();
+    this.setupCover();
     this.setupAnswersTypeElt();
     this.setupAnswersElt('text');
     this.setupExplainationElt();
 
   }
+
+  setupTitle() {
+
+    let titleWrapper = new HTMLElement({
+      tag: 'div',
+      className: 'title-wrapper'
+    });
+    
+    let titleField = new Field({
+      type: 'text',
+      title: `Intitulé de la question`,
+      placeholder: 'Qui est le président de la République Française ?'
+    });
+
+    titleField.addEventListener('keyup', e => {
+      let value = e.target.value;
+      this.title = value;
+    });
+
+    titleWrapper.append(titleField);
+    this.html.append(titleWrapper);
+
+  }
   
-  setupHeaderElt() {
+  setupHeader() {
 
     this.headerElt = new HTMLElement({
       tag: 'header'
     });
 
-    this.html.append(this.headerElt);
-    
-    let titleField = new Field({
-      type: 'text',
-      title: `Question <span class="index">${this.index}</span>`,
-      placeholder: 'Question...'
+    let title = new HTMLElement({
+      tag: 'h2',
+      className: 'title',
+      value: `Question <span class="index">${this.index}</span> / 4`
     });
 
-    titleField.addEventListener('keyup', e => {
-
-      let value = e.target.value;
-      
-      this.title = value;
-
+    let controls = new HTMLElement({
+      tag: 'div',
+      className: 'controls'
     });
 
-    this.headerElt.append(titleField);
+    let closeButton = new HTMLElement({
+      tag: 'button',
+      className: 'close',
+      value: 'Fermer'
+    });
 
     let deleteButton = new HTMLElement({
       tag: 'button',
       value: 'Supprimer'
     });
 
-    this.headerElt.append(deleteButton);
+    closeButton.addEventListener('click', () => {
+      this.toggleClose();
+    });
 
     deleteButton.addEventListener('click', () => {
-
       this.delete();
-      
     });
+
+    controls.append(closeButton);
+    controls.append(deleteButton);
+
+    this.headerElt.append(title);
+    this.headerElt.append(controls);
+    
+    this.html.append(this.headerElt);
 
   }
 
-  setupCoverElt() {
+  setupCover() {
 
     let coverElt = new HTMLElement({
       tag: 'div',
       className: 'cover',
-      value: 'Cover'
+      moreClasses: ['box']
     });
 
     let coverInput = new Field({
       type: 'text',
-      title: `Image d'illustration`,
+      title: `Image d'illustration (Copier l'URL)`,
       placeholder: `URL de l'image...`
     });
 
@@ -126,7 +159,7 @@ export default class Question {
       {state: false, text: 'Réponses vidéo'}
     ], update: this.updateAnswersType});
 
-    answersTypeElt.classList.add('answers-type');
+    answersTypeElt.classList.add('answers-type', 'box');
 
     this.html.append(answersTypeElt);
 
@@ -163,13 +196,21 @@ export default class Question {
   }
   
   delete() {
-    
     this.form.deleteQuestionByIndex(this.index);
-
     this.menu.updateItems();
-
     this.html.remove();
-
+  }
+  
+  toggleClose() {
+    if(this.open) {
+      this.html.classList.add('close');
+      this.html.querySelector('header .close').innerHTML = 'Ouvrir';
+      this.open = false;
+    } else {
+      this.html.classList.remove('close');
+      this.html.querySelector('header .close').innerHTML = 'Fermer';
+      this.open = true;
+    }
   }
   
 }

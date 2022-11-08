@@ -1,10 +1,11 @@
 export default class HTMLElement {
 
-  constructor({tag, id, className, value, htmlFor, type, placeholder, name, checked}) {
+  constructor({tag, id, className, moreClasses, value, htmlFor, type, placeholder, name, checked}) {
 
     this.tag = tag || 'div';
     this.id = id;
     this.className = className;
+    this.moreClasses = moreClasses;
     this.value = value;
 
     // Inputs
@@ -21,6 +22,12 @@ export default class HTMLElement {
 
     if(this.className != undefined)
       this.html.classList.add(this.className);
+
+    if(this.moreClasses != undefined) {
+      for(let className of moreClasses) {
+        this.html.classList.add(className);
+      }
+    }
 
     if(this.value != undefined)
       this.html.innerHTML = this.value;

@@ -12,7 +12,8 @@ export default class Answer {
 
     this.html = new HTMLElement({
       tag: 'div',
-      className: 'answer-wrapper'
+      className: 'answer-wrapper',
+      moreClasses: ['box']
     });
 
     this.addField();
