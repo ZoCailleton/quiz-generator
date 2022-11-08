@@ -1,4 +1,4 @@
-import Menu from './Menu/Menu';
+import Demo from './Demo/Demo';
 import Form from './Form/Form';
 
 export default class QuizGenerator {
@@ -8,7 +8,7 @@ export default class QuizGenerator {
     this.wrapper = wrapper;
     
     this.form = new Form();
-    this.menu = new Menu();
+    this.demo = new Demo();
     
     this.setup();
 
@@ -16,7 +16,6 @@ export default class QuizGenerator {
 
   setup() {
 
-    this.wrapper.append(this.menu.html);
     this.wrapper.append(this.form.html);
 
   }

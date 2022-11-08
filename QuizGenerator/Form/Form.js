@@ -35,6 +35,11 @@ export default class Form {
     this.addQuestion();
     this.addQuestion();
 
+    /**
+     * TODO :
+     * - Replace the setTimeout with a callback function
+     */
+
     setTimeout(() => {
 
       new Sortable(document.querySelectorAll('.answers .grid'), {
@@ -48,8 +53,6 @@ export default class Form {
   }
 
   updateAll() {
-
-    console.log('a');
 
     let i=0, j=0;
 

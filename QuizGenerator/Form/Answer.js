@@ -5,7 +5,7 @@ import Form from "./Form";
 
 export default class Answer {
 
-  constructor({answer, placeholder, state, index}) {
+  constructor({answer, placeholder, state, index, type}) {
 
     this.form = new Form();
 
@@ -13,6 +13,7 @@ export default class Answer {
     this.placeholder = placeholder || 'Réponse...';
     this.state = state;
     this.index = index;
+    this.type = type;
 
     this.html = new HTMLElement({
       tag: 'div',
@@ -20,8 +21,9 @@ export default class Answer {
       moreClasses: ['box']
     });
 
-    this.setupField();
-    this.setupFieldPhoto();
+    if(this.type === 'text') this.setupField();
+    if(this.type === 'photo') this.setupFieldPhoto();
+    if(this.type === 'video') this.setupFieldVideo();
     this.setupChoices();
     this.setupControls();
 
@@ -34,6 +36,28 @@ export default class Answer {
       title: `Réponse <span class="index">${this.index+1}</span>`,
       placeholder: this.placeholder,
       icon: 'text.png'
+    }));
+
+  }
+
+  setupFieldPhoto() {
+
+    this.html.append(new Field({
+      tag: 'text',
+      title: `Réponse <span class="index">${this.index+1}</span>`,
+      placeholder: this.placeholder,
+      icon: 'photo.png'
+    }));
+
+  }
+
+  setupFieldVideo() {
+
+    this.html.append(new Field({
+      tag: 'text',
+      title: `Réponse <span class="index">${this.index+1}</span>`,
+      placeholder: this.placeholder,
+      icon: 'film.png'
     }));
 
   }

@@ -1,4 +1,3 @@
-import Menu from "../Menu/Menu";
 import Form from "./Form";
 import HTMLElement from "../Utils/HTMLElement";
 
@@ -6,7 +5,6 @@ export default class Controls {
 
   constructor() {
     
-    this.menu = new Menu();
     this.form = new Form();
     
     this.html = new HTMLElement({

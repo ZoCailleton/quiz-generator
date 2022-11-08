@@ -3,66 +3,54 @@ import Answer from "./Answer";
 
 export default class Answers {
 
-  constructor({type}) {
-
-    this.elements = [];
-
-    this.type = type || 'text';
+  constructor() {
 
     this.html = new HTMLElement({
       tag: 'div',
       className: 'answers'
     });
-
-    this.answersElt = new HTMLElement({
-      tag: 'div',
-      className: 'grid'
-    });
     
-    this.addBaseAnswers();
-    this.setupControls();
+    this.setupAnswers('text', 'active');
+    this.setupAnswers('photo');
+    this.setupAnswers('video');
 
     return this.html;
 
   }
 
-  add({placeholder, state=false}) {
+  add({placeholder, type, state=false}) {
 
-    let answer = new Answer({index: this.elements.length, placeholder, state});
-    answer.html.dataset.type = 'image';
-    this.elements.push(answer);
-    this.answersElt.append(answer.html);
+    let answer = new Answer({index: 1, placeholder, state, type});
 
   }
 
-  addBaseAnswers() {
+  setupAnswers(type, active) {
 
-    this.add({
-      placeholder: 'Emmanuel Macron...',
-      state: true
+    let wrapper = new HTMLElement({
+      tag: 'div',
+      className: 'grid',
+      moreClasses: [type, active]
     });
-    this.add({placeholder: 'François Hollande...'});
-    this.add({placeholder: 'Nicolas Sarkozy...'});
 
-    this.html.append(this.answersElt);
-
-  }
-  
-  setupControls() {
+    wrapper.append(new Answer({index: 1, placeholder: 'Emmanuel Macron...', type, state: true}).html);
+    wrapper.append(new Answer({index: 2, placeholder: 'François Hollande...', type}).html);
+    wrapper.append(new Answer({index: 3, placeholder: 'Nicolas Sarkozy...', type}).html);
 
     let add = new HTMLElement({
       tag: 'button',
       value: 'Ajouter une réponse',
       className: 'add-response',
-      moreClasses: ['box']
+      moreClasses: ['box', type]
     });
 
     add.addEventListener('click', () => {
       this.add({placeholder: 'Nouvelle réponse...'});
     });
 
-    this.html.append(add);
-    
+    wrapper.append(add);
+
+    this.html.append(wrapper);
+
   }
 
 }

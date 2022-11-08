@@ -12,10 +12,10 @@ body {
 }
 
 main {
+  padding: 0 5%;
   > .inner {
     width: 100%;
     max-width: 2000px;
-    background-color: #eee;
     margin: 0 auto;
   }
 }
@@ -96,11 +96,14 @@ fieldset {
     padding: 100px 0;
     .add-question {
       width: 100%;
-      background-color: $main;
-      padding: 1.5em 0;
-      border-radius: 7px;
+      background-color: #FF7D24;
+      padding: 1.25em 0;
+      border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
+      &:hover {
+        opacity: .5;
+      }
     }
     .choices {
       .choice {
@@ -140,6 +143,10 @@ fieldset {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+      transition: 300ms;
+      &.active {
+        padding-top: 4em;
+      }
     }
     header {
       display: flex;
@@ -164,9 +171,12 @@ fieldset {
     }
     .answers {
       .grid {
-        display: grid;
+        display: none;
         grid-template-columns: 1fr;
         grid-gap: $gap;
+        &.active {
+          display: grid;
+        }
         .answer-wrapper {
           padding: 1.5em;
           display: flex;
@@ -210,7 +220,6 @@ fieldset {
       }
       .add-response {
         width: 100%;
-        margin-top: $gap;
       }
     }
     .explaination {

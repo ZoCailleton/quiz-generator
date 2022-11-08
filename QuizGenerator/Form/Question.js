@@ -7,14 +7,13 @@ import Choices from './Choices';
 
 export default class Question {
 
-  constructor({title, index, type}) {
+  constructor({title, index}) {
 
     this.menu = new Menu();
     this.form = new Form();
     
     this.title = title;
     this.index = index;
-    this.type = type;
     
     this.explaination = null;
     this.cover = null;
@@ -33,9 +32,9 @@ export default class Question {
     this.setupHeader();
     this.setupTitle();
     this.setupCover();
-    this.setupAnswersTypeElt();
-    this.setupAnswersElt('text');
-    this.setupExplainationElt();
+    this.setupAnswersTypeMenu();
+    this.setupAnswers();
+    this.setupExplaination();
 
   }
 
@@ -133,8 +132,14 @@ export default class Question {
     coverInput.addEventListener('change', e => {
       
       let value = e.target.value;
-      
       this.cover = value;
+      coverElt.classList.add('active');
+
+      /**
+       * TODO :
+       * - Check the image url
+       * - Remove class when url is removed
+       */
 
       coverElt.style.backgroundImage = `url(${this.cover})`;
 
@@ -146,7 +151,7 @@ export default class Question {
 
   }
 
-  setupAnswersTypeElt() {
+  setupAnswersTypeMenu() {
 
     let answersTypeElt = new Choices({choices: [
       {state: true, text: 'Réponses texte', icon: 'text.png'},
@@ -160,15 +165,14 @@ export default class Question {
 
   }
 
-  setupAnswersElt(type) {
-    
-    this.answersElt = new Answers({type});
+  setupAnswers() {
 
+    this.answersElt = new Answers();
     this.html.append(this.answersElt);
     
   }
 
-  setupExplainationElt() {
+  setupExplaination() {
 
     let explainationElt = new HTMLElement({
       tag: 'div',
@@ -181,7 +185,7 @@ export default class Question {
     });
 
     textarea.addEventListener('keyup', e => {
-      console.log(e.target.value);
+      
     });
 
     explainationElt.append(textarea);
@@ -191,21 +195,29 @@ export default class Question {
   }
   
   delete() {
+
     this.form.deleteQuestionByIndex(this.index);
     this.html.remove();
     this.form.updateAll();
+    
   }
   
   toggleClose() {
+
     if(this.open) {
+
       this.html.classList.add('close');
       this.html.querySelector('header .close').innerHTML = 'Ouvrir';
       this.open = false;
+
     } else {
+
       this.html.classList.remove('close');
       this.html.querySelector('header .close').innerHTML = 'Fermer';
       this.open = true;
+
     }
+
   }
   
 }
