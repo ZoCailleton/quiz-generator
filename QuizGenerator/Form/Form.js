@@ -1,6 +1,7 @@
 import Question from './Question';
 import Controls from './Controls';
 import HTMLElement from "../Utils/HTMLElement";
+import { Droppable, Draggable, Sortable } from '@shopify/draggable';
 
 let instance = null;
 
@@ -18,12 +19,12 @@ export default class Form {
     this.controls = new Controls();
     
     this.html = new HTMLElement({
-      type: 'div',
+      tag: 'div',
       className: 'form-wrapper'
     });
     
     this.form = new HTMLElement({
-      type: 'form'
+      tag: 'form'
     });
 
     this.form.addEventListener('submit', e => e.preventDefault());
@@ -33,7 +34,46 @@ export default class Form {
 
     this.addQuestion();
     this.addQuestion();
+
+    setTimeout(() => {
+
+      new Sortable(document.querySelectorAll('.answers .grid'), {
+        draggable: '.answer-wrapper'
+      });
+
+      this.updateAll();
+
+    }, 1000);
     
+  }
+
+  updateAll() {
+
+    console.log('a');
+
+    let i=0, j=0;
+
+    const questions = document.querySelectorAll('.question-wrapper');
+
+    for(let question of questions) {
+
+      i++;
+
+      question.querySelector('.title span.index').innerHTML = i;
+      question.querySelector('.title span.total').innerHTML = questions.length;
+
+      for(let answer of question.querySelectorAll('.answer-wrapper')) {
+
+        j++;
+
+        answer.querySelector('span.index').innerHTML = j;
+
+      }
+
+      j=0;
+
+    }
+
   }
 
   addQuestion() {
@@ -45,28 +85,15 @@ export default class Form {
     });
 
     this.questions.push(question);
-
     this.form.append(question.html);
+
+    this.updateAll();
     
   }
 
   deleteQuestionByIndex(index) {
 
     this.questions = this.questions.filter((question) => question.index !== index);
-
-    this.updateQuestionsIndex();
-
-  }
-
-  updateQuestionsIndex() {
-
-    let i = 0;
-
-    for(let question of this.questions) {
-      i++;
-      question.index = i;
-      question.html.querySelector('span.index').innerHTML = i;
-    }
 
   }
 

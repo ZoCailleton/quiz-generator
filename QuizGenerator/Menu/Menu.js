@@ -30,10 +30,4 @@ export default class Menu {
     
   }
 
-  updateItems() {
-
-    console.log('From update', this.form.questions);
-    
-  }
-
 }

@@ -72,7 +72,7 @@ export default class Question {
     let title = new HTMLElement({
       tag: 'h2',
       className: 'title',
-      value: `Question <span class="index">${this.index}</span> / 4`
+      value: `Question <span class="index">${this.index}</span> / <span class="total">2</span>`
     });
 
     let controls = new HTMLElement({
@@ -192,8 +192,8 @@ export default class Question {
   
   delete() {
     this.form.deleteQuestionByIndex(this.index);
-    this.menu.updateItems();
     this.html.remove();
+    this.form.updateAll();
   }
   
   toggleClose() {

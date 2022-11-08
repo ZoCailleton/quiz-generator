@@ -1,10 +1,13 @@
 import Field from "./Field";
 import Choices from "./Choices";
 import HTMLElement from "../Utils/HTMLElement";
+import Form from "./Form";
 
 export default class Answer {
 
   constructor({answer, placeholder, state, index}) {
+
+    this.form = new Form();
 
     this.answer = answer;
     this.placeholder = placeholder || 'Réponse...';
@@ -18,6 +21,7 @@ export default class Answer {
     });
 
     this.setupField();
+    this.setupFieldPhoto();
     this.setupChoices();
     this.setupControls();
 
@@ -27,8 +31,9 @@ export default class Answer {
 
     this.html.append(new Field({
       tag: 'text',
-      title: `Réponse ${this.index+1}`,
-      placeholder: this.placeholder
+      title: `Réponse <span class="index">${this.index+1}</span>`,
+      placeholder: this.placeholder,
+      icon: 'text.png'
     }));
 
   }
@@ -86,8 +91,9 @@ export default class Answer {
   }
   
   delete() {
-
+    
     this.html.remove();
+    this.form.updateAll();
 
   }
 
