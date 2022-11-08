@@ -65,15 +65,19 @@ export default class Form {
       question.querySelector('.title span.index').innerHTML = i;
       question.querySelector('.title span.total').innerHTML = questions.length;
 
-      for(let answer of question.querySelectorAll('.answer-wrapper')) {
+      for(let grid of question.querySelectorAll('.grid')) {
 
-        j++;
+        for(let answer of grid.querySelectorAll('.answer-wrapper')) {
+  
+          j++;
+  
+          answer.querySelector('span.index').innerHTML = j;
+  
+        }
 
-        answer.querySelector('span.index').innerHTML = j;
+        j=0;
 
       }
-
-      j=0;
 
     }
 

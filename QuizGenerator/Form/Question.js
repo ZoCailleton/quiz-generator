@@ -155,6 +155,11 @@ export default class Question {
 
   setupAnswersTypeMenu() {
 
+    /**
+     * TODO :
+     * - Automate this with functions
+     */
+
     this.answersTypeElt = new HTMLElement({
       tag: 'div',
       className: 'answers-type',

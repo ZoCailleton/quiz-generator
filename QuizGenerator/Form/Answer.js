@@ -33,7 +33,7 @@ export default class Answer {
 
     this.html.append(new Field({
       tag: 'text',
-      title: `Réponse <span class="index">${this.index+1}</span>`,
+      title: `Réponse <span class="index">${this.index}</span>`,
       placeholder: this.placeholder,
       icon: 'text.png'
     }));
@@ -44,7 +44,7 @@ export default class Answer {
 
     this.html.append(new Field({
       tag: 'text',
-      title: `Réponse <span class="index">${this.index+1}</span>`,
+      title: `Réponse <span class="index">${this.index}</span>`,
       placeholder: this.placeholder,
       icon: 'photo.png'
     }));
@@ -55,7 +55,7 @@ export default class Answer {
 
     this.html.append(new Field({
       tag: 'text',
-      title: `Réponse <span class="index">${this.index+1}</span>`,
+      title: `Réponse <span class="index">${this.index}</span>`,
       placeholder: this.placeholder,
       icon: 'film.png'
     }));
