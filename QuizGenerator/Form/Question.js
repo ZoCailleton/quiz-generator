@@ -5,6 +5,7 @@ import Answers from './Answers';
 import HTMLElement from '../Utils/HTMLElement';
 import Choices from './Choices';
 import reset from '../Utils/reset';
+import checkURLValidity from '../Utils/checkURLValidity';
 
 export default class Question {
 
@@ -134,6 +135,9 @@ export default class Question {
     coverInput.addEventListener('change', e => {
       
       let value = e.target.value;
+
+      console.log(checkURLValidity(value, 'photo'));
+
       this.cover = value;
       coverElt.classList.add('active');
 
