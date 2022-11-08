@@ -19,14 +19,6 @@ export default class Choice {
       className: 'choice'
     });
 
-    if(this.update != undefined) {
-
-      this.html.addEventListener('click', () => {
-        this.update(this.text);
-      });
-
-    }
-
     this.addRadioElement();
     this.addLabelElement();
 
