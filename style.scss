@@ -168,6 +168,21 @@ fieldset {
     .answers-type {
       display: flex;
       justify-content: space-between;
+      .choice {
+        display: flex;
+        opacity: .5;
+        cursor: pointer;
+        &:hover {
+          opacity: .75;
+        }
+        img {
+          height: 1em;
+          margin-right: .5em;
+        }
+        &.active {
+          opacity: 1;
+        }
+      }
     }
     .answers {
       .grid {

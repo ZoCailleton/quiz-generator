@@ -4,6 +4,7 @@ import Field from './Field';
 import Answers from './Answers';
 import HTMLElement from '../Utils/HTMLElement';
 import Choices from './Choices';
+import reset from '../Utils/reset';
 
 export default class Question {
 
@@ -28,6 +29,7 @@ export default class Question {
     // HTML Objects
     this.headerElt = null;
     this.answersElt = null;
+    this.answersTypeElt = null;
     
     this.setupHeader();
     this.setupTitle();
@@ -153,15 +155,66 @@ export default class Question {
 
   setupAnswersTypeMenu() {
 
-    let answersTypeElt = new Choices({choices: [
-      {state: true, text: 'Réponses texte', icon: 'text.png'},
-      {state: false, text: 'Réponses image', icon: 'photo.png'},
-      {state: false, text: 'Réponses vidéo', icon: 'film.png'}
-    ]});
+    this.answersTypeElt = new HTMLElement({
+      tag: 'div',
+      className: 'answers-type',
+      moreClasses: ['box']
+    });
 
-    answersTypeElt.classList.add('answers-type', 'box');
+    let itemText = new HTMLElement({
+      tag: 'div',
+      className: 'choice',
+      moreClasses: ['active'],
+      value: '<img src="./assets/icons/text.png" role="presentation" /> Réponses texte'
+    });
 
-    this.html.append(answersTypeElt);
+    let itemPhoto = new HTMLElement({
+      tag: 'div',
+      className: 'choice',
+      value: '<img src="./assets/icons/photo.png" role="presentation" /> Réponses photo'
+    });
+
+    let itemVideo = new HTMLElement({
+      tag: 'div',
+      className: 'choice',
+      value: '<img src="./assets/icons/film.png" role="presentation" /> Réponses vidéo'
+    });
+
+    itemText.addEventListener('click', () => {
+
+      reset([itemPhoto, itemVideo], 'active');
+      itemText.classList.add('active');
+
+      reset(this.html.querySelectorAll('.answers .grid'), 'active');
+      this.html.querySelector('.answers .grid:nth-child(1)').classList.add('active');
+
+    });
+
+    itemPhoto.addEventListener('click', () => {
+
+      reset([itemText, itemVideo], 'active');
+      itemPhoto.classList.add('active');
+
+      reset(this.html.querySelectorAll('.answers .grid'), 'active');
+      this.html.querySelector('.answers .grid:nth-child(2)').classList.add('active');
+
+    });
+
+    itemVideo.addEventListener('click', () => {
+
+      reset([itemText, itemPhoto], 'active');
+      itemVideo.classList.add('active');
+
+      reset(this.html.querySelectorAll('.answers .grid'), 'active');
+      this.html.querySelector('.answers .grid:nth-child(3)').classList.add('active');
+
+    });
+
+    this.answersTypeElt.append(itemText);
+    this.answersTypeElt.append(itemPhoto);
+    this.answersTypeElt.append(itemVideo);
+
+    this.html.append(this.answersTypeElt);
 
   }
 
