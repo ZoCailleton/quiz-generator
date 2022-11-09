@@ -217,11 +217,13 @@ fieldset {
         &.active {
           display: grid;
         }
-        .answers {
+        .answers-wrapper {
           display: grid;
           grid-gap: $gap;
         }
         .answer-wrapper {
+          width: 100%;
+          max-width: 600px;
           padding: 1.5em;
           display: flex;
           justify-content: space-between;

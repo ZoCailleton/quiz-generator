@@ -46,7 +46,7 @@ export default class Answers {
 
     let answers = new HTMLElement({
       tag: 'div',
-      className: 'answers'
+      className: 'answers-wrapper'
     })
 
     answers.append(new Answer({index: 1, placeholder: 'Emmanuel Macron...', type, state: true}).html);

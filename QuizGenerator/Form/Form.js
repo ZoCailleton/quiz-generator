@@ -42,8 +42,12 @@ export default class Form {
 
     setTimeout(() => {
 
-      new Sortable(document.querySelectorAll('.answers .grid'), {
+      const sortable = new Sortable(document.querySelectorAll('.answers-wrapper'), {
         draggable: '.answer-wrapper'
+      });
+
+      sortable.on('drag:stop', () => {
+        
       });
 
       this.updateAll();
