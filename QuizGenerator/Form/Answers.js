@@ -26,9 +26,9 @@ export default class Answers {
 
     let answer = new Answer({index: 1, placeholder, state, type});
 
-    if(type === 'text') this.wrapperAnswersText.querySelector('.answers').append(answer.html);
-    if(type === 'photo') this.wrapperAnswersPhoto.querySelector('.answers').append(answer.html);
-    if(type === 'video') this.wrapperAnswersVideo.querySelector('.answers').append(answer.html);
+    if(type === 'text') this.wrapperAnswersText.querySelector('.answers-wrapper').append(answer.html);
+    if(type === 'photo') this.wrapperAnswersPhoto.querySelector('.answers-wrapper').append(answer.html);
+    if(type === 'video') this.wrapperAnswersVideo.querySelector('.answers-wrapper').append(answer.html);
 
   }
 

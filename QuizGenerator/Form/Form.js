@@ -38,16 +38,14 @@ export default class Form {
     /**
      * TODO :
      * - Replace the setTimeout with a callback function
+     * - Live update of all indexes
+     * - New True / False choices design
      */
 
     setTimeout(() => {
 
       const sortable = new Sortable(document.querySelectorAll('.answers-wrapper'), {
         draggable: '.answer-wrapper'
-      });
-
-      sortable.on('drag:stop', () => {
-        
       });
 
       this.updateAll();

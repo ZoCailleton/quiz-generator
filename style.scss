@@ -1,5 +1,6 @@
 $main: #2e3844;
 $dark: #1e2731;
+$darker: #111921;
 $gap: 25px;
 
 * {
@@ -59,6 +60,9 @@ fieldset {
       height: .85em;
       margin-right: .35em;
     }
+    span {
+      margin-left: .2em;
+    }
   }
   input {
     width: 100%;
@@ -83,13 +87,6 @@ fieldset {
     color: #fff;
   }
   
-  .menu-wrapper {
-    display: none;
-    flex: 1 1 200px;
-    align-self: flex-start;
-    position: sticky;
-    top: 0px;
-  }
   .form-wrapper {
     width: 100%;
     padding: 100px 0;
@@ -177,6 +174,14 @@ fieldset {
       .controls {
         display: flex;
         gap: 1em;
+        button {
+          display: flex;
+          align-items: center;
+          gap: .5em;
+          img {
+            height: 1em;
+          }
+        }
         button {
           background-color: $dark;
           padding: 1em;

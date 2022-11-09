@@ -96,7 +96,7 @@ export default class Question {
 
     let deleteButton = new HTMLElement({
       tag: 'button',
-      value: 'Supprimer'
+      value: '<img src="./assets/icons/bin.png" role="presentation"> Supprimer'
     });
 
     closeButton.addEventListener('click', () => {
