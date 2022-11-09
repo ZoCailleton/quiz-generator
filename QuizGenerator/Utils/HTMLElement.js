@@ -1,6 +1,6 @@
 export default class HTMLElement {
 
-  constructor({tag, id, className, moreClasses, value, src, htmlFor, type, placeholder, name, checked}) {
+  constructor({tag, id, className, moreClasses, value, src, htmlFor, type, placeholder, name, checked, dataType}) {
 
     this.tag = tag || 'div';
     this.id = id;
@@ -8,6 +8,7 @@ export default class HTMLElement {
     this.moreClasses = moreClasses;
     this.value = value;
     this.src = src;
+    this.dataType = dataType;
 
     // Inputs
     this.htmlFor = htmlFor;
@@ -50,6 +51,10 @@ export default class HTMLElement {
 
     if(this.checked != undefined)
       this.html.checked = this.checked;
+
+    if(this.dataType != undefined) {
+      this.html.dataset.type = this.dataType;
+    }
 
     return this.html;
 

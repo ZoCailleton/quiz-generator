@@ -10,9 +10,13 @@ export default class Answers {
       className: 'answers'
     });
     
-    this.setupAnswers('text', 'active');
-    this.setupAnswers('photo');
-    this.setupAnswers('video');
+    this.wrapperAnswersText = this.setupAnswers('text', 'active');
+    this.wrapperAnswersPhoto = this.setupAnswers('photo');
+    this.wrapperAnswersVideo = this.setupAnswers('video');
+
+    this.html.append(this.wrapperAnswersText);
+    this.html.append(this.wrapperAnswersPhoto);
+    this.html.append(this.wrapperAnswersVideo);
 
     return this.html;
 
@@ -22,7 +26,9 @@ export default class Answers {
 
     let answer = new Answer({index: 1, placeholder, state, type});
 
-    document.querySelector(`.grid.${type}`).append(answer.html);
+    if(type === 'text') this.wrapperAnswersText.querySelector('.answers').append(answer.html);
+    if(type === 'photo') this.wrapperAnswersPhoto.querySelector('.answers').append(answer.html);
+    if(type === 'video') this.wrapperAnswersVideo.querySelector('.answers').append(answer.html);
 
   }
 
@@ -38,24 +44,31 @@ export default class Answers {
       wrapper.classList.add('active');
     }
 
-    wrapper.append(new Answer({index: 1, placeholder: 'Emmanuel Macron...', type, state: true}).html);
-    wrapper.append(new Answer({index: 2, placeholder: 'François Hollande...', type}).html);
-    wrapper.append(new Answer({index: 3, placeholder: 'Nicolas Sarkozy...', type}).html);
+    let answers = new HTMLElement({
+      tag: 'div',
+      className: 'answers'
+    })
+
+    answers.append(new Answer({index: 1, placeholder: 'Emmanuel Macron...', type, state: true}).html);
+    answers.append(new Answer({index: 2, placeholder: 'François Hollande...', type}).html);
+    answers.append(new Answer({index: 3, placeholder: 'Nicolas Sarkozy...', type}).html);
 
     let add = new HTMLElement({
       tag: 'button',
       value: 'Ajouter une réponse',
       className: 'add-response',
-      moreClasses: ['box', type]
+      moreClasses: ['box', type],
+      dataType: type
     });
 
     add.addEventListener('click', () => {
-      this.add({placeholder: 'Nouvelle réponse...'});
+      this.add({placeholder: 'Nouvelle réponse...', type: add.dataset.type});
     });
 
+    wrapper.append(answers);
     wrapper.append(add);
-
-    this.html.append(wrapper);
+    
+    return wrapper;
 
   }
 

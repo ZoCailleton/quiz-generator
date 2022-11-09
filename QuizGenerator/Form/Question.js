@@ -246,10 +246,6 @@ export default class Question {
       placeholder: 'Explications...'
     });
 
-    textarea.addEventListener('keyup', e => {
-      
-    });
-
     explainationElt.append(textarea);
 
     this.html.append(explainationElt);
