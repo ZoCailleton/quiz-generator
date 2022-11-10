@@ -117,6 +117,14 @@ export default class Form {
         <article class="question-${id}${i === 1 ? ' active' : ' '}">
             <header>
               <p class="heading-${id}">Question ${i} / ${questions.length}</p>
+              <div class="index">`;
+              let j=0;
+              for(let question of questions) {
+                j++;
+                this.html += `<div${j===1 ? 'class="active"' : ''}></div>`;
+              }
+              this.code += `
+              </div>
             </header>`;
 
             let cover = question.querySelector('.cover input').value;
@@ -164,9 +172,9 @@ export default class Form {
 
     this.code += `
       </div>
-      <div class="controls">
-        <div class="control">Question précédente</div>
-        <div class="control">Question suivante</div>
+      <div class="controls-${id}">
+        <div class="control-${id}">Question précédente</div>
+        <div class="control-${id}">Question suivante</div>
       </div>
     </div>
     `;

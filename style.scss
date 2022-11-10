@@ -125,6 +125,7 @@ main {
       }
     }
     .choices {
+      display: flex;
       .choice {
         input {
           display: none;

@@ -22,6 +22,22 @@ const getQuizCSS = (id) => `<style>
   .question-${id}.active {
     display: flex;
   }
+
+  .question-${id} .index {
+    display: flex;
+    gap: .5em;
+  }
+
+  .question-${id} .index div {
+    width: 1em;
+    height: 1em;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 50%;
+  }
+
+  .question-${id} .index div.active {
+    background-color: #fff;
+  }
   
   header .heading-${id} {
     font-size: 1.25em;
@@ -83,6 +99,30 @@ const getQuizCSS = (id) => `<style>
   .justification-${id} p {
     color: #111921;
     line-height: 1.5em;
+  }
+
+  .controls-${id} {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+  }
+
+  .controls-${id} .control-${id} {
+    background-color: #1e2731;
+    padding: 1.5em;
+    border: 0;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #fff;
+    font-family: 'Fira Sans';
+    text-align: center;
+    cursor: pointer;
+    transition: 500ms;
+  }
+
+  .controls-${id} .control-${id}:hover {
+    opacity: .5;
   }
 
 </style>`;
