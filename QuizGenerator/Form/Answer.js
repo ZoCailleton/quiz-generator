@@ -36,7 +36,8 @@ export default class Answer {
       tag: 'text',
       title: `Réponse <span class="index">${this.index}</span>`,
       placeholder: this.placeholder,
-      icon: 'text.png'
+      icon: 'text.png',
+      className: 'text-field'
     }));
 
   }

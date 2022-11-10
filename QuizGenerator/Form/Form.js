@@ -1,6 +1,9 @@
 import Question from './Question';
 import Controls from './Controls';
 import HTMLElement from "../Utils/HTMLElement";
+import getUniqueID from '../Utils/getUniqueID';
+import getQuizCSS from '../Utils/getQuizCSS';
+import getQuizScript from '../Utils/getQuizScript';
 import { Droppable, Draggable, Sortable } from '@shopify/draggable';
 
 let instance = null;
@@ -27,6 +30,8 @@ export default class Form {
       tag: 'form'
     });
 
+    this.code = '';
+
     this.form.addEventListener('submit', e => e.preventDefault());
 
     this.html.append(this.form);
@@ -44,13 +49,17 @@ export default class Form {
 
     setTimeout(() => {
 
-      const sortable = new Sortable(document.querySelectorAll('.answers-wrapper'), {
-        draggable: '.answer-wrapper'
+      new Sortable(document.querySelectorAll('.answers-wrapper'), {
+        draggable: '.answer-wrapper',
       });
 
       this.updateAll();
 
     }, 1000);
+
+    document.body.addEventListener('click', () => {
+      this.getCode();
+    });
     
   }
 
@@ -82,6 +91,84 @@ export default class Form {
       }
 
     }
+
+  }
+
+  getCode() {
+
+    let id = getUniqueID();
+
+    const questions = document.querySelectorAll('.question-wrapper');
+
+    this.code = getQuizCSS(id);
+
+    this.code += `
+    <div id="quiz-${id}">
+      <div class="questions-${id}">
+    `;
+
+    let i=0;
+
+      for(let question of questions) {
+
+        i++;
+
+        this.code += `
+        <article class="question-${id}">
+            <header>
+              <p>Question ${i} / ${questions.length}</p>
+            </header>`;
+
+            let cover = question.querySelector('.cover input').value;
+
+            if(cover != '') {
+              this.code += `<figure class="illustration-${id}">
+                <img src="${cover}" role="presentation">
+              </figure>
+              `;
+            }
+            
+            this.code += `
+            <section class="content-${id}">
+              <p class="heading-${id}">${question.querySelector('.title-wrapper input').value}</p>
+              <div class="choices-${id}">`;
+
+              for(let answer of question.querySelectorAll('.answers .grid.active .answer-wrapper')) {
+                
+                this.code += `
+                <div class="choice-${id}">${answer.querySelector('.text-field input').value}</div>`;
+
+              }
+
+            this.code += `
+              </div>
+            </section>`
+
+            let explaination = question.querySelector('.explaination textarea');
+
+            if(explaination.value != '') {
+
+              this.code += `
+              <section class="justification-${id}">
+                <p>${explaination.value}</p>
+              </section>`
+            }
+
+            this.code += `
+        </article>`;
+
+      }
+
+    this.code += `
+      </div>
+    </div>
+    `;
+
+    this.code += getQuizScript(id);
+
+    document.getElementById('quiz-demo').html = this.code;
+    
+    console.log(this.code);
 
   }
 

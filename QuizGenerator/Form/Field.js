@@ -1,21 +1,25 @@
 import HTMLElement from '../Utils/HTMLElement';
-import UniqueId from '../Utils/UniqueID';
+import getUniqueID from '../Utils/getUniqueID';
 
 export default class Field {
 
-  constructor({type, title, placeholder, name, icon}) {
+  constructor({type, title, placeholder, name, icon, className}) {
     
     this.type = type || 'text';
     this.title = title || 'Champ';
     this.placeholder = placeholder || 'Nouveau champ...';
-    this.name = name || new UniqueId().id;
+    this.name = name || getUniqueID();
     this.icon = icon;
+    this.className = className;
     
-    this.id = new UniqueId().id;
+    this.id = getUniqueID();
     
     this.html = new HTMLElement({
-      tag: 'fieldset'
+      tag: 'fieldset',
     });
+
+    if(className != undefined)
+      this.html.classList.add(this.className);
 
     if(this.icon != undefined)
       this.title = `<img src="./assets/icons/${this.icon}" role="presentation">` + this.title;

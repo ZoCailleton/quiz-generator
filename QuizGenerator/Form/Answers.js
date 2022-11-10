@@ -1,9 +1,12 @@
 import HTMLElement from "../Utils/HTMLElement";
 import Answer from "./Answer";
+import Form from "./Form";
 
 export default class Answers {
 
   constructor() {
+
+    this.form = new Form();
 
     this.html = new HTMLElement({
       tag: 'div',
@@ -29,6 +32,8 @@ export default class Answers {
     if(type === 'text') this.wrapperAnswersText.querySelector('.answers-wrapper').append(answer.html);
     if(type === 'photo') this.wrapperAnswersPhoto.querySelector('.answers-wrapper').append(answer.html);
     if(type === 'video') this.wrapperAnswersVideo.querySelector('.answers-wrapper').append(answer.html);
+
+    this.form.updateAll();
 
   }
 

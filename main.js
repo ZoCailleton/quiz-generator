@@ -1,3 +1,4 @@
+import Quiz from './Quiz/Quiz';
 import QuizGenerator from './QuizGenerator/QuizGenerator';
 
 import './style.scss';
@@ -9,4 +10,6 @@ import './style.scss';
  * - CSS : Harmoniser box properties and spaces
  */
 
-new QuizGenerator(document.getElementById('quiz-generator-wrapper'));
+new QuizGenerator(document.getElementById('quiz-form'));
+
+new Quiz(document.getElementById('quiz-demo'));

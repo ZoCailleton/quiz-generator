@@ -1,6 +1,5 @@
 import HTMLElement from "../Utils/HTMLElement";
-import Input from "./Input";
-import UniqueID from "../Utils/UniqueID";
+import getUniqueID from "../Utils/getUniqueID";
 
 export default class Choice {
 
@@ -12,7 +11,7 @@ export default class Choice {
     this.update = update;
     this.icon = icon;
 
-    this.id = new UniqueID().id;
+    this.id = getUniqueID();
 
     this.html = new HTMLElement({
       tag: 'div',

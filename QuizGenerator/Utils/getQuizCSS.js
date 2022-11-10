@@ -1,1 +1,23 @@
-export default getQuizCSS = () => `<style>@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer.false img,.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer.true img,.quiz--wrapper .quiz--inner .quiz--question.active{display:block}*{margin:0;padding:0;box-sizing:border-box}body{background-color:#eee;font-family:Arial,Helvetica,sans-serif}li{list-style:none}.quiz--wrapper{padding:100px 0 0}.quiz--wrapper .quiz--inner{width:100%;max-width:600px;margin:0 auto}.quiz--wrapper .quiz--inner .index{margin-bottom:.5em}.quiz--wrapper .quiz--inner .quiz--question{display:none}.quiz--wrapper .quiz--inner .quiz--question .quiz--question-title{font-size:1.5em;font-weight:600}.quiz--wrapper .quiz--inner .quiz--answers{margin-top:1.5em;display:flex;flex-direction:column;gap:1em}.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer{background-color:#fff;padding:20px;border:2px solid #fff;border-radius:8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer img{height:1em;display:none}.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer.true{border-color:green!important}.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer.false{border-color:red!important}.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer.active{border-color:#111}.quiz--wrapper .quiz--inner .quiz--answers .quiz--answer:hover{background-color:#ddd}.quiz--wrapper .quiz--inner .quiz--controls{margin-top:1em;display:flex;gap:1em}.quiz--wrapper .quiz--cta{width:100%;background-color:#111;padding:20px;border-radius:8px;color:#fff;font-weight:600;text-align:center;cursor:pointer}.quiz--wrapper .quiz--cta.prev{background-color:#ddd;color:#222}.quiz--wrapper .quiz--cta.check{background-color:#ff7d24;margin-top:1em}.quiz--wrapper .quiz--cta:hover{opacity:.75}</style>`;
+const getQuizCSS = (id) => `<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+  .questions-${id} {
+    background-color: red;
+  }
+  
+  .justification-${id} {
+    background-color: #fff;
+    padding: 1.5em 1.5em 1.5em 5em;
+    border-radius: 7px;
+    position: relative;
+    color: #1e2731;
+    overflow: hidden;
+  }
+
+  .justification-${id} p {
+    line-height: 1.5em;
+  }
+
+</style>`;
+
+export default getQuizCSS;

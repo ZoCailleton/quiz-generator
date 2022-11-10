@@ -1,6 +1,6 @@
 import Choice from "./Choice";
 import HTMLElement from "../Utils/HTMLElement";
-import UniqueID from "../Utils/UniqueID";
+import getUniqueID from "../Utils/getUniqueID";
 
 export default class Choices {
 
@@ -17,7 +17,7 @@ export default class Choices {
       }
     ]
 
-    let name = new UniqueID().id;
+    let name = getUniqueID();
 
     this.html = new HTMLElement({
       tag: 'div',

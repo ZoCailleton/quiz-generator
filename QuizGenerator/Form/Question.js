@@ -82,12 +82,6 @@ export default class Question {
       className: 'controls'
     });
 
-    let replaceButton = new HTMLElement({
-      tag: 'button',
-      className: 'replace',
-      value: 'Replace'
-    });
-
     let closeButton = new HTMLElement({
       tag: 'button',
       className: 'close',
@@ -108,7 +102,6 @@ export default class Question {
     });
 
     controls.append(closeButton);
-    controls.append(replaceButton);
     controls.append(deleteButton);
 
     this.headerElt.append(title);
