@@ -8,7 +8,6 @@ const getQuizCSS = (id) => `<style>
     display: grid;
     gap: 2em;
   }
-
   .question-${id} {
     background-color: #1e2731;;
     padding: 2em;
@@ -18,60 +17,49 @@ const getQuizCSS = (id) => `<style>
     gap: 1.5em;
     color: #fff;
   }
-
   .question-${id}.active {
     display: flex;
   }
-
   .question-${id} .index {
     display: flex;
     gap: .5em;
   }
-
   .question-${id} .index div {
     width: 1em;
     height: 1em;
     background-color: rgba(255, 255, 255, .5);
     border-radius: 50%;
   }
-
   .question-${id} .index div.active {
     background-color: #fff;
   }
-  
   header .heading-${id} {
     font-size: 1.25em;
     font-weight: 500;
   }
-
   .illustration-${id} {
     min-height: 150px;
     background-color: #111921;
     border-radius: 8px;
     overflow: hidden;
   }
-
   .illustration-${id} img {
     width: 100%;
     height: 100%;
     max-height: 200px;
     object-fit: cover;
   }
-
   .content-${id} {
     display: grid;
     gap: 1em;
   }
-
   .content-${id} .heading-${id} {
     font-size: 1.5em;
   }
-
   .choices-${id} {
     display: flex;
     gap: 1em;
   }
-
   .choices-${id} .choice-${id} {
     min-width: 4em;
     min-height: 48px;
@@ -82,11 +70,9 @@ const getQuizCSS = (id) => `<style>
     cursor: pointer;
     transition: 300ms;
   }
-
   .choices-${id} .choice-${id}:hover {
     opacity: .5;
   }
-  
   .justification-${id} {
     background-color: #fff;
     padding: 1.5em 1.5em 1.5em 5em;
@@ -95,19 +81,16 @@ const getQuizCSS = (id) => `<style>
     color: var(--dark);
     overflow: hidden;
   }
-
   .justification-${id} p {
     color: #111921;
     line-height: 1.5em;
   }
-
   .controls-${id} {
     margin-top: 1em;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
   }
-
   .controls-${id} .control-${id} {
     background-color: #1e2731;
     padding: 1.5em;
@@ -120,11 +103,9 @@ const getQuizCSS = (id) => `<style>
     cursor: pointer;
     transition: 500ms;
   }
-
   .controls-${id} .control-${id}:hover {
     opacity: .5;
   }
-
 </style>`;
 
 export default getQuizCSS;
