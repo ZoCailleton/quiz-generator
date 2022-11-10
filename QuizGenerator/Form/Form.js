@@ -103,8 +103,8 @@ export default class Form {
     this.code = getQuizCSS(id);
 
     this.code += `
-    <div id="quiz-${id}">
-      <div class="questions-${id}">
+    <div id="quiz-${id}" class="wrapper-${id}">
+      <div class="questions-wrapper-${id}">
     `;
 
     let i=0;
@@ -114,19 +114,22 @@ export default class Form {
         i++;
 
         this.code += `
-        <article class="question-${id}">
+        <article class="question-${id}${i === 1 ? ' active' : ' '}">
             <header>
-              <p>Question ${i} / ${questions.length}</p>
+              <p class="heading-${id}">Question ${i} / ${questions.length}</p>
             </header>`;
 
             let cover = question.querySelector('.cover input').value;
 
+            this.code += `<figure class="illustration-${id}">`;
+
             if(cover != '') {
-              this.code += `<figure class="illustration-${id}">
+              this.code += `
                 <img src="${cover}" role="presentation">
-              </figure>
               `;
             }
+
+            this.code += `</figure>`;
             
             this.code += `
             <section class="content-${id}">
@@ -161,12 +164,16 @@ export default class Form {
 
     this.code += `
       </div>
+      <div class="controls">
+        <div class="control">Question précédente</div>
+        <div class="control">Question suivante</div>
+      </div>
     </div>
     `;
 
     this.code += getQuizScript(id);
 
-    document.getElementById('quiz-demo').html = this.code;
+    document.getElementById('quiz-demo').innerHTML = this.code;
     
     console.log(this.code);
 
