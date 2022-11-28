@@ -125,23 +125,26 @@ main {
       }
     }
     .choices {
+      margin-top: 1em;
       display: flex;
+      align-items: center;
+      gap: 1em;
       .choice {
-        input {
-          display: none;
-          &:checked + label {
-            opacity: 1;
-          }
+        flex: 1 1 100px;
+        width: 100%;
+        background-color: transparent;
+        padding: 1em;
+        border-radius: 5px;
+        display: inline-block;
+        opacity: .5;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          background-color: $main;
         }
-        label {
-          width: 100%;
-          background-color: #111921;
-          padding: 1em;
-          border-radius: 5px;
-          display: inline-block;
-          opacity: .5;
-          text-align: center;
-          cursor: pointer;
+        &.active {
+          background-color: $main;
+          opacity: 1;
         }
       }
     }
@@ -283,14 +286,6 @@ main {
               font-size: 1em;
             }
           }
-          .choices {
-            margin-top: 1em;
-            display: flex;
-            gap: 10px;
-            .choice {
-              flex: 1 1 100px;
-            }
-          }
           .controls {
             display: flex;
             align-items: center;
@@ -331,6 +326,7 @@ main {
   }
 }
 
+/*
 #quiz-demo {
   width: 100%;
   .questions {
@@ -381,21 +377,25 @@ main {
       }
       .justification {
         background-color: #fff;
-        padding: 1.5em 1.5em 1.5em 5em;
         border-radius: 7px;
+        display: flex;
         position: relative;
         color: $dark;
         overflow: hidden;
-        &::before {
-          content: 'i';
+        .side {
+          flex: 1;
           height: 100%;
           background-color: $darker;
           padding: 0 1.5em;
-          position: absolute;
-          left: 0;
-          top: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            height: 2em;
+          }
         }
         p {
+          padding: 1.5em;
           line-height: 1.5em;
         }
       }
@@ -420,5 +420,13 @@ main {
         opacity: .5;
       }
     }
+  }
+}
+*/
+
+#quiz-demo {
+  width: 100%;
+  img {
+    width: 100%;
   }
 }

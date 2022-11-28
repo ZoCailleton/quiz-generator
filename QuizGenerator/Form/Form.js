@@ -151,7 +151,7 @@ export default class Form {
               for(let answer of question.querySelectorAll('.answers .grid.active .answer-wrapper')) {
                 
                 this.code += `
-                <div class="choice-${id}">${answer.querySelector('.text-field input').value}</div>`;
+                <div data-state=${answer.querySelector('input').checked} class="choice-${id}">${answer.querySelector('.text-field input').value} : ${answer.querySelector('input').checked}</div>`;
 
               }
 

@@ -3,13 +3,12 @@ import getUniqueID from "../Utils/getUniqueID";
 
 export default class Choice {
 
-  constructor({state, text, name, update, icon}) {
+  constructor({state, text, name, update}) {
 
     this.state = state;
     this.text = text;
     this.name = name;
     this.update = update;
-    this.icon = icon;
 
     this.id = getUniqueID();
 
@@ -46,16 +45,6 @@ export default class Choice {
       htmlFor: this.id,
       value: this.text
     });
-
-    if(this.icon != undefined) {
-
-      let icon = new HTMLElement({
-        tag: 'img',
-        src: `./assets/icons/${this.icon}`
-      });
-      label.append(icon);
-
-    }
 
     this.html.append(label);
 

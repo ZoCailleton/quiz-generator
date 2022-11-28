@@ -1,41 +1,35 @@
 import Choice from "./Choice";
 import HTMLElement from "../Utils/HTMLElement";
-import getUniqueID from "../Utils/getUniqueID";
 
 export default class Choices {
 
-  constructor({choices}) {
-    
-    this.elements = choices || [
-      {
-        state: true,
-        text: 'Vrai'
-      },
-      {
-        state: false,
-        text: 'Faux'
-      }
-    ]
-
-    let name = getUniqueID();
+  constructor() {
 
     this.html = new HTMLElement({
       tag: 'div',
       className: 'choices'
     });
 
-    for(let choice of this.elements) {
+    let trueElt = new HTMLElement({
+      tag: 'div',
+      value: 'Vrai',
+      className: 'choice',
+      moreClasses: ['true', 'active']
+    });
 
-      let choiceElt = new Choice({
-        state: choice.state,
-        text: choice.text,
-        name,
-        icon: choice.icon
-      });
-    
-      this.html.append(choiceElt);
+    trueElt.classList.add('true')
 
-    }
+    let falseElt = new HTMLElement({
+      tag: 'div',
+      value: 'Faux',
+      className: 'choice',
+      moreClasses: ['false']
+    });
+
+    falseElt.classList.add('false')
+  
+    this.html.append(trueElt);
+    this.html.append(falseElt);
 
     return this.html;
 

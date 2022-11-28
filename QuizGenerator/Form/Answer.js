@@ -94,16 +94,7 @@ export default class Answer {
 
   setupChoices() {
 
-    let choices = new Choices({choices: [
-      {
-        state: true,
-        text: 'Vrai'
-      },
-      {
-        state: false,
-        text: 'Faux'
-      }
-    ]});
+    let choices = new Choices();
     
     this.html.append(choices);
 
