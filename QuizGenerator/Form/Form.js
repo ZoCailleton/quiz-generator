@@ -172,9 +172,9 @@ export default class Form {
 
     this.code += `
       </div>
-      <div class="controls-${id}">
-        <div class="control-${id}">Question précédente</div>
-        <div class="control-${id}">Question suivante</div>
+      <div class="controls controls-${id}">
+        <div class="control control-${id}">Question précédente</div>
+        <div class="control control-${id}">Question suivante</div>
       </div>
     </div>
     `;
