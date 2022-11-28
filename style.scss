@@ -134,15 +134,14 @@ main {
           }
         }
         label {
-          display: flex;
-          flex-direction: row-reverse;
-          align-items: center;
-          gap: .65em;
+          width: 100%;
+          background-color: #111921;
+          padding: 1em;
+          border-radius: 5px;
+          display: inline-block;
           opacity: .5;
+          text-align: center;
           cursor: pointer;
-          img {
-            height: 1.15em;
-          }
         }
       }
     }
@@ -265,10 +264,8 @@ main {
           width: 100%;
           max-width: 600px;
           padding: 1.5em;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
           gap: 2em;
+          position: relative;
           .fields {
             width: 100%;
             display: flex;
@@ -289,13 +286,18 @@ main {
           .choices {
             margin-top: 1em;
             display: flex;
-            flex-direction: column;
             gap: 10px;
+            .choice {
+              flex: 1 1 100px;
+            }
           }
           .controls {
             display: flex;
             align-items: center;
             gap: 1em;
+            position: absolute;
+            right: 1em;
+            top: 1em;
             img {
               height: 1em;
               cursor: pointer;

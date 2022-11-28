@@ -220,7 +220,7 @@ export default class Question {
 
     for(let elt of this.answersTypeElt.querySelectorAll('input')) {
       elt.addEventListener('change', e => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
       })
     }
 

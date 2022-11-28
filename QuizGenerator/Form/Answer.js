@@ -132,7 +132,7 @@ export default class Answer {
       this.delete();
     });
     
-    controls.append(replaceElt);
+    //controls.append(replaceElt);
     controls.append(deleteElt);
     this.html.append(controls);
 

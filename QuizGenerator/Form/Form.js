@@ -60,6 +60,10 @@ export default class Form {
     this.form.addEventListener('keyup', () => {
       this.getCode();
     });
+
+    this.form.addEventListener('change', () => {
+      this.getCode();
+    });
     
   }
 
@@ -173,8 +177,8 @@ export default class Form {
     this.code += `
       </div>
       <div class="controls controls-${id}">
-        <div class="control control-${id}">Question précédente</div>
-        <div class="control control-${id}">Question suivante</div>
+        <div class="control control-${id} prev">Question précédente</div>
+        <div class="control control-${id} next">Question suivante</div>
       </div>
     </div>
     `;
@@ -183,7 +187,7 @@ export default class Form {
 
     document.getElementById('quiz-demo').innerHTML = this.code;
     
-    //console.log(this.code);
+    console.log(this.code);
 
   }
 

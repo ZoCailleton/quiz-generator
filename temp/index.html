@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+    .questions-wrapper-7258445655d4f {
+      display: grid;
+      gap: 2em;
+    }
+    .question-7258445655d4f {
+      background-color: #1e2731;;
+      padding: 2em;
+      border-radius: 15px;
+      display: none;
+      flex-direction: column;
+      gap: 1.5em;
+      color: #fff;
+    }
+    .question-7258445655d4f.active {
+      display: flex;
+    }
+    .question-7258445655d4f .index {
+      display: flex;
+      gap: .5em;
+    }
+    .question-7258445655d4f .index div {
+      width: 1em;
+      height: 1em;
+      background-color: rgba(255, 255, 255, .5);
+      border-radius: 50%;
+    }
+    .question-7258445655d4f .index div.active {
+      background-color: #fff;
+    }
+    header .heading-7258445655d4f {
+      font-size: 1.25em;
+      font-weight: 500;
+    }
+    .illustration-7258445655d4f {
+      min-height: 150px;
+      max-height: 200px;
+      background-color: #111921;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .illustration-7258445655d4f img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .content-7258445655d4f {
+      display: grid;
+      gap: 1em;
+    }
+    .content-7258445655d4f .heading-7258445655d4f {
+      font-size: 1.5em;
+    }
+    .choices-7258445655d4f {
+      display: flex;
+      gap: 1em;
+    }
+    .choices-7258445655d4f .choice-7258445655d4f {
+      min-width: 4em;
+      min-height: 48px;
+      background-color: #111921;
+      padding: 1em;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: 300ms;
+    }
+    .choices-7258445655d4f .choice-7258445655d4f:hover {
+      opacity: .5;
+    }
+    .justification-7258445655d4f {
+      background-color: #fff;
+      padding: 1.5em 1.5em 1.5em 5em;
+      border-radius: 7px;
+      position: relative;
+      color: var(--dark);
+      overflow: hidden;
+    }
+    .justification-7258445655d4f p {
+      color: #111921;
+      line-height: 1.5em;
+    }
+    .controls-7258445655d4f {
+      margin-top: 1em;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+    }
+    .controls-7258445655d4f .control-7258445655d4f {
+      background-color: #1e2731;
+      padding: 1.5em;
+      border: 0;
+      border-radius: 8px;
+      font-size: 1em;
+      color: #fff;
+      font-family: 'Fira Sans';
+      text-align: center;
+      cursor: pointer;
+      transition: 500ms;
+    }
+    .controls-7258445655d4f .control-7258445655d4f:hover {
+      opacity: .5;
+    }
+    </style>
+      <div id="quiz-7258445655d4f" class="wrapper-7258445655d4f">
+        <div class="questions-wrapper-7258445655d4f">
+      
+          <article class="question-7258445655d4f active">
+              <header>
+                <p class="heading-7258445655d4f">Question 1 / 2</p>
+                <div class="index">
+                </div>
+              </header><figure class="illustration-7258445655d4f">
+                  <img src="a" role="presentation">
+                </figure>
+              <section class="content-7258445655d4f">
+                <p class="heading-7258445655d4f"></p>
+                <div class="choices-7258445655d4f">
+                  <div class="choice-7258445655d4f"></div>
+                  <div class="choice-7258445655d4f"></div>
+                  <div class="choice-7258445655d4f"></div>
+                </div>
+              </section>
+          </article>
+          <article class="question-7258445655d4f ">
+              <header>
+                <p class="heading-7258445655d4f">Question 2 / 2</p>
+                <div class="index">
+                </div>
+              </header><figure class="illustration-7258445655d4f"></figure>
+              <section class="content-7258445655d4f">
+                <p class="heading-7258445655d4f"></p>
+                <div class="choices-7258445655d4f">
+                  <div class="choice-7258445655d4f"></div>
+                  <div class="choice-7258445655d4f"></div>
+                  <div class="choice-7258445655d4f"></div>
+                </div>
+              </section>
+          </article>
+        </div>
+        <div class="controls controls-7258445655d4f">
+          <div class="control control-7258445655d4f prev">Question précédente</div>
+          <div class="control control-7258445655d4f next">Question suivante</div>
+        </div>
+      </div>
+      
+    <script>
+    (function(){
+      
+      let currentQuestion = 1;
+
+      const reset = (collection, className) => {
+        for(let elt of document.querySelectorAll(collection)) {
+          elt.classList.remove(className)
+        }
+      }
+
+      const updateQuestionsVisibility = () => {
+        console.log(currentQuestion)
+        document.querySelector('article.question-7258445655d4f:nth-child('+currentQuestion+')').classList.add('active');
+      }
+
+      document.querySelector('.control-7258445655d4f.prev').addEventListener('click', () => {
+        if(currentQuestion > 1) {
+          currentQuestion --
+          updateQuestionsVisibility()
+        }
+      });
+
+      document.querySelector('.control-7258445655d4f.next').addEventListener('click', () => {
+        if(currentQuestion < document.querySelectorAll('.question-7258445655d4f').length) {
+          currentQuestion ++
+          updateQuestionsVisibility()
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
