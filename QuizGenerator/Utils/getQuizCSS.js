@@ -39,6 +39,7 @@ const getQuizCSS = (id) => `<style>
   }
   .illustration-${id} {
     min-height: 150px;
+    max-height: 200px;
     background-color: #111921;
     border-radius: 8px;
     overflow: hidden;
@@ -46,7 +47,6 @@ const getQuizCSS = (id) => `<style>
   .illustration-${id} img {
     width: 100%;
     height: 100%;
-    max-height: 200px;
     object-fit: cover;
   }
   .content-${id} {

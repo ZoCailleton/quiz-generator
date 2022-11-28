@@ -10,12 +10,14 @@ export default function checkURLValidity({ url, type }) {
   if(type === 'photo') {
     if(photoExtensions.includes(array[array.length-1])) {
       console.log(url, 'photo')
+      return true
     }
   }
 
   if(type === 'video') {
     if(videoExtentions.includes(array[array.length-1])) {
       console.log(url, 'vidéo')
+      return true
     }
   }
 

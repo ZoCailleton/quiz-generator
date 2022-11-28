@@ -141,8 +141,6 @@ export default class Question {
         coverElt.classList.add('active');
         coverElt.style.backgroundImage = `url(${this.cover})`;
 
-        console.log('Image valide');
-
       } else {
 
         coverElt.classList.remove('active');
@@ -219,6 +217,12 @@ export default class Question {
       this.html.querySelector('.answers .grid:nth-child(3)').classList.add('active');
 
     });
+
+    for(let elt of this.answersTypeElt.querySelectorAll('input')) {
+      elt.addEventListener('change', e => {
+        console.log(e.target.value)
+      })
+    }
 
     this.answersTypeElt.append(itemText);
     this.answersTypeElt.append(itemPhoto);
