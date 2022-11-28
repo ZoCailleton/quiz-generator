@@ -20,6 +20,8 @@ export default class Form {
     
     this.questions = [];
     this.controls = new Controls();
+
+    this.id = getUniqueID();
     
     this.html = new HTMLElement({
       tag: 'div',
@@ -40,6 +42,17 @@ export default class Form {
     this.addQuestion();
     this.addQuestion();
 
+    document.querySelector('.copy-code').addEventListener('click', () => {
+      const body = document.body;
+      const area = document.createElement('textarea');
+      body.appendChild(area);
+      area.value = this.code;
+      area.select();
+      document.execCommand('copy');
+      body.removeChild(area);
+      document.querySelector('.copy-code').innerHTML = 'Code copié ✓';
+    })
+
     /**
      * TODO :
      * - Replace the setTimeout with a callback function
@@ -56,6 +69,8 @@ export default class Form {
           this.getCode();
         });
       }
+
+      this.setupScrollObserver();
 
     }, 1000);
 
@@ -102,7 +117,7 @@ export default class Form {
 
   getCode() {
 
-    let id = getUniqueID();
+    let id = this.id;
 
     const questions = document.querySelectorAll('.question-wrapper');
 
@@ -135,15 +150,13 @@ export default class Form {
 
             let cover = question.querySelector('.cover input').value;
 
-            this.code += `<figure class="illustration-${id}">`;
-
             if(cover != '') {
               this.code += `
-                <img src="${cover}" role="presentation">
+                <figure class="illustration-${id}">
+                  <img src="${cover}" role="presentation">
+                </figure>
               `;
             }
-
-            this.code += `</figure>`;
             
             this.code += `
             <section class="content-${id}">
@@ -154,28 +167,32 @@ export default class Form {
 
                 let type = answer.dataset.type;
 
-                this.code += `<div data-state=${answer.querySelector('input').checked} class="choice-${id} ${type}-${id}">`;
+                if(answer.querySelector('fieldset input').value !== '') {
 
-                if(type === 'text') {
-                
-                  this.code += `${answer.querySelector('fieldset input').value}`;
-                  this.code += `<div class="state-${id} ${answer.querySelector('.choice.active').dataset.value}"></div>`;
+                  this.code += `<div data-state=${answer.querySelector('input').checked} class="choice-${id} ${type}-${id}">`;
+
+                  if(type === 'text') {
                   
-                } else if(type === 'photo') {
+                    this.code += `${answer.querySelector('fieldset input').value}`;
+                    this.code += `<div class="state-${id} ${answer.querySelector('.choice.active').dataset.value}"></div>`;
+                    
+                  } else if(type === 'photo') {
 
-                  this.code += `<img src="${answer.querySelector('fieldset.image-field input').value}" role="presentation">`;
-                  this.code += `<p>${answer.querySelector('fieldset:not(.image-field) input').value}</p>`;
+                    this.code += `<img src="${answer.querySelector('fieldset.image-field input').value}" role="presentation">`;
+                    this.code += `<p>${answer.querySelector('fieldset:not(.image-field) input').value}</p>`;
 
-                } else if(type === 'video') {
+                  } else if(type === 'video') {
 
-                  this.code += `
-                  <video>
-                    <source src="${answer.querySelector('fieldset.video-field input').value}" type="video/mp4">
-                  </video>`
+                    this.code += `
+                    <video>
+                      <source src="${answer.querySelector('fieldset.video-field input').value}" type="video/mp4">
+                    </video>`
+
+                  }
+
+                  this.code += `</div>`;
 
                 }
-
-                this.code += `</div>`;
 
               }
 
@@ -233,6 +250,22 @@ export default class Form {
   deleteQuestionByIndex(index) {
 
     this.questions = this.questions.filter((question) => question.index !== index);
+
+  }
+
+  setupScrollObserver() {
+
+    const cardObsCallback = (entries) => {
+      entries.forEach(entry => {
+        let index = entry.target.dataset.index
+      });
+    }
+    
+    const observer = new IntersectionObserver(cardObsCallback, {threshold: 0.5});
+    const arr = document.querySelectorAll('.question-wrapper');
+    arr.forEach((v) => {
+      observer.observe(v);
+    })
 
   }
 

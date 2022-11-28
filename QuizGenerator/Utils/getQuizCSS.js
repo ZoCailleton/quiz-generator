@@ -1,12 +1,16 @@
 const getQuizCSS = (id) => `<style>
 
-  --dark: #1e2731;
-
   @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
 
   .questions-wrapper-${id} {
     display: grid;
     gap: 2em;
+    font-family: 'Fira Sans';
+  }
+  .questions-wrapper-${id} * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   .question-${id} {
     background-color: #1e2731;;
@@ -38,6 +42,7 @@ const getQuizCSS = (id) => `<style>
     font-weight: 500;
   }
   .illustration-${id} {
+    width: 100%;
     min-height: 150px;
     max-height: 200px;
     background-color: #111921;
@@ -77,6 +82,7 @@ const getQuizCSS = (id) => `<style>
     flex-direction: column;
   }
   .choice-${id}.video-${id} {
+    flex: 1 1 300px;
     flex-direction: column;
   }
   .choice-${id}:hover {
@@ -131,6 +137,10 @@ const getQuizCSS = (id) => `<style>
     font-family: 'Fira Sans';
     text-align: center;
     cursor: pointer;
+  }
+  .controls-${id} .control-${id}.disabled-${id} {
+    opacity: .5;
+    cursor: default;
   }
   .controls-${id} .control-${id}:hover {
     opacity: .5;

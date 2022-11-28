@@ -15,24 +15,38 @@ const getQuizScript = id => `
       document.querySelector('article.question-${id}:nth-child('+currentQuestion+')').classList.add('active');
     }
 
-    document.querySelector('.control-${id}.prev').addEventListener('click', () => {
+    const prev = document.querySelector('.control-${id}.prev');
+
+    prev.addEventListener('click', () => {
       if(currentQuestion > 1) {
-        currentQuestion --
-        updateQuestionsVisibility()
+        currentQuestion --;
+        updateQuestionsVisibility();
+        prev.classList.remove('disabled-${id}');
       }
+      if(currentQuestion === 1) prev.classList.add('disabled-${id}');
     });
+
+    const next = document.querySelector('.control-${id}.next');
 
     document.querySelector('.control-${id}.next').addEventListener('click', () => {
       if(currentQuestion < document.querySelectorAll('.question-${id}').length) {
-        currentQuestion ++
-        updateQuestionsVisibility()
+        currentQuestion ++;
+        updateQuestionsVisibility();
+        next.classList.remove('disabled-${id}');
       }
+      if(currentQuestion === document.querySelectorAll('.question-${id}').length) next.classList.add('disabled-${id}');
     });
 
-    const info = document.querySelector('.justification-${id}');
+    for(let question of document.querySelectorAll('.question-${id}')) {
 
-    for(let answer of document.querySelectorAll('choice-${id}')) {
-      info.classList.add('active');
+      const info = question.querySelector('.justification-${id}');
+  
+      for(let answer of question.querySelectorAll('.choice-${id}')) {
+        answer.addEventListener('click', () => {
+          info.classList.add('active');
+        })
+      }
+
     }
 
   })();

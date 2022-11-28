@@ -424,6 +424,19 @@ main {
 }
 */
 
+.quiz-demo-wrapper {
+  .copy-code {
+    width: 100%;
+    background-color: #FF7D24;
+    padding: 1.25em 0;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
 #quiz-demo {
   width: 100%;
   img {

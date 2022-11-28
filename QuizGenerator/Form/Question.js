@@ -27,6 +27,8 @@ export default class Question {
       className: 'question-wrapper'
     });
 
+    this.html.dataset.index = index;
+
     // HTML Objects
     this.headerElt = null;
     this.answersElt = null;
