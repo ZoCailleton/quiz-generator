@@ -10,7 +10,3 @@ import './style.scss';
  */
 
 new QuizGenerator(document.getElementById('quiz-form'));
-
-document.querySelector('.controls .control').addEventListener('click', () => {
-  alert('a')
-})

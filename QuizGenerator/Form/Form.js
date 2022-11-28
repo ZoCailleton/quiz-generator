@@ -63,6 +63,8 @@ export default class Form {
     setTimeout(() => {
 
       this.updateAll();
+      
+      this.getCode();
 
       for(let elt of document.querySelectorAll('.choice, .answers-type, .remove, .add-response')) {
         elt.addEventListener('click', () => {
@@ -169,7 +171,9 @@ export default class Form {
 
                 if(answer.querySelector('fieldset input').value !== '') {
 
-                  this.code += `<div data-state=${answer.querySelector('input').checked} class="choice-${id} ${type}-${id}">`;
+                  let state = answer.querySelector('.choice.active').dataset.value;
+
+                  this.code += `<div data-state=${state} class="choice-${id} ${type}-${id} ${state}">`;
 
                   if(type === 'text') {
                   

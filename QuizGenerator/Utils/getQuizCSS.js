@@ -77,6 +77,12 @@ const getQuizCSS = (id) => `<style>
     position: relative;
     cursor: pointer;
   }
+  .choice-${id}.reveal-${id}.true {
+    outline: 2px solid green;
+  }
+  .choice-${id}.reveal-${id}.false {
+    outline: 2px solid red;
+  }
   .choice-${id}.photo-${id} {
     flex: 1 1 300px;
     flex-direction: column;

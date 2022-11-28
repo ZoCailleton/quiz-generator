@@ -38,15 +38,17 @@ const getQuizScript = id => `
     });
 
     for(let question of document.querySelectorAll('.question-${id}')) {
-
       const info = question.querySelector('.justification-${id}');
-  
       for(let answer of question.querySelectorAll('.choice-${id}')) {
         answer.addEventListener('click', () => {
-          info.classList.add('active');
-        })
+          for(let elt of question.querySelectorAll('.choice-${id}')) {
+            elt.classList.add('reveal-${id}');
+          }
+          if(info != undefined) {
+            info.classList.add('active');
+          }
+        });
       }
-
     }
 
   })();
