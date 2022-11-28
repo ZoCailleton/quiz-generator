@@ -57,7 +57,7 @@ export default class Form {
 
     }, 1000);
 
-    document.body.addEventListener('click', () => {
+    this.form.addEventListener('keyup', () => {
       this.getCode();
     });
     
@@ -183,7 +183,7 @@ export default class Form {
 
     document.getElementById('quiz-demo').innerHTML = this.code;
     
-    console.log(this.code);
+    //console.log(this.code);
 
   }
 
