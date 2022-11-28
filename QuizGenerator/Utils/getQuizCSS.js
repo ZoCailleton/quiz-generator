@@ -85,6 +85,7 @@ const getQuizCSS = (id) => `<style>
   .choice-${id} img {
     height: 100px;
     object-fit: cover;
+    border-radius: 10px;
   }
   .choice-${id} .state-${id} {
     width: 10px;

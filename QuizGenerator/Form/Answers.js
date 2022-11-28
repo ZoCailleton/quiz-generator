@@ -42,8 +42,7 @@ export default class Answers {
     let wrapper = new HTMLElement({
       tag: 'div',
       className: 'grid',
-      moreClasses: [type],
-      dataType: type
+      moreClasses: [type]
     });
 
     if(active) {

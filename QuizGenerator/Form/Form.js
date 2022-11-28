@@ -150,7 +150,7 @@ export default class Form {
               <p class="heading-${id}">${question.querySelector('.title-wrapper input').value}</p>
               <div class="choices-${id}">`;
 
-              for(let answer of question.querySelectorAll('.answers .grid.active')) {
+              for(let answer of question.querySelectorAll('.answers .grid.active .answer-wrapper')) {
 
                 let type = answer.dataset.type;
 
@@ -168,7 +168,10 @@ export default class Form {
 
                 } else if(type === 'video') {
 
-                  this.code += `<video></video>`
+                  this.code += `
+                  <video>
+                    <source src="${answer.querySelector('fieldset.video-field input').value}" type="video/mp4">
+                  </video>`
 
                 }
 
