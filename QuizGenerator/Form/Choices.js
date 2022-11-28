@@ -17,8 +17,6 @@ export default class Choices {
       moreClasses: ['true', 'active']
     });
 
-    trueElt.classList.add('true')
-
     let falseElt = new HTMLElement({
       tag: 'div',
       value: 'Faux',
@@ -26,7 +24,18 @@ export default class Choices {
       moreClasses: ['false']
     });
 
-    falseElt.classList.add('false')
+    trueElt.addEventListener('click', () => {
+      trueElt.classList.add('active')
+      falseElt.classList.remove('active')
+    });
+
+    falseElt.addEventListener('click', () => {
+      falseElt.classList.add('active')
+      trueElt.classList.remove('active')
+    });
+
+    trueElt.dataset.value = true;
+    falseElt.dataset.value = false;
   
     this.html.append(trueElt);
     this.html.append(falseElt);

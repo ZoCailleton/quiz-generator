@@ -29,6 +29,12 @@ const getQuizScript = id => `
       }
     });
 
+    const info = document.querySelector('.justification-${id}');
+
+    for(let answer of document.querySelectorAll('choice-${id}')) {
+      info.classList.add('active');
+    }
+
   })();
 </script>
 `;

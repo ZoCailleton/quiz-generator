@@ -46,7 +46,7 @@ export default class Answer {
 
     let fields = new HTMLElement({
       tag: 'div',
-      className: 'fields'
+      className: 'fields',
     });
 
     fields.append(new Field({
@@ -60,7 +60,8 @@ export default class Answer {
       tag: 'text',
       title: `URL de la photo`,
       placeholder: 'https://images.pexels.com/photos/11757303/pexels-photo-11757303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      icon: 'link.png'
+      icon: 'link.png',
+      className: 'image-field'
     }));
 
     this.html.append(fields);
@@ -85,7 +86,8 @@ export default class Answer {
       tag: 'text',
       title: `URL de la vidéo`,
       placeholder: 'https://www.pexels.com/fr-fr/video/fleurs-verre-pierres-fumer-7815884/',
-      icon: 'link.png'
+      icon: 'link.png',
+      className: 'video-field'
     }));
 
     this.html.append(fields);

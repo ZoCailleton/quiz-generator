@@ -60,26 +60,55 @@ const getQuizCSS = (id) => `<style>
     display: flex;
     gap: 1em;
   }
-  .choices-${id} .choice-${id} {
+  .choice-${id} {
     min-width: 4em;
     min-height: 48px;
     background-color: #111921;
     padding: 1em;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: .5em;
     position: relative;
     cursor: pointer;
-    transition: 300ms;
   }
-  .choices-${id} .choice-${id}:hover {
+  .choice-${id}.photo-${id} {
+    flex: 1 1 300px;
+    flex-direction: column;
+  }
+  .choice-${id}.video-${id} {
+    flex-direction: column;
+  }
+  .choice-${id}:hover {
     opacity: .5;
+  }
+  .choice-${id} img {
+    height: 100px;
+    object-fit: cover;
+  }
+  .choice-${id} .state-${id} {
+    width: 10px;
+    height: 10px;
+    background-color: #333333;
+    border-radius: 50%;
+  }
+  .choice-${id} .state-${id}.true {
+    background-color: green;
+  }
+  .choice-${id} .state-${id}.false {
+    background-color: red;
   }
   .justification-${id} {
     background-color: #fff;
     padding: 1.5em 1.5em 1.5em 5em;
     border-radius: 7px;
+    display: none;
     position: relative;
     color: var(--dark);
     overflow: hidden;
+  }
+  .justification-${id}.active {
+    display: block;
   }
   .justification-${id} p {
     color: #111921;
@@ -101,7 +130,6 @@ const getQuizCSS = (id) => `<style>
     font-family: 'Fira Sans';
     text-align: center;
     cursor: pointer;
-    transition: 500ms;
   }
   .controls-${id} .control-${id}:hover {
     opacity: .5;

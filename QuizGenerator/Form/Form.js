@@ -49,11 +49,13 @@ export default class Form {
 
     setTimeout(() => {
 
-      new Sortable(document.querySelectorAll('.answers-wrapper'), {
-        draggable: '.answer-wrapper',
-      });
-
       this.updateAll();
+
+      for(let elt of document.querySelectorAll('.choice, .answers-type, .remove, .add-response')) {
+        elt.addEventListener('click', () => {
+          this.getCode();
+        });
+      }
 
     }, 1000);
 
@@ -148,10 +150,29 @@ export default class Form {
               <p class="heading-${id}">${question.querySelector('.title-wrapper input').value}</p>
               <div class="choices-${id}">`;
 
-              for(let answer of question.querySelectorAll('.answers .grid.active .answer-wrapper')) {
+              for(let answer of question.querySelectorAll('.answers .grid.active')) {
+
+                let type = answer.dataset.type;
+
+                this.code += `<div data-state=${answer.querySelector('input').checked} class="choice-${id} ${type}-${id}">`;
+
+                if(type === 'text') {
                 
-                this.code += `
-                <div data-state=${answer.querySelector('input').checked} class="choice-${id}">${answer.querySelector('.text-field input').value} : ${answer.querySelector('input').checked}</div>`;
+                  this.code += `${answer.querySelector('fieldset input').value}`;
+                  this.code += `<div class="state-${id} ${answer.querySelector('.choice.active').dataset.value}"></div>`;
+                  
+                } else if(type === 'photo') {
+
+                  this.code += `<img src="${answer.querySelector('fieldset.image-field input').value}" role="presentation">`;
+                  this.code += `<p>${answer.querySelector('fieldset:not(.image-field) input').value}</p>`;
+
+                } else if(type === 'video') {
+
+                  this.code += `<video></video>`
+
+                }
+
+                this.code += `</div>`;
 
               }
 
