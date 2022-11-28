@@ -129,18 +129,26 @@ export default class Question {
       
       let value = e.target.value;
 
-      console.log(checkURLValidity(value, 'photo'));
-
-      this.cover = value;
-      coverElt.classList.add('active');
-
       /**
        * TODO :
        * - Check the image url
        * - Remove class when url is removed
        */
 
-      coverElt.style.backgroundImage = `url(${this.cover})`;
+      if(checkURLValidity({url: value, type: 'photo'})) {
+
+        this.cover = value;
+        coverElt.classList.add('active');
+        coverElt.style.backgroundImage = `url(${this.cover})`;
+
+        console.log('Image valide');
+
+      } else {
+
+        coverElt.classList.remove('active');
+        coverElt.style.backgroundImage = ``;
+
+      }
 
     });
 
