@@ -123,8 +123,10 @@ export default class Question {
 
     let coverInput = new Field({
       type: 'text',
+      type: 'url',
       title: `Image d'illustration (Copier l'URL)`,
-      placeholder: `URL de l'image...`
+      placeholder: `URL de l'image...`,
+      category: 'photo'
     });
 
     coverInput.addEventListener('change', e => {
