@@ -52,9 +52,8 @@ export default class HTMLElement {
     if(this.checked != undefined)
       this.html.checked = this.checked;
 
-    if(this.dataType != undefined) {
+    if(this.dataType != undefined)
       this.html.dataset.type = this.dataType;
-    }
 
     return this.html;
 

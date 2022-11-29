@@ -18,7 +18,12 @@ export default class Form {
   
     instance = this;
     
+    if(window.location.hash.replace('#', '') === 'debug') this.debug = true;
+    
     this.questions = [];
+
+    this.code = '';
+
     this.controls = new Controls();
 
     this.id = getUniqueID();
@@ -31,8 +36,6 @@ export default class Form {
     this.form = new HTMLElement({
       tag: 'form'
     });
-
-    this.code = '';
 
     this.form.addEventListener('submit', e => e.preventDefault());
 
@@ -231,8 +234,6 @@ export default class Form {
     this.code += getQuizScript(id);
 
     document.getElementById('quiz-demo').innerHTML = this.code;
-    
-    console.log(this.code);
 
   }
 

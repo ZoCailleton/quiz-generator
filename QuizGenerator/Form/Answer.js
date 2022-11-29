@@ -59,10 +59,12 @@ export default class Answer {
 
     fields.append(new Field({
       tag: 'text',
+      type: 'url',
       title: `URL de la photo`,
       placeholder: 'https://images.pexels.com/photos/11757303/pexels-photo-11757303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       icon: 'link.png',
-      className: 'image-field'
+      className: 'image-field',
+      category: 'photo'
     }));
 
     this.html.append(fields);
@@ -85,10 +87,12 @@ export default class Answer {
 
     fields.append(new Field({
       tag: 'text',
+      type: 'url',
       title: `URL de la vidéo`,
       placeholder: 'https://www.pexels.com/fr-fr/video/fleurs-verre-pierres-fumer-7815884/',
       icon: 'link.png',
-      className: 'video-field'
+      className: 'video-field',
+      category: 'video'
     }));
 
     this.html.append(fields);

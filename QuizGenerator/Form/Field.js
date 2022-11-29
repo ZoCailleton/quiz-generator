@@ -1,9 +1,12 @@
 import HTMLElement from '../Utils/HTMLElement';
 import getUniqueID from '../Utils/getUniqueID';
+import Form from './Form';
 
 export default class Field {
 
-  constructor({type, title, placeholder, name, icon, className}) {
+  constructor({ type, title, placeholder, name, icon, className, category }) {
+
+    this.form = new Form()
     
     this.type = type || 'text';
     this.title = title || 'Champ';
@@ -11,6 +14,7 @@ export default class Field {
     this.name = name || getUniqueID();
     this.icon = icon;
     this.className = className;
+    this.category = category || 'text';
     
     this.id = getUniqueID();
     
@@ -35,8 +39,14 @@ export default class Field {
       id: this.id,
       type: this.type,
       placeholder: this.placeholder,
-      name: name
+      name: this.name
     });
+
+    if(this.form.debug) {
+      if(this.category === 'text') this.input.value = getUniqueID();
+      if(this.category === 'photo') this.input.value = 'https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load';
+      if(this.category === 'video') this.input.value = 'https://youtu.be/InM0guUxxGw';
+    }
 
     this.html.append(this.label);
     this.html.append(this.input);
