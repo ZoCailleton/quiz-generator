@@ -321,8 +321,10 @@ export default class Form {
 
   setupScrollObserver() {
 
-    window.addEventListener('scroll', () => {
-      let scroll = window.scrollY;
+    const formWrapper = document.querySelector('.quiz-form-wrapper');
+
+    formWrapper.addEventListener('scroll', () => {
+      let scroll = formWrapper.scrollTop;
       let checked = false;
       for(let question of document.querySelectorAll('.question-wrapper')) {
         if(scroll > question.offsetTop - (window.innerHeight / 4) && scroll < question.offsetTop + question.offsetHeight) {
