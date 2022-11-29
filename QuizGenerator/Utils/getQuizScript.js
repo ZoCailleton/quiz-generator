@@ -16,25 +16,30 @@ const getQuizScript = id => `
     }
 
     const prev = document.querySelector('.control-${id}.prev');
+    const next = document.querySelector('.control-${id}.next');
 
     prev.addEventListener('click', () => {
       if(currentQuestion > 1) {
         currentQuestion --;
         updateQuestionsVisibility();
         prev.classList.remove('disabled-${id}');
+        next.classList.remove('disabled-${id}');
       }
-      if(currentQuestion === 1) prev.classList.add('disabled-${id}');
+      if(currentQuestion === 1) {
+        prev.classList.add('disabled-${id}');
+      }
     });
-
-    const next = document.querySelector('.control-${id}.next');
 
     document.querySelector('.control-${id}.next').addEventListener('click', () => {
       if(currentQuestion < document.querySelectorAll('.question-${id}').length) {
         currentQuestion ++;
         updateQuestionsVisibility();
+        prev.classList.remove('disabled-${id}');
         next.classList.remove('disabled-${id}');
       }
-      if(currentQuestion === document.querySelectorAll('.question-${id}').length) next.classList.add('disabled-${id}');
+      if(currentQuestion === document.querySelectorAll('.question-${id}').length) {
+        next.classList.add('disabled-${id}');
+      }
     });
 
     for(let question of document.querySelectorAll('.question-${id}')) {

@@ -37,7 +37,26 @@ const getQuizCSS = (id) => `<style>
   .question-${id} .index div.active {
     background-color: #fff;
   }
-  header .heading-${id} {
+  .header-${id} {
+    display: flex;
+    justify-content: space-between;
+  }
+  .header-${id} .index-${id} {
+    display: flex;
+    gap: .5em;
+  }
+  .header-${id} .index-${id} div {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    opacity: .5;
+  }
+  .header-${id} .index-${id} div.active {
+    width: 30px;
+    opacity: 1;
+  }
+  .heading-${id} {
     font-size: 1.25em;
     font-weight: 500;
   }

@@ -1,0 +1,279 @@
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+
+.questions-wrapper-0b1d0b19ba78a {
+  display: grid;
+  gap: 2em;
+  font-family: 'Fira Sans';
+}
+.questions-wrapper-0b1d0b19ba78a * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.question-0b1d0b19ba78a {
+  background-color: #1e2731;;
+  padding: 2em;
+  border-radius: 15px;
+  display: none;
+  flex-direction: column;
+  gap: 1.5em;
+  color: #fff;
+}
+.question-0b1d0b19ba78a.active {
+  display: flex;
+}
+.question-0b1d0b19ba78a .index {
+  display: flex;
+  gap: .5em;
+}
+.question-0b1d0b19ba78a .index div {
+  width: 1em;
+  height: 1em;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 50%;
+}
+.question-0b1d0b19ba78a .index div.active {
+  background-color: #fff;
+}
+.header-0b1d0b19ba78a {
+  display: flex;
+  justify-content: space-between;
+}
+.header-0b1d0b19ba78a .index-0b1d0b19ba78a {
+  display: flex;
+  gap: .5em;
+}
+.header-0b1d0b19ba78a .index-0b1d0b19ba78a div {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: .5;
+}
+.header-0b1d0b19ba78a .index-0b1d0b19ba78a div.active {
+  width: 30px;
+  opacity: 1;
+}
+.heading-0b1d0b19ba78a {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+.illustration-0b1d0b19ba78a {
+  width: 100%;
+  min-height: 150px;
+  max-height: 200px;
+  background-color: #111921;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.illustration-0b1d0b19ba78a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content-0b1d0b19ba78a {
+  display: grid;
+  gap: 1em;
+}
+.content-0b1d0b19ba78a .heading-0b1d0b19ba78a {
+  font-size: 1.5em;
+}
+.choices-0b1d0b19ba78a {
+  display: flex;
+  gap: 1em;
+}
+.choice-0b1d0b19ba78a {
+  min-width: 4em;
+  min-height: 48px;
+  background-color: #111921;
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  position: relative;
+  cursor: pointer;
+}
+.choice-0b1d0b19ba78a.reveal-0b1d0b19ba78a.true {
+  outline: 2px solid green;
+}
+.choice-0b1d0b19ba78a.reveal-0b1d0b19ba78a.false {
+  outline: 2px solid red;
+}
+.choice-0b1d0b19ba78a.photo-0b1d0b19ba78a {
+  flex: 1 1 300px;
+  flex-direction: column;
+}
+.choice-0b1d0b19ba78a.video-0b1d0b19ba78a {
+  flex: 1 1 300px;
+  flex-direction: column;
+}
+.choice-0b1d0b19ba78a:hover {
+  opacity: .5;
+}
+.choice-0b1d0b19ba78a img {
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.choice-0b1d0b19ba78a .state-0b1d0b19ba78a {
+  width: 10px;
+  height: 10px;
+  background-color: #333333;
+  border-radius: 50%;
+}
+.choice-0b1d0b19ba78a .state-0b1d0b19ba78a.true {
+  background-color: green;
+}
+.choice-0b1d0b19ba78a .state-0b1d0b19ba78a.false {
+  background-color: red;
+}
+.justification-0b1d0b19ba78a {
+  background-color: #fff;
+  padding: 1.5em 1.5em 1.5em 5em;
+  border-radius: 7px;
+  display: none;
+  position: relative;
+  color: var(--dark);
+  overflow: hidden;
+}
+.justification-0b1d0b19ba78a.active {
+  display: block;
+}
+.justification-0b1d0b19ba78a p {
+  color: #111921;
+  line-height: 1.5em;
+}
+.controls-0b1d0b19ba78a {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+.controls-0b1d0b19ba78a .control-0b1d0b19ba78a {
+  background-color: #1e2731;
+  padding: 1.5em;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #fff;
+  font-family: 'Fira Sans';
+  text-align: center;
+  cursor: pointer;
+}
+.controls-0b1d0b19ba78a .control-0b1d0b19ba78a.disabled-0b1d0b19ba78a {
+  opacity: .5;
+  cursor: default;
+}
+.controls-0b1d0b19ba78a .control-0b1d0b19ba78a:hover {
+  opacity: .5;
+}
+</style>
+  <div id="quiz-0b1d0b19ba78a" class="wrapper-0b1d0b19ba78a">
+    <div class="questions-wrapper-0b1d0b19ba78a">
+  
+      <article class="question-0b1d0b19ba78a active">
+
+          <header class="header-0b1d0b19ba78a">
+            <p class="heading-0b1d0b19ba78a">Question 1 / 2</p>
+            <div class="index-0b1d0b19ba78a"><div class="active"></div><div ></div>
+            </div>
+          </header>
+              <figure class="illustration-0b1d0b19ba78a">
+                <img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation">
+              </figure>
+            
+          <section class="content-0b1d0b19ba78a">
+            <p class="heading-0b1d0b19ba78a">7fef24dde320a</p>
+            <div class="choices-0b1d0b19ba78a"><div data-state=true class="choice-0b1d0b19ba78a text-0b1d0b19ba78a true">359b679109742<div class="state-0b1d0b19ba78a true"></div></div><div data-state=true class="choice-0b1d0b19ba78a text-0b1d0b19ba78a true">2c911fe64f4a1<div class="state-0b1d0b19ba78a true"></div></div><div data-state=true class="choice-0b1d0b19ba78a text-0b1d0b19ba78a true">7719ea79ad6cf<div class="state-0b1d0b19ba78a true"></div></div>
+            </div>
+          </section>
+      </article>
+      <article class="question-0b1d0b19ba78a ">
+
+          <header class="header-0b1d0b19ba78a">
+            <p class="heading-0b1d0b19ba78a">Question 2 / 2</p>
+            <div class="index-0b1d0b19ba78a"><div class="active"></div><div ></div>
+            </div>
+          </header>
+              <figure class="illustration-0b1d0b19ba78a">
+                <img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation">
+              </figure>
+            
+          <section class="content-0b1d0b19ba78a">
+            <p class="heading-0b1d0b19ba78a">5b2acb9642ca9</p>
+            <div class="choices-0b1d0b19ba78a"><div data-state=false class="choice-0b1d0b19ba78a photo-0b1d0b19ba78a false"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>bfb57013f99f9</p></div><div data-state=false class="choice-0b1d0b19ba78a photo-0b1d0b19ba78a false"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>e2f105fbb4af3</p></div><div data-state=true class="choice-0b1d0b19ba78a photo-0b1d0b19ba78a true"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>ce03b403e84b8</p></div>
+            </div>
+          </section>
+            <section class="justification-0b1d0b19ba78a">
+              <p>Lorem ipsum dolor sit amet</p>
+            </section>
+      </article>
+    </div>
+    <div class="controls controls-0b1d0b19ba78a">
+      <div class="control control-0b1d0b19ba78a prev">Question précédente</div>
+      <div class="control control-0b1d0b19ba78a next">Question suivante</div>
+    </div>
+  </div>
+  
+<script>
+(function(){
+  
+  let currentQuestion = 1;
+
+  const reset = (collection, className) => {
+    for(let elt of document.querySelectorAll(collection)) {
+      elt.classList.remove(className)
+    }
+  }
+
+  const updateQuestionsVisibility = () => {
+    reset('article.question-0b1d0b19ba78a', 'active')
+    document.querySelector('article.question-0b1d0b19ba78a:nth-child('+currentQuestion+')').classList.add('active');
+  }
+
+  const prev = document.querySelector('.control-0b1d0b19ba78a.prev');
+  const next = document.querySelector('.control-0b1d0b19ba78a.next');
+
+  prev.addEventListener('click', () => {
+    if(currentQuestion > 1) {
+      currentQuestion --;
+      updateQuestionsVisibility();
+      prev.classList.remove('disabled-0b1d0b19ba78a');
+      next.classList.remove('disabled-0b1d0b19ba78a');
+    }
+    if(currentQuestion === 1) {
+      prev.classList.add('disabled-0b1d0b19ba78a');
+    }
+  });
+
+  document.querySelector('.control-0b1d0b19ba78a.next').addEventListener('click', () => {
+    if(currentQuestion < document.querySelectorAll('.question-0b1d0b19ba78a').length) {
+      currentQuestion ++;
+      updateQuestionsVisibility();
+      prev.classList.remove('disabled-0b1d0b19ba78a');
+      next.classList.remove('disabled-0b1d0b19ba78a');
+    }
+    if(currentQuestion === document.querySelectorAll('.question-0b1d0b19ba78a').length) {
+      next.classList.add('disabled-0b1d0b19ba78a');
+    }
+  });
+
+  for(let question of document.querySelectorAll('.question-0b1d0b19ba78a')) {
+    const info = question.querySelector('.justification-0b1d0b19ba78a');
+    for(let answer of question.querySelectorAll('.choice-0b1d0b19ba78a')) {
+      answer.addEventListener('click', () => {
+        for(let elt of question.querySelectorAll('.choice-0b1d0b19ba78a')) {
+          elt.classList.add('reveal-0b1d0b19ba78a');
+        }
+        if(info != undefined) {
+          info.classList.add('active');
+        }
+      });
+    }
+  }
+
+})();
+</script>

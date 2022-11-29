@@ -141,15 +141,14 @@ export default class Form {
 
         this.code += `
         <article class="question-${id}${i === 1 ? ' active' : ' '}">
-            <header>
+
+            <header class="header-${id}">
               <p class="heading-${id}">Question ${i} / ${questions.length}</p>
-              <div class="index">`;
-              let j=0;
-              for(let question of questions) {
-                j++;
-                this.html += `<div${j===1 ? 'class="active"' : ''}></div>`;
-              }
-              this.code += `
+              <div class="index-${id}">`;
+                for(let j=1; j<=questions.length; j++) {
+                  this.code += `<div ${j===1 ? 'class="active"' : ''}></div>`;
+                }
+                this.code += `
               </div>
             </header>`;
 
