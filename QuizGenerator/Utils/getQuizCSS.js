@@ -82,6 +82,7 @@ const getQuizCSS = (id) => `<style>
   }
   .choices-${id} {
     display: flex;
+    flex-wrap: wrap;
     gap: 1em;
   }
   .choice-${id} {
@@ -103,12 +104,16 @@ const getQuizCSS = (id) => `<style>
     outline: 2px solid red;
   }
   .choice-${id}.photo-${id} {
-    flex: 1 1 300px;
+    flex: 1 1 200px;
     flex-direction: column;
   }
   .choice-${id}.video-${id} {
-    flex: 1 1 300px;
+    flex: 1 1 200px;
     flex-direction: column;
+  }
+  .choice-${id}.video-${id} iframe {
+    width: 100%;
+    max-height: 100px;
   }
   .choice-${id}:hover {
     opacity: .5;
