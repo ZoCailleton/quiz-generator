@@ -26,16 +26,11 @@ main {
 .quiz-demo-wrapper {
   width: 50%;
   height: 100vh;
-  padding: 100px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3em;
   overflow: auto;
-  .heading {
-    font-size: 1.75em;
-    font-weight: 500;
-  }
 }
 
 #quiz-demo,
@@ -45,10 +40,15 @@ main {
 }
 
 #quiz-form {
+  padding: 100px 0;
   display: flex;
   justify-content: center;
   gap: 50px;
   color: #fff;
+  .heading {
+    font-size: 1.75em;
+    font-weight: 500;
+  }
 
   input {
     background-color: $main;
@@ -422,16 +422,19 @@ main {
 
 .quiz-demo-wrapper {
   background-color: $darker;
-  > footer {
+  color: #fff;
+  > header {
     width: 100%;
+    max-width: 650px;
+    background-color: $darker;
+    padding: 1.5em 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: sticky;
-    bottom: 0px;
+    top: 0px;
+    z-index: 1;
     .copy-code {
-      width: 100%;
-      max-width: 650px;
       background-color: #FF7D24;
       padding: 1.25em 3em;
       border: 0;
@@ -441,6 +444,9 @@ main {
       font-weight: 600;
       text-align: center;
       cursor: pointer;
+      &:hover {
+        opacity: .5;
+      }
     }
   }
 }

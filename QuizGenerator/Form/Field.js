@@ -1,6 +1,7 @@
 import HTMLElement from '../Utils/HTMLElement';
 import getUniqueID from '../Utils/getUniqueID';
 import Form from './Form';
+import getRandomImageURL from '../Utils/getRandomImageURL';
 
 export default class Field {
 
@@ -44,7 +45,7 @@ export default class Field {
 
     if(this.form.debug) {
       if(this.category === 'text') this.input.value = getUniqueID();
-      if(this.category === 'photo') this.input.value = 'https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load';
+      if(this.category === 'photo') this.input.value = getRandomImageURL();
       if(this.category === 'video') this.input.value = 'https://youtu.be/InM0guUxxGw';
     }
 

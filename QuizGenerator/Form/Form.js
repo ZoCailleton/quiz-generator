@@ -150,12 +150,14 @@ export default class Form {
 
     let i=0;
 
+    console.log(this.demoIndex)
+
       for(let question of questions) {
 
         i++;
 
         this.code += `
-        <article class="question-${id}${i === 1 ? ' active' : ' '}">
+        <article class="question-${id}${i === 1 ? ' active' : ''}">
 
             <header class="header-${id}">
               <p class="heading-${id}">Question ${i} / ${questions.length}</p>`
@@ -261,6 +263,8 @@ export default class Form {
     this.code += getQuizScript(id);
 
     document.getElementById('quiz-demo').innerHTML = this.code;
+    
+    this.updateDemoQuestions();
 
   }
 
@@ -286,11 +290,21 @@ export default class Form {
   }
 
   updateDemoQuestions() {
+    
+    let i=0;
+
+    for(let question of document.querySelectorAll('.form-wrapper .question-wrapper')) {
+      i++;
+      question.dataset.index = i;
+    }
 
     for(let question of document.querySelectorAll(`.question-${this.id}`)) {
       question.classList.remove('active');
     }
-    document.querySelector(`.question-${this.id}:nth-child(${this.demoIndex})`)?.classList.add('active');
+
+    const question = document.querySelector(`.question-${this.id}:nth-child(${this.demoIndex})`);
+    
+    question?.classList.add('active');
     
   }
 
@@ -311,7 +325,7 @@ export default class Form {
       if(next) {
         if(this.demoIndex < this.questions.length) {
           this.demoIndex ++;
-          this.updateDemoQuestion();
+          this.updateDemoQuestions();
         }
       }
 
@@ -323,19 +337,21 @@ export default class Form {
 
     const formWrapper = document.querySelector('.quiz-form-wrapper');
 
+    let lastQuestion = 1;
+
     formWrapper.addEventListener('scroll', () => {
       let scroll = formWrapper.scrollTop;
-      let checked = false;
       for(let question of document.querySelectorAll('.question-wrapper')) {
         if(scroll > question.offsetTop - (window.innerHeight / 4) && scroll < question.offsetTop + question.offsetHeight) {
-          if(!checked) {
-            console.log(this.demoIndex);
-            this.demoIndex = question.dataset.index;
-            this.updateDemoQuestions();
-            checked = true;
-          }
-        } else {
-          checked = false;
+          let index = question.dataset.index;
+          /**
+           * TODO :
+           * - Call it once
+           */
+          this.demoIndex = index;
+          lastQuestion = index;
+          this.updateDemoQuestions();
+          console.log(this.demoIndex);
         }
       }
     });
