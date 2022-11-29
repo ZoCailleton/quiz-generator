@@ -15,8 +15,8 @@ const getQuizScript = id => `
       document.querySelector('article.question-${id}:nth-child('+currentQuestion+')').classList.add('active');
     }
 
-    const prev = document.querySelector('.control-${id}.prev');
-    const next = document.querySelector('.control-${id}.next');
+    const prev = document.querySelector('.control-${id}.prev-${id}');
+    const next = document.querySelector('.control-${id}.next-${id}');
 
     prev.addEventListener('click', () => {
       if(currentQuestion > 1) {

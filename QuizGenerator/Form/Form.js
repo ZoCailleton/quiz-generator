@@ -42,7 +42,6 @@ export default class Form {
     this.html.append(this.controls);
 
     this.addQuestion();
-    this.addQuestion();
 
     document.querySelector('.copy-code').addEventListener('click', () => {
       const body = document.body;
@@ -54,6 +53,8 @@ export default class Form {
       body.removeChild(area);
       document.querySelector('.copy-code').innerHTML = 'Code copié ✓';
     })
+
+    this.setupDemoControls();
 
     /**
      * TODO :
@@ -68,7 +69,7 @@ export default class Form {
       
       this.getCode();
 
-      for(let elt of document.querySelectorAll('.choice, .answers-type, .remove, .add-response')) {
+      for(let elt of document.querySelectorAll('.choice, .answers-type, .remove, .add-response, .add-question, .answers-type .choice')) {
         elt.addEventListener('click', () => {
           this.getCode();
         });
@@ -223,9 +224,9 @@ export default class Form {
 
     this.code += `
       </div>
-      <div class="controls controls-${id}">
-        <div class="control control-${id} prev">Question précédente</div>
-        <div class="control control-${id} next">Question suivante</div>
+      <div class="controls-${id}">
+        <div class="control-${id} prev-${id}">Question précédente</div>
+        <div class="control-${id} next-${id}">Question suivante</div>
       </div>
     </div>
     `;
@@ -254,6 +255,40 @@ export default class Form {
   deleteQuestionByIndex(index) {
 
     this.questions = this.questions.filter((question) => question.index !== index);
+
+  }
+
+  setupDemoControls() {
+
+    let index = 1;
+
+    document.addEventListener('click', e => {
+
+      const prev = e.target.closest(`.prev-${this.id}`);
+      const next = e.target.closest(`.next-${this.id}`);
+
+      const updateDemoQuestion = () => {
+        for(let question of document.querySelectorAll(`.question-${this.id}`)) {
+          question.classList.remove('active');
+        }
+        document.querySelector(`.question-${this.id}:nth-child(${index})`).classList.add('active');
+      }
+
+      if(prev){
+        if(index > 1) {
+          index --;
+          updateDemoQuestion();
+        }
+      }
+
+      if(next) {
+        if(index < this.questions.length) {
+          index ++;
+          updateDemoQuestion();
+        }
+      }
+
+    })
 
   }
 
