@@ -16,7 +16,7 @@ const getQuizCSS = (id) => `<style>
     background-color: #1e2731;;
     padding: 2em;
     border-radius: 15px;
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 1.5em;
     color: #fff;

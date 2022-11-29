@@ -4,7 +4,6 @@ import HTMLElement from "../Utils/HTMLElement";
 import getUniqueID from '../Utils/getUniqueID';
 import getQuizCSS from '../Utils/getQuizCSS';
 import getQuizScript from '../Utils/getQuizScript';
-import { Droppable, Draggable, Sortable } from '@shopify/draggable';
 
 let instance = null;
 
@@ -146,7 +145,7 @@ export default class Form {
               <p class="heading-${id}">Question ${i} / ${questions.length}</p>
               <div class="index-${id}">`;
                 for(let j=1; j<=questions.length; j++) {
-                  this.code += `<div ${j===1 ? 'class="active"' : ''}></div>`;
+                  this.code += `<div${i === j ? ' class="active"' : ''}></div>`;
                 }
                 this.code += `
               </div>
