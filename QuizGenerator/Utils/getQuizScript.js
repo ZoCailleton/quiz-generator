@@ -30,7 +30,7 @@ const getQuizScript = id => `
       }
     });
 
-    document.querySelector('.control-${id}.next').addEventListener('click', () => {
+    next.addEventListener('click', () => {
       if(currentQuestion < document.querySelectorAll('.question-${id}').length) {
         currentQuestion ++;
         updateQuestionsVisibility();

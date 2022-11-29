@@ -26,6 +26,8 @@ export default class Form {
     this.controls = new Controls();
 
     this.id = getUniqueID();
+
+    this.demoIndex = 1;
     
     this.html = new HTMLElement({
       tag: 'div',
@@ -55,6 +57,7 @@ export default class Form {
     })
 
     this.setupDemoControls();
+    this.setupScrollObserver();
 
     /**
      * TODO :
@@ -69,15 +72,27 @@ export default class Form {
       
       this.getCode();
 
-      for(let elt of document.querySelectorAll('.choice, .answers-type, .remove, .add-response, .add-question, .answers-type .choice')) {
-        elt.addEventListener('click', () => {
-          this.getCode();
-        });
+    }, 1000);
+
+    document.addEventListener('click', e => {
+
+      const classesToCheck = [
+        '.choice',
+        '.answers-type',
+        '.remove',
+        '.add-response',
+        '.add-question',
+        '.answers-type',
+        '.choice',
+        '.delete'
+      ]
+
+      for(let className of classesToCheck) {
+        const elt = e.target.closest(className);
+        if(elt) this.getCode();
       }
 
-      this.setupScrollObserver();
-
-    }, 1000);
+    })
 
     this.form.addEventListener('keyup', () => {
       this.getCode();
@@ -143,13 +158,18 @@ export default class Form {
         <article class="question-${id}${i === 1 ? ' active' : ' '}">
 
             <header class="header-${id}">
-              <p class="heading-${id}">Question ${i} / ${questions.length}</p>
-              <div class="index-${id}">`;
-                for(let j=1; j<=questions.length; j++) {
-                  this.code += `<div${i === j ? ' class="active"' : ''}></div>`;
-                }
+              <p class="heading-${id}">Question ${i} / ${questions.length}</p>`
+              if(questions.length > 1) {
                 this.code += `
-              </div>
+                <div class="index-${id}">`;
+                  for(let j=1; j<=questions.length; j++) {
+                    this.code += `<div${i === j ? ' class="active"' : ''}></div>`;
+                  }
+                  this.code += `
+                </div>
+                `
+              }
+              this.code += `
             </header>`;
 
             let cover = question.querySelector('.cover input').value;
@@ -211,13 +231,20 @@ export default class Form {
 
             if(explaination.value != '') {
 
+              console.log(explaination.value)
+
               this.code += `
               <section class="justification-${id}">
+                <div class="side-${id}">
+                  <img src="./assets/icons/info.png" role="presentation">
+                </div>
                 <p>${explaination.value}</p>
               </section>`
+
             }
 
             this.code += `
+
         </article>`;
 
       }
@@ -258,33 +285,33 @@ export default class Form {
 
   }
 
-  setupDemoControls() {
+  updateDemoQuestions() {
 
-    let index = 1;
+    for(let question of document.querySelectorAll(`.question-${this.id}`)) {
+      question.classList.remove('active');
+    }
+    document.querySelector(`.question-${this.id}:nth-child(${this.demoIndex})`)?.classList.add('active');
+    
+  }
+
+  setupDemoControls() {
 
     document.addEventListener('click', e => {
 
       const prev = e.target.closest(`.prev-${this.id}`);
       const next = e.target.closest(`.next-${this.id}`);
 
-      const updateDemoQuestion = () => {
-        for(let question of document.querySelectorAll(`.question-${this.id}`)) {
-          question.classList.remove('active');
-        }
-        document.querySelector(`.question-${this.id}:nth-child(${index})`).classList.add('active');
-      }
-
       if(prev){
-        if(index > 1) {
-          index --;
-          updateDemoQuestion();
+        if(this.demoIndex > 1) {
+          this.demoIndex --;
+          this.updateDemoQuestions();
         }
       }
 
       if(next) {
-        if(index < this.questions.length) {
-          index ++;
-          updateDemoQuestion();
+        if(this.demoIndex < this.questions.length) {
+          this.demoIndex ++;
+          this.updateDemoQuestion();
         }
       }
 
@@ -294,17 +321,22 @@ export default class Form {
 
   setupScrollObserver() {
 
-    const cardObsCallback = (entries) => {
-      entries.forEach(entry => {
-        let index = entry.target.dataset.index
-      });
-    }
-    
-    const observer = new IntersectionObserver(cardObsCallback, {threshold: 0.5});
-    const arr = document.querySelectorAll('.question-wrapper');
-    arr.forEach((v) => {
-      observer.observe(v);
-    })
+    window.addEventListener('scroll', () => {
+      let scroll = window.scrollY;
+      let checked = false;
+      for(let question of document.querySelectorAll('.question-wrapper')) {
+        if(scroll > question.offsetTop - (window.innerHeight / 4) && scroll < question.offsetTop + question.offsetHeight) {
+          if(!checked) {
+            console.log(this.demoIndex);
+            this.demoIndex = question.dataset.index;
+            this.updateDemoQuestions();
+            checked = true;
+          }
+        } else {
+          checked = false;
+        }
+      }
+    });
 
   }
 

@@ -1,17 +1,15 @@
-import Menu from '../Menu/Menu';
 import Form from '../Form/Form';
 import Field from './Field';
 import Answers from './Answers';
 import HTMLElement from '../Utils/HTMLElement';
-import Choices from './Choices';
 import reset from '../Utils/reset';
 import checkURLValidity from '../Utils/checkURLValidity';
+import getUniqueID from '../Utils/getUniqueID';
 
 export default class Question {
 
   constructor({title, index}) {
 
-    this.menu = new Menu();
     this.form = new Form();
     
     this.title = title;
@@ -92,6 +90,7 @@ export default class Question {
 
     let deleteButton = new HTMLElement({
       tag: 'button',
+      className: 'delete',
       value: '<img src="./assets/icons/bin.png" role="presentation"> Supprimer'
     });
 
@@ -254,6 +253,10 @@ export default class Question {
       tag: 'textarea',
       placeholder: 'Explications...'
     });
+
+    if(this.form.debug) {
+      textarea.value = getUniqueID()
+    }
 
     explainationElt.append(textarea);
 

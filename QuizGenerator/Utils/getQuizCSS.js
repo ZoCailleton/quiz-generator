@@ -96,6 +96,7 @@ const getQuizCSS = (id) => `<style>
     gap: .5em;
     position: relative;
     cursor: pointer;
+    user-select: none;
   }
   .choice-${id}.reveal-${id}.true {
     outline: 2px solid green;
@@ -137,9 +138,8 @@ const getQuizCSS = (id) => `<style>
   }
   .justification-${id} {
     background-color: #fff;
-    padding: 1.5em 1.5em 1.5em 5em;
     border-radius: 7px;
-    display: none;
+    display: flex;
     position: relative;
     color: var(--dark);
     overflow: hidden;
@@ -147,7 +147,20 @@ const getQuizCSS = (id) => `<style>
   .justification-${id}.active {
     display: block;
   }
+  .justification-${id} .side-${id} {
+    height: 100%;
+    background-color: #111921;
+    padding: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .justification-${id} .side-${id} img {
+    min-width: 1.5em;
+    height: 1.5em;
+  }
   .justification-${id} p {
+    padding: 1.5em;
     color: #111921;
     line-height: 1.5em;
   }
@@ -167,6 +180,7 @@ const getQuizCSS = (id) => `<style>
     font-family: 'Fira Sans';
     text-align: center;
     cursor: pointer;
+    user-select: none;
   }
   .controls-${id} .control-${id}.disabled-${id} {
     opacity: .5;
