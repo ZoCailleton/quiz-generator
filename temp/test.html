@@ -2,17 +2,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
 
-.questions-wrapper-00fc57e533a3e {
+.questions-wrapper-56712768696a4 {
   display: grid;
   gap: 2em;
   font-family: 'Fira Sans';
 }
-.questions-wrapper-00fc57e533a3e * {
+.questions-wrapper-56712768696a4 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.question-00fc57e533a3e {
+.question-56712768696a4 {
   background-color: #1e2731;;
   padding: 2em;
   border-radius: 15px;
@@ -21,46 +21,46 @@
   gap: 1.5em;
   color: #fff;
 }
-.question-00fc57e533a3e.active {
+.question-56712768696a4.active {
   display: flex;
 }
-.question-00fc57e533a3e .index {
+.question-56712768696a4 .index {
   display: flex;
   gap: .5em;
 }
-.question-00fc57e533a3e .index div {
+.question-56712768696a4 .index div {
   width: 1em;
   height: 1em;
   background-color: rgba(255, 255, 255, .5);
   border-radius: 50%;
 }
-.question-00fc57e533a3e .index div.active {
+.question-56712768696a4 .index div.active {
   background-color: #fff;
 }
-.header-00fc57e533a3e {
+.header-56712768696a4 {
   display: flex;
   justify-content: space-between;
 }
-.header-00fc57e533a3e .index-00fc57e533a3e {
+.header-56712768696a4 .index-56712768696a4 {
   display: flex;
   gap: .5em;
 }
-.header-00fc57e533a3e .index-00fc57e533a3e div {
+.header-56712768696a4 .index-56712768696a4 div {
   width: 10px;
   height: 10px;
   background-color: #fff;
   border-radius: 10px;
   opacity: .5;
 }
-.header-00fc57e533a3e .index-00fc57e533a3e div.active {
+.header-56712768696a4 .index-56712768696a4 div.active {
   width: 30px;
   opacity: 1;
 }
-.heading-00fc57e533a3e {
+.heading-56712768696a4 {
   font-size: 1.25em;
   font-weight: 500;
 }
-.illustration-00fc57e533a3e {
+.illustration-56712768696a4 {
   width: 100%;
   min-height: 150px;
   max-height: 200px;
@@ -68,24 +68,24 @@
   border-radius: 8px;
   overflow: hidden;
 }
-.illustration-00fc57e533a3e img {
+.illustration-56712768696a4 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.content-00fc57e533a3e {
+.content-56712768696a4 {
   display: grid;
   gap: 1em;
 }
-.content-00fc57e533a3e .heading-00fc57e533a3e {
+.content-56712768696a4 .heading-56712768696a4 {
   font-size: 1.5em;
 }
-.choices-00fc57e533a3e {
+.choices-56712768696a4 {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
 }
-.choice-00fc57e533a3e {
+.choice-56712768696a4 {
   min-width: 4em;
   min-height: 48px;
   background-color: #111921;
@@ -97,46 +97,64 @@
   position: relative;
   cursor: pointer;
   user-select: none;
+  animation-duration: 500ms;
+  animation-iteration-counts: 1;
+  animation-fill-mode: forwards;
 }
-.choice-00fc57e533a3e.reveal-00fc57e533a3e.true {
+.choice-56712768696a4.reveal-56712768696a4.true {
   outline: 2px solid green;
 }
-.choice-00fc57e533a3e.reveal-00fc57e533a3e.false {
+.choice-56712768696a4.reveal-56712768696a4.false {
   outline: 2px solid red;
+  animation-name: nope;
 }
-.choice-00fc57e533a3e.photo-00fc57e533a3e {
+@keyframes nope {
+  25% {
+    transform: translateX(-1em);
+  }
+  50% {
+    transform: translateX(1em);
+  }
+  75% {
+    transform: translateX(-.5em);
+  }
+  100% {
+    transform: translateX(0em);
+  }
+}
+.choice-56712768696a4.photo-56712768696a4 {
   flex: 1 1 200px;
   flex-direction: column;
 }
-.choice-00fc57e533a3e.video-00fc57e533a3e {
+.choice-56712768696a4.video-56712768696a4 {
   flex: 1 1 200px;
   flex-direction: column;
 }
-.choice-00fc57e533a3e.video-00fc57e533a3e iframe {
+.choice-56712768696a4.video-56712768696a4 iframe {
   width: 100%;
   max-height: 100px;
 }
-.choice-00fc57e533a3e:hover {
+.choice-56712768696a4:hover {
   opacity: .5;
 }
-.choice-00fc57e533a3e img {
+.choice-56712768696a4 img {
   height: 100px;
   object-fit: cover;
   border-radius: 10px;
 }
-.choice-00fc57e533a3e .state-00fc57e533a3e {
+.choice-56712768696a4 .state-56712768696a4 {
   width: 10px;
   height: 10px;
   background-color: #333333;
   border-radius: 50%;
 }
-.choice-00fc57e533a3e .state-00fc57e533a3e.true {
+.choice-56712768696a4 .state-56712768696a4.true {
   background-color: green;
 }
-.choice-00fc57e533a3e .state-00fc57e533a3e.false {
+.choice-56712768696a4 .state-56712768696a4.false {
   background-color: red;
 }
-.justification-00fc57e533a3e {
+.justification-56712768696a4 {
   background-color: #fff;
   border-radius: 7px;
   display: flex;
@@ -144,10 +162,10 @@
   color: var(--dark);
   overflow: hidden;
 }
-.justification-00fc57e533a3e.active {
+.justification-56712768696a4.active {
   display: block;
 }
-.justification-00fc57e533a3e .side-00fc57e533a3e {
+.justification-56712768696a4 .side-56712768696a4 {
   height: 100%;
   background-color: #111921;
   padding: 0 1em;
@@ -155,22 +173,22 @@
   justify-content: center;
   align-items: center;
 }
-.justification-00fc57e533a3e .side-00fc57e533a3e img {
+.justification-56712768696a4 .side-56712768696a4 img {
   min-width: 1.5em;
   height: 1.5em;
 }
-.justification-00fc57e533a3e p {
+.justification-56712768696a4 p {
   padding: 1.5em;
   color: #111921;
   line-height: 1.5em;
 }
-.controls-00fc57e533a3e {
+.controls-56712768696a4 {
   margin-top: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
 }
-.controls-00fc57e533a3e .control-00fc57e533a3e {
+.controls-56712768696a4 .control-56712768696a4 {
   background-color: #1e2731;
   padding: 1.5em;
   border: 0;
@@ -182,71 +200,43 @@
   cursor: pointer;
   user-select: none;
 }
-.controls-00fc57e533a3e .control-00fc57e533a3e.disabled-00fc57e533a3e {
+.controls-56712768696a4 .control-56712768696a4.disabled-56712768696a4 {
   opacity: .5;
   cursor: default;
 }
-.controls-00fc57e533a3e .control-00fc57e533a3e:hover {
+.controls-56712768696a4 .control-56712768696a4:hover {
   opacity: .5;
 }
 </style>
-  <div id="quiz-00fc57e533a3e" class="wrapper-00fc57e533a3e">
-    <div class="questions-wrapper-00fc57e533a3e">
+  <div id="quiz-56712768696a4" class="wrapper-56712768696a4">
+    <div class="questions-wrapper-56712768696a4">
   
-      <article class="question-00fc57e533a3e active">
+      <article class="question-56712768696a4 active">
 
-          <header class="header-00fc57e533a3e">
-            <p class="heading-00fc57e533a3e">Question 1 / 2</p>
-              <div class="index-00fc57e533a3e"><div class="active"></div><div></div>
-              </div>
-              
+          <header class="header-56712768696a4">
+            <p class="heading-56712768696a4">Question 1 / 1</p>
           </header>
-              <figure class="illustration-00fc57e533a3e">
+              <figure class="illustration-56712768696a4">
                 <img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation">
               </figure>
             
-          <section class="content-00fc57e533a3e">
-            <p class="heading-00fc57e533a3e">aeb5599e217f3</p>
-            <div class="choices-00fc57e533a3e"><div data-state=true class="choice-00fc57e533a3e text-00fc57e533a3e true">8d9559f1688a4<div class="state-00fc57e533a3e true"></div></div><div data-state=true class="choice-00fc57e533a3e text-00fc57e533a3e true">358e65083ef6f<div class="state-00fc57e533a3e true"></div></div><div data-state=true class="choice-00fc57e533a3e text-00fc57e533a3e true">2cc258469b162<div class="state-00fc57e533a3e true"></div></div>
+          <section class="content-56712768696a4">
+            <p class="heading-56712768696a4">a9e5fb34cee41</p>
+            <div class="choices-56712768696a4"><div data-state=true class="choice-56712768696a4 text-56712768696a4 true">f620b20d03d27<div class="state-56712768696a4 true"></div></div><div data-state=false class="choice-56712768696a4 text-56712768696a4 false">9121eb17cd3aa<div class="state-56712768696a4 false"></div></div><div data-state=false class="choice-56712768696a4 text-56712768696a4 false">1430f75e07557<div class="state-56712768696a4 false"></div></div>
             </div>
           </section>
-            <section class="justification-00fc57e533a3e">
-              <div class="side-00fc57e533a3e">
+            <section class="justification-56712768696a4">
+              <div class="side-56712768696a4">
                 <img src="./assets/icons/info.png" role="presentation">
               </div>
-              <p>0c4c175736671</p>
-            </section>
-
-      </article>
-      <article class="question-00fc57e533a3e ">
-
-          <header class="header-00fc57e533a3e">
-            <p class="heading-00fc57e533a3e">Question 2 / 2</p>
-              <div class="index-00fc57e533a3e"><div></div><div class="active"></div>
-              </div>
-              
-          </header>
-              <figure class="illustration-00fc57e533a3e">
-                <img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation">
-              </figure>
-            
-          <section class="content-00fc57e533a3e">
-            <p class="heading-00fc57e533a3e">b670c7dd60231</p>
-            <div class="choices-00fc57e533a3e"><div data-state=true class="choice-00fc57e533a3e photo-00fc57e533a3e true"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>5859c588e4566</p></div><div data-state=true class="choice-00fc57e533a3e photo-00fc57e533a3e true"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>2a44b05c87e6e</p></div><div data-state=true class="choice-00fc57e533a3e photo-00fc57e533a3e true"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>338aa84631d82</p></div>
-            </div>
-          </section>
-            <section class="justification-00fc57e533a3e">
-              <div class="side-00fc57e533a3e">
-                <img src="./assets/icons/info.png" role="presentation">
-              </div>
-              <p>2e5d83934bc1c</p>
+              <p>6311960332f5</p>
             </section>
 
       </article>
     </div>
-    <div class="controls-00fc57e533a3e">
-      <div class="control-00fc57e533a3e prev-00fc57e533a3e">Question précédente</div>
-      <div class="control-00fc57e533a3e next-00fc57e533a3e">Question suivante</div>
+    <div class="controls-56712768696a4">
+      <div class="control-56712768696a4 prev-56712768696a4">Question précédente</div>
+      <div class="control-56712768696a4 next-56712768696a4">Question suivante</div>
     </div>
   </div>
   
@@ -262,43 +252,43 @@
   }
 
   const updateQuestionsVisibility = () => {
-    reset('article.question-00fc57e533a3e', 'active')
-    document.querySelector('article.question-00fc57e533a3e:nth-child('+currentQuestion+')').classList.add('active');
+    reset('article.question-56712768696a4', 'active')
+    document.querySelector('article.question-56712768696a4:nth-child('+currentQuestion+')').classList.add('active');
   }
 
-  const prev = document.querySelector('.control-00fc57e533a3e.prev-00fc57e533a3e');
-  const next = document.querySelector('.control-00fc57e533a3e.next-00fc57e533a3e');
+  const prev = document.querySelector('.control-56712768696a4.prev-56712768696a4');
+  const next = document.querySelector('.control-56712768696a4.next-56712768696a4');
 
   prev.addEventListener('click', () => {
     if(currentQuestion > 1) {
       currentQuestion --;
       updateQuestionsVisibility();
-      prev.classList.remove('disabled-00fc57e533a3e');
-      next.classList.remove('disabled-00fc57e533a3e');
+      prev.classList.remove('disabled-56712768696a4');
+      next.classList.remove('disabled-56712768696a4');
     }
     if(currentQuestion === 1) {
-      prev.classList.add('disabled-00fc57e533a3e');
+      prev.classList.add('disabled-56712768696a4');
     }
   });
 
   next.addEventListener('click', () => {
-    if(currentQuestion < document.querySelectorAll('.question-00fc57e533a3e').length) {
+    if(currentQuestion < document.querySelectorAll('.question-56712768696a4').length) {
       currentQuestion ++;
       updateQuestionsVisibility();
-      prev.classList.remove('disabled-00fc57e533a3e');
-      next.classList.remove('disabled-00fc57e533a3e');
+      prev.classList.remove('disabled-56712768696a4');
+      next.classList.remove('disabled-56712768696a4');
     }
-    if(currentQuestion === document.querySelectorAll('.question-00fc57e533a3e').length) {
-      next.classList.add('disabled-00fc57e533a3e');
+    if(currentQuestion === document.querySelectorAll('.question-56712768696a4').length) {
+      next.classList.add('disabled-56712768696a4');
     }
   });
 
-  for(let question of document.querySelectorAll('.question-00fc57e533a3e')) {
-    const info = question.querySelector('.justification-00fc57e533a3e');
-    for(let answer of question.querySelectorAll('.choice-00fc57e533a3e')) {
+  for(let question of document.querySelectorAll('.question-56712768696a4')) {
+    const info = question.querySelector('.justification-56712768696a4');
+    for(let answer of question.querySelectorAll('.choice-56712768696a4')) {
       answer.addEventListener('click', () => {
-        for(let elt of question.querySelectorAll('.choice-00fc57e533a3e')) {
-          elt.classList.add('reveal-00fc57e533a3e');
+        for(let elt of question.querySelectorAll('.choice-56712768696a4')) {
+          elt.classList.add('reveal-56712768696a4');
         }
         if(info != undefined) {
           info.classList.add('active');

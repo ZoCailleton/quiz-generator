@@ -97,12 +97,30 @@ const getQuizCSS = (id) => `<style>
     position: relative;
     cursor: pointer;
     user-select: none;
+    animation-duration: 500ms;
+    animation-iteration-counts: 1;
+    animation-fill-mode: forwards;
   }
   .choice-${id}.reveal-${id}.true {
     outline: 2px solid green;
   }
   .choice-${id}.reveal-${id}.false {
     outline: 2px solid red;
+    animation-name: nope;
+  }
+  @keyframes nope {
+    25% {
+      transform: translateX(-1em);
+    }
+    50% {
+      transform: translateX(1em);
+    }
+    75% {
+      transform: translateX(-.5em);
+    }
+    100% {
+      transform: translateX(0em);
+    }
   }
   .choice-${id}.photo-${id} {
     flex: 1 1 200px;
