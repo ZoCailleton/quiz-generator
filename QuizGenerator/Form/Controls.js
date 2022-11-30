@@ -15,7 +15,7 @@ export default class Controls {
     this.add = new HTMLElement({
       tag: 'button',
       className: 'add-question',
-      value: 'Ajouter une question'
+      value: 'Ajouter une question <img src="./assets/icons/plus.png" role="presentation">'
     });
 
     this.add.addEventListener('click', () => {

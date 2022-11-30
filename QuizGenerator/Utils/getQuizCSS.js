@@ -177,8 +177,12 @@ const getQuizCSS = (id) => `<style>
     min-width: 1.5em;
     height: 1.5em;
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     font-size: 1.25em;
+    color: #111921;
     font-family: 'Fira Sans';
     font-weight: 500;
   }
