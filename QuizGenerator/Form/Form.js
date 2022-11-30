@@ -54,6 +54,9 @@ export default class Form {
       document.execCommand('copy');
       body.removeChild(area);
       document.querySelector('.copy-code').innerHTML = 'Code copié ✓';
+      setTimeout(() => {
+        document.querySelector('.copy-code').innerHTML = 'Copier le code <img src="./assets/icons/copy.png" role="presentation">';
+      }, 1000);
     })
 
     this.setupDemoControls();
@@ -204,7 +207,7 @@ export default class Form {
                   if(type === 'text') {
                   
                     this.code += `${answer.querySelector('fieldset input').value}`;
-                    this.code += `<div class="state-${id} ${answer.querySelector('.choice.active').dataset.value}"></div>`;
+                    //this.code += `<div class="state-${id} ${answer.querySelector('.choice.active').dataset.value}"></div>`;
                     
                   } else if(type === 'photo') {
 
@@ -305,6 +308,13 @@ export default class Form {
 
     for(let question of document.querySelectorAll(`.question-${this.id}`)) {
       question.classList.remove('active');
+      for(let answer of question.querySelectorAll(`.choice-${this.id}`)) {
+        if(answer.dataset.state === 'true') {
+          answer.innerHTML = `${answer.textContent} <div class="state-${this.id} true"></div>`;
+        } else {
+          answer.innerHTML = `${answer.textContent} <div class="state-${this.id} false"></div>`;
+        }
+      }
     }
 
     const question = document.querySelector(`.question-${this.id}:nth-child(${this.demoIndex})`);

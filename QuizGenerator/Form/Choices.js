@@ -1,4 +1,3 @@
-import Choice from "./Choice";
 import HTMLElement from "../Utils/HTMLElement";
 
 export default class Choices {
