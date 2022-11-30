@@ -173,9 +173,14 @@ const getQuizCSS = (id) => `<style>
     justify-content: center;
     align-items: center;
   }
-  .justification-${id} .side-${id} img {
+  .justification-${id} .side-${id} .info-box-${id} {
     min-width: 1.5em;
     height: 1.5em;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 1.25em;
+    font-family: 'Fira Sans';
+    font-weight: 500;
   }
   .justification-${id} p {
     padding: 1.5em;

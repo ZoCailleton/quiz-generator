@@ -240,7 +240,7 @@ export default class Form {
               this.code += `
               <section class="justification-${id}">
                 <div class="side-${id}">
-                  <img src="./assets/icons/info.png" role="presentation">
+                  <div class="info-box-${id}">i</div>
                 </div>
                 <p>${explaination.value}</p>
               </section>`
