@@ -162,7 +162,7 @@ const getQuizCSS = (id) => `<style>
     color: var(--dark);
     overflow: hidden;
   }
-  .justification-${id}.active {
+  .justification-${id}.active-${id} {
     display: flex;
   }
   .justification-${id} .side-${id} {
@@ -205,7 +205,7 @@ const getQuizCSS = (id) => `<style>
     cursor: default;
   }
   .controls-${id} .control-${id}:hover {
-    opacity: .5;
+    background-color: #19212b;
   }
 </style>`;
 
