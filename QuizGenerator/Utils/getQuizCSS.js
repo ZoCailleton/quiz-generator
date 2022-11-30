@@ -181,7 +181,7 @@ const getQuizCSS = (id) => `<style>
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    font-size: 1.25em;
+    font-size: .75em;
     color: #111921;
     font-family: 'Fira Sans';
     font-weight: 500;
@@ -190,6 +190,12 @@ const getQuizCSS = (id) => `<style>
     padding: 1.5em;
     color: #111921;
     line-height: 1.5em;
+  }
+  .justification-${id} p .intro-${id} {
+    display: none;
+  }
+  .justification-${id} p .intro-${id}.active {
+    display: inline-block;
   }
   .controls-${id} {
     margin-top: 1em;

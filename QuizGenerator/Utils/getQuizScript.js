@@ -62,6 +62,8 @@ const getQuizScript = id => `
             questions[index-1] = true;
             if(answer.dataset.state === 'true') {
               score ++;
+              question.querySelector('.justification-${id} p span.true').classList.add('active');
+              question.querySelector('.justification-${id} p span.false').classList.remove('active');
               updateQuestionsVisibility();
             }
             for(let elt of question.querySelectorAll('.choice-${id}')) {

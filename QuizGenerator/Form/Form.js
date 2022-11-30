@@ -235,14 +235,16 @@ export default class Form {
 
             if(explaination.value != '') {
 
-              console.log(explaination.value)
-
               this.code += `
               <section class="justification-${id}">
                 <div class="side-${id}">
                   <div class="info-box-${id}">i</div>
                 </div>
-                <p>${explaination.value}</p>
+                <p>
+                  <span class="intro-${id} true">Bravo !</span>
+                  <span class="intro-${id} false active">Dommage !</span>
+                  ${explaination.value}
+                </p>
               </section>`
 
             }

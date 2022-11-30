@@ -54,17 +54,17 @@ main {
   }
 }
 
-#quiz-demo,
-#quiz-form {
-  width: 100%;
-  max-width: 650px;
-}
-
 .quiz-form-wrapper {
   > header {
     background-color: $darker;
     color: #fff;
   }
+}
+
+#quiz-demo,
+#quiz-form {
+  width: 100%;
+  max-width: 650px;
 }
 
 #quiz-form {
@@ -383,12 +383,5 @@ main {
     &:hover {
       background-color: #db691d;
     }
-  }
-}
-
-#quiz-demo {
-  width: 100%;
-  img {
-    width: 100%;
   }
 }

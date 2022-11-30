@@ -85,7 +85,7 @@ export default class Question {
     let closeButton = new HTMLElement({
       tag: 'button',
       className: 'close',
-      value: '<img src="./assets/icons/minus.png" role="presentation"> Fermer'
+      value: 'Fermer'
     });
 
     let deleteButton = new HTMLElement({
@@ -277,13 +277,13 @@ export default class Question {
     if(this.open) {
 
       this.html.classList.add('close');
-      this.html.querySelector('header .close').innerHTML = '<img src="./assets/icons/plus.png" role="presentation"> Ouvrir';
+      this.html.querySelector('header .close').innerHTML = 'Ouvrir';
       this.open = false;
 
     } else {
 
       this.html.classList.remove('close');
-      this.html.querySelector('header .close').innerHTML = '<img src="./assets/icons/minus.png" role="presentation"> Fermer';
+      this.html.querySelector('header .close').innerHTML = 'Fermer';
       this.open = true;
 
     }
