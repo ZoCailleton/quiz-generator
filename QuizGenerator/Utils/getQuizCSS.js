@@ -106,6 +106,21 @@ const getQuizCSS = (id) => `<style>
   }
   .choice-${id}.reveal-${id}.true {
     outline: 2px solid green;
+    animation-name: yep;
+  }
+  @keyframes yep {
+    25% {
+      transform: scale(.7);
+    }
+    50% {
+      transform: scale(.9);
+    }
+    75% {
+      transform: scale(.8);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   .choice-${id}.reveal-${id}.false {
     outline: 2px solid red;

@@ -62,6 +62,8 @@ export default class Form {
     this.setupDemoControls();
     this.setupScrollObserver();
 
+    this.sendNotification('Test notification');
+
     /**
      * TODO :
      * - Replace the setTimeout with a callback function
@@ -218,7 +220,7 @@ export default class Form {
 
                     this.code += `
                     
-                    <iframe width="560" height="315" src="${answer.querySelector('fieldset.video-field input').value}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${answer.querySelector('fieldset.video-field input').value.split('https://youtu.be/')[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     
                     `
 
@@ -297,6 +299,18 @@ export default class Form {
 
   }
 
+  sendNotification(value) {
+
+    const notification = new HTMLElement({
+      tag: 'div',
+      className: 'notification',
+      value
+    });
+
+    document.querySelector('.quiz-form-wrapper').append(notification);
+    
+  }
+
   updateDemoQuestions() {
     
     let i=0;
@@ -310,9 +324,9 @@ export default class Form {
       question.classList.remove('active');
       for(let answer of question.querySelectorAll(`.choice-${this.id}`)) {
         if(answer.dataset.state === 'true') {
-          answer.innerHTML = `${answer.textContent} <div class="state-${this.id} true"></div>`;
+          //answer.innerHTML = `${answer.textContent} <div class="state-${this.id} true"></div>`;
         } else {
-          answer.innerHTML = `${answer.textContent} <div class="state-${this.id} false"></div>`;
+          //answer.innerHTML = `${answer.textContent} <div class="state-${this.id} false"></div>`;
         }
       }
     }
