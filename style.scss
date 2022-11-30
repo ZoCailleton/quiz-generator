@@ -26,6 +26,7 @@ main {
 .quiz-demo-wrapper {
   width: 50%;
   height: 100vh;
+  padding-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,14 +34,18 @@ main {
   overflow: auto;
   > header {
     width: 100%;
-    max-width: 650px;
-    padding: 1.5em 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: sticky;
     top: 0px;
     z-index: 2;
+    .inner {
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 1em 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }
 
@@ -48,7 +53,13 @@ main {
 #quiz-form {
   width: 100%;
   max-width: 650px;
-  padding-bottom: 100px;
+}
+
+.quiz-form-wrapper {
+  > header {
+    background-color: $darker;
+    color: #fff;
+  }
 }
 
 #quiz-form {
@@ -56,12 +67,6 @@ main {
   justify-content: center;
   gap: 50px;
   color: #fff;
-  .quiz-form-wrapper {
-    > header {
-      background-color: rgba(255, 255, 255, .85);
-      backdrop-filter: blur(20px);
-    }
-  }
   .heading {
     font-size: 1.75em;
     font-weight: 500;
@@ -441,11 +446,12 @@ main {
   background-color: $darker;
   color: #fff;
   > header {
-    background-color: $darker;
+    background-color: $main;
+    color: #fff;
   }
   .copy-code {
     background-color: #FF7D24;
-    padding: 1.25em 3em;
+    padding: 1em 3em;
     border: 0;
     border-radius: 8px;
     font-size: 1em;
@@ -454,7 +460,7 @@ main {
     text-align: center;
     cursor: pointer;
     &:hover {
-      opacity: .5;
+      opacity: .85;
     }
   }
 }

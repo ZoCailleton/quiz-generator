@@ -253,14 +253,15 @@ export default class Form {
 
       }
 
-    this.code += `
-      </div>
-      <div class="controls-${id}">
-        <div class="control-${id} prev-${id}">Question précédente</div>
-        <div class="control-${id} next-${id}">Question suivante</div>
-      </div>
-    </div>
-    `;
+    this.code += `</div>`;
+        if(questions.length > 1) {
+          this.code += `
+          <div class="controls-${id}">
+            <div class="control-${id} prev-${id} ${i===1 ? 'disabled-'+id: ''}">Question précédente</div>
+            <div class="control-${id} next-${id}">Question suivante</div>
+          </div>`
+        }
+        this.code += `</div>`;
 
     this.code += getQuizScript(id);
 
