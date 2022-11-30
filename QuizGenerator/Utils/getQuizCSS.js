@@ -101,6 +101,9 @@ const getQuizCSS = (id) => `<style>
     animation-iteration-counts: 1;
     animation-fill-mode: forwards;
   }
+  .choice-${id}:not(.reveal-${id}):hover {
+    opacity: .5;
+  }
   .choice-${id}.reveal-${id}.true {
     outline: 2px solid green;
   }
@@ -134,9 +137,6 @@ const getQuizCSS = (id) => `<style>
     width: 100%;
     max-height: 100px;
   }
-  .choice-${id}:hover {
-    opacity: .5;
-  }
   .choice-${id} img {
     height: 100px;
     object-fit: cover;
@@ -157,13 +157,13 @@ const getQuizCSS = (id) => `<style>
   .justification-${id} {
     background-color: #fff;
     border-radius: 7px;
-    display: flex;
+    display: none;
     position: relative;
     color: var(--dark);
     overflow: hidden;
   }
   .justification-${id}.active {
-    display: block;
+    display: flex;
   }
   .justification-${id} .side-${id} {
     height: 100%;

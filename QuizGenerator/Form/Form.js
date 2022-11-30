@@ -157,10 +157,12 @@ export default class Form {
         i++;
 
         this.code += `
-        <article class="question-${id}${i === 1 ? ' active' : ''}">
+        <article data-index=${i} class="question-${id}${i === 1 ? ' active' : ''}">
 
             <header class="header-${id}">
-              <p class="heading-${id}">Question ${i} / ${questions.length}</p>`
+              <p class="heading-${id}">Question ${i} / ${questions.length}</p>
+              <p class="score">Score : <span>0</span></p>
+              `
               if(questions.length > 1) {
                 this.code += `
                 <div class="index-${id}">`;

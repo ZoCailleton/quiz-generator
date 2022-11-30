@@ -14,14 +14,14 @@ export default class Choices {
       tag: 'div',
       value: 'Vrai',
       className: 'choice',
-      moreClasses: ['true', 'active']
+      moreClasses: ['true']
     });
 
     let falseElt = new HTMLElement({
       tag: 'div',
       value: 'Faux',
       className: 'choice',
-      moreClasses: ['false']
+      moreClasses: ['false', 'active']
     });
 
     trueElt.addEventListener('click', () => {
