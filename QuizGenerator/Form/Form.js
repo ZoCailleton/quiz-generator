@@ -62,8 +62,6 @@ export default class Form {
     this.setupDemoControls();
     this.setupScrollObserver();
 
-    this.sendNotification('Test notification');
-
     /**
      * TODO :
      * - Replace the setTimeout with a callback function

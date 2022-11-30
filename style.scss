@@ -55,9 +55,22 @@ main {
 }
 
 .quiz-form-wrapper {
+  position: relative;
   > header {
     background-color: $darker;
     color: #fff;
+  }
+  .notification {
+    background-color: rgb(197, 34, 34);
+    padding: 1.25em;
+    border-radius: 8px;
+    position: fixed;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: 500;
+    z-index: 4;
   }
 }
 
