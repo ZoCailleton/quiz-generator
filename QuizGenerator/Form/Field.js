@@ -46,7 +46,7 @@ export default class Field {
     if(this.form.debug) {
       if(this.category === 'text') this.input.value = getUniqueID();
       if(this.category === 'photo') this.input.value = getRandomImageURL();
-      if(this.category === 'video') this.input.value = 'https://www.youtube.com/watch?v=F6ihqTMbfvY&t=4s';
+      if(this.category === 'video') this.input.value = 'https://youtu.be/F6ihqTMbfvY';
     }
 
     this.html.append(this.label);
