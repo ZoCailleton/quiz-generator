@@ -212,6 +212,11 @@ const getQuizCSS = (id) => `<style>
   .justification-${id} p .intro-${id}.active {
     display: inline-block;
   }
+  .final-screen-${id} {
+    width: 100%;
+    height: 100px;
+    background-color: red;
+  }
   .controls-${id} {
     margin-top: 1em;
     display: grid;

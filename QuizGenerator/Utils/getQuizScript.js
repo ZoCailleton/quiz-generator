@@ -28,7 +28,7 @@ const getQuizScript = id => `
     const prev = document.querySelector('.control-${id}.prev-${id}');
     const next = document.querySelector('.control-${id}.next-${id}');
 
-    prev.addEventListener('click', () => {
+    prev?.addEventListener('click', () => {
       if(currentQuestion > 1) {
         currentQuestion --;
         updateQuestionsVisibility();
@@ -40,7 +40,7 @@ const getQuizScript = id => `
       }
     });
 
-    next.addEventListener('click', () => {
+    next?.addEventListener('click', () => {
       if(currentQuestion < document.querySelectorAll('.question-${id}').length) {
         currentQuestion ++;
         updateQuestionsVisibility();

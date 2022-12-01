@@ -354,18 +354,19 @@ main {
         width: 100%;
       }
     }
-    .explaination {
-      textarea {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        min-height: 5em;
-        background-color: $dark;
-        padding: 1em;
-        border-radius: 8px;
-        font-size: 16px;
-      }
-    }
+  }
+}
+
+.large-field {
+  textarea {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 5em;
+    background-color: $main;
+    padding: 1em;
+    border-radius: 8px;
+    font-size: 16px;
   }
 }
 

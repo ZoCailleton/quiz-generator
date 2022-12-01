@@ -1,353 +1,360 @@
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
 
-.questions-wrapper-9148c298d08e9 {
-  display: grid;
-  gap: 2em;
-  font-family: 'Fira Sans';
-}
-.questions-wrapper-9148c298d08e9 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.question-9148c298d08e9 {
-  background-color: #1e2731;;
-  padding: 2em;
-  border-radius: 15px;
-  display: none;
-  flex-direction: column;
-  gap: 1.5em;
-  color: #fff;
-}
-.question-9148c298d08e9.active {
-  display: flex;
-}
-.question-9148c298d08e9 .index {
-  display: flex;
-  gap: .5em;
-}
-.question-9148c298d08e9 .index div {
-  width: 1em;
-  height: 1em;
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 50%;
-}
-.question-9148c298d08e9 .index div.active {
-  background-color: #fff;
-}
-.header-9148c298d08e9 {
-  display: flex;
-  justify-content: space-between;
-}
-.header-9148c298d08e9 .index-9148c298d08e9 {
-  display: flex;
-  gap: .5em;
-}
-.header-9148c298d08e9 .index-9148c298d08e9 div {
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  border-radius: 10px;
-  opacity: .5;
-}
-.header-9148c298d08e9 .index-9148c298d08e9 div.active {
-  width: 30px;
-  opacity: 1;
-}
-.heading-9148c298d08e9 {
-  font-size: 1.25em;
-  font-weight: 500;
-}
-.illustration-9148c298d08e9 {
-  width: 100%;
-  min-height: 150px;
-  max-height: 200px;
-  background-color: #111921;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.illustration-9148c298d08e9 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.content-9148c298d08e9 {
-  display: grid;
-  gap: 1em;
-}
-.content-9148c298d08e9 .heading-9148c298d08e9 {
-  font-size: 1.5em;
-}
-.choices-9148c298d08e9 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-}
-.choice-9148c298d08e9 {
-  min-width: 4em;
-  min-height: 48px;
-  background-color: #111921;
-  padding: 1em;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: .5em;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-  animation-duration: 500ms;
-  animation-iteration-counts: 1;
-  animation-fill-mode: forwards;
-}
-.choice-9148c298d08e9:not(.reveal-9148c298d08e9):hover {
-  opacity: .5;
-}
-.choice-9148c298d08e9.reveal-9148c298d08e9.true {
-  outline: 2px solid green;
-  animation-name: yep;
-}
-@keyframes yep {
-  25% {
-    transform: scale(.7);
+  .questions-wrapper-4df33b1edb42b {
+    display: grid;
+    gap: 2em;
+    font-family: 'Fira Sans';
   }
-  50% {
-    transform: scale(.9);
+  .questions-wrapper-4df33b1edb42b * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  75% {
-    transform: scale(.8);
+  .question-4df33b1edb42b {
+    background-color: #1e2731;;
+    padding: 2em;
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 1.5em;
+    color: #fff;
   }
-  100% {
-    transform: scale(1);
+  .question-4df33b1edb42b.active {
+    display: flex;
   }
-}
-.choice-9148c298d08e9.reveal-9148c298d08e9.false {
-  outline: 2px solid red;
-  animation-name: nope;
-}
-@keyframes nope {
-  25% {
-    transform: translateX(-1em);
+  .question-4df33b1edb42b .index {
+    display: flex;
+    gap: .5em;
   }
-  50% {
-    transform: translateX(1em);
+  .question-4df33b1edb42b .index div {
+    width: 1em;
+    height: 1em;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 50%;
   }
-  75% {
-    transform: translateX(-.5em);
+  .question-4df33b1edb42b .index div.active {
+    background-color: #fff;
   }
-  100% {
-    transform: translateX(0em);
+  .header-4df33b1edb42b {
+    display: flex;
+    justify-content: space-between;
   }
-}
-.choice-9148c298d08e9.photo-9148c298d08e9 {
-  flex: 1 1 200px;
-  flex-direction: column;
-}
-.choice-9148c298d08e9.video-9148c298d08e9 {
-  flex: 1 1 200px;
-  flex-direction: column;
-}
-.choice-9148c298d08e9.video-9148c298d08e9 iframe {
-  width: 100%;
-  max-height: 100px;
-}
-.choice-9148c298d08e9 img {
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-.choice-9148c298d08e9 .state-9148c298d08e9 {
-  width: 10px;
-  height: 10px;
-  background-color: #333333;
-  border-radius: 50%;
-}
-.choice-9148c298d08e9 .state-9148c298d08e9.true {
-  background-color: green;
-}
-.choice-9148c298d08e9 .state-9148c298d08e9.false {
-  background-color: red;
-}
-.justification-9148c298d08e9 {
-  background-color: #fff;
-  border-radius: 7px;
-  display: none;
-  position: relative;
-  color: var(--dark);
-  overflow: hidden;
-}
-.justification-9148c298d08e9.active-9148c298d08e9 {
-  display: flex;
-}
-.justification-9148c298d08e9 .side-9148c298d08e9 {
-  height: 100%;
-  background-color: #111921;
-  padding: 0 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.justification-9148c298d08e9 .side-9148c298d08e9 .info-box-9148c298d08e9 {
-  min-width: 1.5em;
-  height: 1.5em;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-size: .75em;
-  color: #111921;
-  font-family: 'Fira Sans';
-  font-weight: 500;
-}
-.justification-9148c298d08e9 p {
-  padding: 1.5em;
-  color: #111921;
-  line-height: 1.5em;
-}
-.justification-9148c298d08e9 p .intro-9148c298d08e9 {
-  display: none;
-}
-.justification-9148c298d08e9 p .intro-9148c298d08e9.active {
-  display: inline-block;
-}
-.controls-9148c298d08e9 {
-  margin-top: 1em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
-}
-.controls-9148c298d08e9 .control-9148c298d08e9 {
-  background-color: #1e2731;
-  padding: 1.5em;
-  border: 0;
-  border-radius: 8px;
-  font-size: 1em;
-  color: #fff;
-  font-family: 'Fira Sans';
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-}
-.controls-9148c298d08e9 .control-9148c298d08e9.disabled-9148c298d08e9 {
-  opacity: .5;
-  cursor: default;
-}
-.controls-9148c298d08e9 .control-9148c298d08e9:hover {
-  background-color: #19212b;
-}
+  .header-4df33b1edb42b .index-4df33b1edb42b {
+    display: flex;
+    gap: .5em;
+  }
+  .header-4df33b1edb42b .index-4df33b1edb42b div {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    opacity: .5;
+  }
+  .header-4df33b1edb42b .index-4df33b1edb42b div.active {
+    width: 30px;
+    opacity: 1;
+  }
+  .heading-4df33b1edb42b {
+    font-size: 1.25em;
+    font-weight: 500;
+  }
+  .illustration-4df33b1edb42b {
+    width: 100%;
+    min-height: 150px;
+    max-height: 200px;
+    background-color: #111921;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .illustration-4df33b1edb42b img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .content-4df33b1edb42b {
+    display: grid;
+    gap: 1em;
+  }
+  .content-4df33b1edb42b .heading-4df33b1edb42b {
+    font-size: 1.5em;
+  }
+  .choices-4df33b1edb42b {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  .choice-4df33b1edb42b {
+    min-width: 4em;
+    min-height: 48px;
+    background-color: #111921;
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    animation-duration: 500ms;
+    animation-iteration-counts: 1;
+    animation-fill-mode: forwards;
+  }
+  .choice-4df33b1edb42b:not(.reveal-4df33b1edb42b):hover {
+    opacity: .5;
+  }
+  .choice-4df33b1edb42b.reveal-4df33b1edb42b.true {
+    outline: 2px solid green;
+    animation-name: yep;
+  }
+  @keyframes yep {
+    25% {
+      transform: scale(.7);
+    }
+    50% {
+      transform: scale(.9);
+    }
+    75% {
+      transform: scale(.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .choice-4df33b1edb42b.reveal-4df33b1edb42b.false {
+    outline: 2px solid red;
+    animation-name: nope;
+  }
+  @keyframes nope {
+    25% {
+      transform: translateX(-1em);
+    }
+    50% {
+      transform: translateX(1em);
+    }
+    75% {
+      transform: translateX(-.5em);
+    }
+    100% {
+      transform: translateX(0em);
+    }
+  }
+  .choice-4df33b1edb42b.photo-4df33b1edb42b {
+    flex: 1 1 200px;
+    flex-direction: column;
+  }
+  .choice-4df33b1edb42b.video-4df33b1edb42b {
+    flex: 1 1 200px;
+    flex-direction: column;
+  }
+  .choice-4df33b1edb42b.video-4df33b1edb42b iframe {
+    width: 100%;
+    max-height: 100px;
+  }
+  .choice-4df33b1edb42b img {
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .choice-4df33b1edb42b .state-4df33b1edb42b {
+    width: 10px;
+    height: 10px;
+    background-color: #333333;
+    border-radius: 50%;
+  }
+  .choice-4df33b1edb42b .state-4df33b1edb42b.true {
+    background-color: green;
+  }
+  .choice-4df33b1edb42b .state-4df33b1edb42b.false {
+    background-color: red;
+  }
+  .justification-4df33b1edb42b {
+    background-color: #fff;
+    border-radius: 7px;
+    display: none;
+    position: relative;
+    color: var(--dark);
+    overflow: hidden;
+  }
+  .justification-4df33b1edb42b.active-4df33b1edb42b {
+    display: flex;
+  }
+  .justification-4df33b1edb42b .side-4df33b1edb42b {
+    height: 100%;
+    background-color: #111921;
+    padding: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .justification-4df33b1edb42b .side-4df33b1edb42b .info-box-4df33b1edb42b {
+    min-width: 1.5em;
+    height: 1.5em;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: .75em;
+    color: #111921;
+    font-family: 'Fira Sans';
+    font-weight: 500;
+  }
+  .justification-4df33b1edb42b p {
+    padding: 1.5em;
+    color: #111921;
+    line-height: 1.5em;
+  }
+  .justification-4df33b1edb42b p .intro-4df33b1edb42b {
+    display: none;
+  }
+  .justification-4df33b1edb42b p .intro-4df33b1edb42b.active {
+    display: inline-block;
+  }
+  .final-screen-4df33b1edb42b {
+    width: 100%;
+    height: 100px;
+    background-color: red;
+  }
+  .controls-4df33b1edb42b {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+  }
+  .controls-4df33b1edb42b .control-4df33b1edb42b {
+    background-color: #1e2731;
+    padding: 1.5em;
+    border: 0;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #fff;
+    font-family: 'Fira Sans';
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  .controls-4df33b1edb42b .control-4df33b1edb42b.disabled-4df33b1edb42b {
+    opacity: .5;
+    cursor: default;
+  }
+  .controls-4df33b1edb42b .control-4df33b1edb42b:hover {
+    background-color: #19212b;
+  }
 </style>
-  <div id="quiz-9148c298d08e9" class="wrapper-9148c298d08e9">
-    <div class="questions-wrapper-9148c298d08e9">
-  
-      <article data-index=1 class="question-9148c298d08e9 active">
+    <div id="quiz-4df33b1edb42b" class="wrapper-4df33b1edb42b">
+      <div class="questions-wrapper-4df33b1edb42b">
+    
+        <article data-index=1 class="question-4df33b1edb42b active">
 
-          <header class="header-9148c298d08e9">
-            <p class="heading-9148c298d08e9">Question 1 / 1</p>
-            <p class="score">Score : <span>0</span></p>
-            
-          </header>
-              <figure class="illustration-9148c298d08e9">
-                <img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation">
-              </figure>
-            
-          <section class="content-9148c298d08e9">
-            <p class="heading-9148c298d08e9">7a5b639933fe</p>
-            <div class="choices-9148c298d08e9"><div data-state=false class="choice-9148c298d08e9 photo-9148c298d08e9 false"><img src="https://images.pexels.com/photos/10897657/pexels-photo-10897657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" role="presentation"><p>fea1e46e356b6</p></div><div data-state=false class="choice-9148c298d08e9 photo-9148c298d08e9 false"><img src="https://images.pexels.com/photos/14428779/pexels-photo-14428779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" role="presentation"><p>7002d6ff33136</p></div><div data-state=false class="choice-9148c298d08e9 photo-9148c298d08e9 false"><img src="https://images.pexels.com/photos/13766972/pexels-photo-13766972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" role="presentation"><p>685a3a41b8627</p></div>
-            </div>
-          </section>
-            <section class="justification-9148c298d08e9">
-              <div class="side-9148c298d08e9">
-                <div class="info-box-9148c298d08e9">i</div>
+            <header class="header-4df33b1edb42b">
+              <p class="heading-4df33b1edb42b">Question 1 / 1</p>
+              <p class="score">Score : <span>0</span></p>
+              
+            </header>
+                <figure class="illustration-4df33b1edb42b">
+                  <img src="https://images.pexels.com/photos/10897657/pexels-photo-10897657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" role="presentation">
+                </figure>
+              
+            <section class="content-4df33b1edb42b">
+              <p class="heading-4df33b1edb42b">1e1d69d8f0faf</p>
+              <div class="choices-4df33b1edb42b"><div data-state=false class="choice-4df33b1edb42b text-4df33b1edb42b false">cf4c63a2132a9</div><div data-state=false class="choice-4df33b1edb42b text-4df33b1edb42b false">5740375b23a8c</div><div data-state=false class="choice-4df33b1edb42b text-4df33b1edb42b false">35b719283e4dc</div>
               </div>
-              <p>
-                <span class="intro-9148c298d08e9 true">Bravo !</span>
-                <span class="intro-9148c298d08e9 false active">Dommage !</span>
-                5ae9590ca692
-              </p>
             </section>
+              <section class="justification-4df33b1edb42b">
+                <div class="side-4df33b1edb42b">
+                  <div class="info-box-4df33b1edb42b">i</div>
+                </div>
+                <p>
+                  <span class="intro-4df33b1edb42b true">Bravo !</span>
+                  <span class="intro-4df33b1edb42b false active">Dommage !</span>
+                  0f73f15bd9f11
+                </p>
+              </section>
 
-      </article></div></div>
+        </article>
+      <article class="final-screen-4df33b1edb42b"></article>
+    </div></div>
 <script>
-(function(){
-  
-  let currentQuestion = 1;
-  let score = 0;
+  (function(){
+    
+    let currentQuestion = 1;
+    let score = 0;
 
-  const reset = (collection, className) => {
-    for(let elt of document.querySelectorAll(collection)) {
-      elt.classList.remove(className)
+    const reset = (collection, className) => {
+      for(let elt of document.querySelectorAll(collection)) {
+        elt.classList.remove(className)
+      }
     }
-  }
 
-  let questions = [];
+    let questions = [];
 
-  for(let question of document.querySelectorAll('.question-9148c298d08e9')) {
-    questions.push(false)
-  }
-
-  const updateQuestionsVisibility = () => {
-    reset('article.question-9148c298d08e9', 'active')
-    document.querySelector('article.question-9148c298d08e9:nth-child('+currentQuestion+')').classList.add('active');
-    for(let question of document.querySelectorAll('.question-9148c298d08e9')) {
-      question.querySelector('.score span').innerHTML = score;
+    for(let question of document.querySelectorAll('.question-4df33b1edb42b')) {
+      questions.push(false)
     }
-  }
 
-  const prev = document.querySelector('.control-9148c298d08e9.prev-9148c298d08e9');
-  const next = document.querySelector('.control-9148c298d08e9.next-9148c298d08e9');
+    const updateQuestionsVisibility = () => {
+      reset('article.question-4df33b1edb42b', 'active')
+      document.querySelector('article.question-4df33b1edb42b:nth-child('+currentQuestion+')').classList.add('active');
+      for(let question of document.querySelectorAll('.question-4df33b1edb42b')) {
+        question.querySelector('.score span').innerHTML = score;
+      }
+    }
 
-  prev.addEventListener('click', () => {
-    if(currentQuestion > 1) {
-      currentQuestion --;
-      updateQuestionsVisibility();
-      prev.classList.remove('disabled-9148c298d08e9');
-      next.classList.remove('disabled-9148c298d08e9');
-    }
-    if(currentQuestion === 1) {
-      prev.classList.add('disabled-9148c298d08e9');
-    }
-  });
+    const prev = document.querySelector('.control-4df33b1edb42b.prev-4df33b1edb42b');
+    const next = document.querySelector('.control-4df33b1edb42b.next-4df33b1edb42b');
 
-  next.addEventListener('click', () => {
-    if(currentQuestion < document.querySelectorAll('.question-9148c298d08e9').length) {
-      currentQuestion ++;
-      updateQuestionsVisibility();
-      prev.classList.remove('disabled-9148c298d08e9');
-      next.classList.remove('disabled-9148c298d08e9');
-    }
-    if(currentQuestion === document.querySelectorAll('.question-9148c298d08e9').length) {
-      next.classList.add('disabled-9148c298d08e9');
-    }
-  });
+    prev.addEventListener('click', () => {
+      if(currentQuestion > 1) {
+        currentQuestion --;
+        updateQuestionsVisibility();
+        prev.classList.remove('disabled-4df33b1edb42b');
+        next.classList.remove('disabled-4df33b1edb42b');
+      }
+      if(currentQuestion === 1) {
+        prev.classList.add('disabled-4df33b1edb42b');
+      }
+    });
 
-  for(let question of document.querySelectorAll('.question-9148c298d08e9')) {
-    let index = question.dataset.index;
-    const info = question.querySelector('.justification-9148c298d08e9');
-    for(let answer of question.querySelectorAll('.choice-9148c298d08e9')) {
-      answer.addEventListener('click', () => {
-        if(!questions[index-1]) {
-          answer.classList.add('reveal-9148c298d08e9');
-          questions[index-1] = true;
-          if(answer.dataset.state === 'true') {
-            score ++;
-            question.querySelector('.justification-9148c298d08e9 p span.true').classList.add('active');
-            question.querySelector('.justification-9148c298d08e9 p span.false').classList.remove('active');
-            updateQuestionsVisibility();
-          }
-          for(let elt of question.querySelectorAll('.choice-9148c298d08e9')) {
-            if(elt.dataset.state === 'true') {
-              elt.classList.add('reveal-9148c298d08e9');
+    next.addEventListener('click', () => {
+      if(currentQuestion < document.querySelectorAll('.question-4df33b1edb42b').length) {
+        currentQuestion ++;
+        updateQuestionsVisibility();
+        prev.classList.remove('disabled-4df33b1edb42b');
+        next.classList.remove('disabled-4df33b1edb42b');
+      }
+      if(currentQuestion === document.querySelectorAll('.question-4df33b1edb42b').length) {
+        next.classList.add('disabled-4df33b1edb42b');
+      }
+    });
+
+    for(let question of document.querySelectorAll('.question-4df33b1edb42b')) {
+      let index = question.dataset.index;
+      const info = question.querySelector('.justification-4df33b1edb42b');
+      for(let answer of question.querySelectorAll('.choice-4df33b1edb42b')) {
+        answer.addEventListener('click', () => {
+          if(!questions[index-1]) {
+            answer.classList.add('reveal-4df33b1edb42b');
+            questions[index-1] = true;
+            if(answer.dataset.state === 'true') {
+              score ++;
+              question.querySelector('.justification-4df33b1edb42b p span.true').classList.add('active');
+              question.querySelector('.justification-4df33b1edb42b p span.false').classList.remove('active');
+              updateQuestionsVisibility();
+            }
+            for(let elt of question.querySelectorAll('.choice-4df33b1edb42b')) {
+              if(elt.dataset.state === 'true') {
+                elt.classList.add('reveal-4df33b1edb42b');
+              }
+            }
+            if(info != undefined) {
+              info.classList.add('active-4df33b1edb42b');
             }
           }
-          if(info != undefined) {
-            info.classList.add('active-9148c298d08e9');
-          }
-        }
-      });
+        });
+      }
     }
-  }
 
-})();
+  })();
 </script>

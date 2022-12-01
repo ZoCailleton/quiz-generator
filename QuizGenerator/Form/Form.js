@@ -43,6 +43,8 @@ export default class Form {
     this.html.append(this.form);
     this.html.append(this.controls);
 
+    this.setupFinalScreen();
+
     this.addQuestion();
 
     document.querySelector('.copy-code').addEventListener('click', () => {
@@ -258,6 +260,10 @@ export default class Form {
 
       }
 
+    this.code += `
+      <article class="final-screen-${id}"></article>
+    `
+
     this.code += `</div>`;
         if(questions.length > 1) {
           this.code += `
@@ -294,6 +300,28 @@ export default class Form {
   deleteQuestionByIndex(index) {
 
     this.questions = this.questions.filter((question) => question.index !== index);
+
+  }
+
+  setupFinalScreen() {
+
+    let finalScreenElement = new HTMLElement({
+      tag: 'div',
+      className: 'final-screen'
+    });
+
+    let textarea = new HTMLElement({
+      tag: 'textarea',
+      placeholder: 'Écran final...'
+    });
+
+    if(this.form.debug) {
+      textarea.value = getUniqueID()
+    }
+
+    finalScreenElement.append(textarea);
+
+    this.html.append(finalScreenElement);
 
   }
 

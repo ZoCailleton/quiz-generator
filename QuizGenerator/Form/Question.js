@@ -5,6 +5,7 @@ import HTMLElement from '../Utils/HTMLElement';
 import reset from '../Utils/reset';
 import checkURLValidity from '../Utils/checkURLValidity';
 import getUniqueID from '../Utils/getUniqueID';
+import LongField from './LongField';
 
 export default class Question {
 
@@ -244,23 +245,13 @@ export default class Question {
 
   setupExplaination() {
 
-    let explainationElt = new HTMLElement({
-      tag: 'div',
-      className: 'explaination'
-    });
+    let explainationField = new LongField({
+      label: 'Explication',
+      placeholder: 'Explication...',
+      classes: ['box', 'explaination']
+    })
 
-    let textarea = new HTMLElement({
-      tag: 'textarea',
-      placeholder: 'Explications...'
-    });
-
-    if(this.form.debug) {
-      textarea.value = getUniqueID()
-    }
-
-    explainationElt.append(textarea);
-
-    this.html.append(explainationElt);
+    this.html.append(explainationField);
     
   }
   
