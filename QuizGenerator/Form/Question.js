@@ -23,7 +23,8 @@ export default class Question {
     
     this.html = new HTMLElement({
       tag: 'div',
-      className: 'question-wrapper'
+      className: 'question-wrapper',
+      moreClasses: ['container']
     });
 
     this.html.dataset.index = index;
@@ -46,7 +47,7 @@ export default class Question {
 
     let titleWrapper = new HTMLElement({
       tag: 'div',
-      className: 'title-wrapper',
+      className: 'heading-wrapper',
       moreClasses: ['box']
     });
     
@@ -62,6 +63,7 @@ export default class Question {
     });
 
     titleWrapper.append(titleField);
+
     this.html.append(titleWrapper);
 
   }
@@ -74,7 +76,7 @@ export default class Question {
 
     let title = new HTMLElement({
       tag: 'h2',
-      className: 'title',
+      className: 'heading',
       value: `Question <span class="index">${this.index}</span> / <span class="total">2</span>`
     });
 

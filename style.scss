@@ -22,6 +22,26 @@ main {
   }
 }
 
+.container {
+  background-color: $main;
+  padding: $gap;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    .heading {
+      font-size: 1.25em;
+      font-weight: 500;
+    }
+  }
+}
+
 .quiz-form-wrapper,
 .quiz-demo-wrapper {
   width: 50%;
@@ -85,10 +105,6 @@ main {
   justify-content: center;
   gap: 50px;
   color: #fff;
-  .heading {
-    font-size: 1.75em;
-    font-weight: 500;
-  }
 
   input {
     background-color: $main;
@@ -149,6 +165,11 @@ main {
   
   .form-wrapper {
     width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+    }
     .add-question {
       width: 100%;
       background-color: #FF7D24;
@@ -193,13 +214,6 @@ main {
     }
   }
   .question-wrapper {
-    background-color: $main;
-    margin-bottom: 2em;
-    padding: $gap;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: $gap;
     overflow: hidden;
     &.close {
       height: 240px;
@@ -233,15 +247,6 @@ main {
       }
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1em;
-      flex-wrap: wrap;
-      .title {
-        font-size: 1.25em;
-        font-weight: 500;
-      }
       .controls {
         display: flex;
         gap: 1em;
@@ -355,6 +360,12 @@ main {
       }
     }
   }
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
 .large-field {

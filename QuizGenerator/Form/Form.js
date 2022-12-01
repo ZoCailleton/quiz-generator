@@ -4,6 +4,7 @@ import HTMLElement from "../Utils/HTMLElement";
 import getUniqueID from '../Utils/getUniqueID';
 import getQuizCSS from '../Utils/getQuizCSS';
 import getQuizScript from '../Utils/getQuizScript';
+import LongField from './LongField';
 
 let instance = null;
 
@@ -23,29 +24,17 @@ export default class Form {
 
     this.code = '';
 
-    this.controls = new Controls();
-
     this.id = getUniqueID();
 
     this.demoIndex = 1;
-    
-    this.html = new HTMLElement({
-      tag: 'div',
-      className: 'form-wrapper'
-    });
-    
-    this.form = new HTMLElement({
-      tag: 'form'
-    });
 
-    this.form.addEventListener('submit', e => e.preventDefault());
-
-    this.html.append(this.form);
-    this.html.append(this.controls);
-
-    this.setupFinalScreen();
-
+    this.setup();
     this.addQuestion();
+    this.setupControls();
+    
+    if(this.debug) {
+      this.setupFinalScreen();
+    }
 
     document.querySelector('.copy-code').addEventListener('click', () => {
       const body = document.body;
@@ -63,13 +52,6 @@ export default class Form {
 
     this.setupDemoControls();
     this.setupScrollObserver();
-
-    /**
-     * TODO :
-     * - Replace the setTimeout with a callback function
-     * - Live update of all indexes
-     * - New True / False choices design
-     */
 
     setTimeout(() => {
 
@@ -99,11 +81,11 @@ export default class Form {
 
     })
 
-    this.form.addEventListener('keyup', () => {
+    this.instance.addEventListener('keyup', () => {
       this.getCode();
     });
 
-    this.form.addEventListener('change', () => {
+    this.instance.addEventListener('change', () => {
       this.getCode();
     });
     
@@ -119,8 +101,8 @@ export default class Form {
 
       i++;
 
-      question.querySelector('.title span.index').innerHTML = i;
-      question.querySelector('.title span.total').innerHTML = questions.length;
+      question.querySelector('.heading span.index').innerHTML = i;
+      question.querySelector('.heading span.total').innerHTML = questions.length;
 
       for(let grid of question.querySelectorAll('.grid')) {
 
@@ -193,7 +175,7 @@ export default class Form {
             
             this.code += `
             <section class="content-${id}">
-              <p class="heading-${id}">${question.querySelector('.title-wrapper input').value}</p>
+              <p class="heading-${id}">${question.querySelector('.heading-wrapper input').value}</p>
               <div class="choices-${id}">`;
 
               for(let answer of question.querySelectorAll('.answers .grid.active .answer-wrapper')) {
@@ -260,9 +242,16 @@ export default class Form {
 
       }
 
-    this.code += `
-      <article class="final-screen-${id}"></article>
-    `
+      if(this.debug) {
+
+        this.code += `
+          <article class="final-screen-${id}">
+            <p>${document.querySelector('.final-screen-wrapper textarea').value}</p>
+            <div></div>
+          </article>
+        `
+
+      }
 
     this.code += `</div>`;
         if(questions.length > 1) {
@@ -291,7 +280,7 @@ export default class Form {
     });
 
     this.questions.push(question);
-    this.form.append(question.html);
+    this.instance.append(question.html);
 
     this.updateAll();
     
@@ -303,25 +292,59 @@ export default class Form {
 
   }
 
+  setup() {
+    
+    this.html = new HTMLElement({
+      tag: 'div',
+      className: 'form-wrapper'
+    });
+    
+    this.instance = new HTMLElement({
+      tag: 'form'
+    });
+
+    this.instance.addEventListener('submit', e => e.preventDefault());
+
+    this.html.append(this.instance);
+    
+  }
+
+  setupControls() {
+
+    this.controls = new Controls();
+
+    this.html.append(this.controls);
+
+  }
+
   setupFinalScreen() {
 
-    let finalScreenElement = new HTMLElement({
+    let element = new HTMLElement({
       tag: 'div',
-      className: 'final-screen'
+      className: 'final-screen-wrapper',
+      moreClasses: ['container']
     });
 
-    let textarea = new HTMLElement({
-      tag: 'textarea',
-      placeholder: 'Écran final...'
+    let header = new HTMLElement({
+      tag: 'header'
     });
 
-    if(this.form.debug) {
-      textarea.value = getUniqueID()
-    }
+    let heading = new HTMLElement({
+      tag: 'h2',
+      className: 'heading',
+      value: 'Écran final'
+    });
 
-    finalScreenElement.append(textarea);
+    let descriptionField = new LongField({
+      label: `Contenu textuel de l'écran final du quiz`,
+      placeholder: `Merci d'avoir participé à ce quiz`
+    });
 
-    this.html.append(finalScreenElement);
+    header.append(heading);
+    element.append(header);
+    element.append(descriptionField);
+
+    this.html.append(element);
 
   }
 
